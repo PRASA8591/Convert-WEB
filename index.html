@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrasaTek SupiriConvertPRO | 100% Free All-in-One File Converter & Utilities</title>
+  <meta name="description" content="100% Free and unlimited all-in-one file converter and utility suite powered by PrasaTek System Solutions. Convert documents, PDFs, media, and images with zero limits and maximum privacy.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              850: '#111827',
+              900: '#0f172a',
+              950: '#070b14',
+            },
+            cyan: {
+              400: '#22d3ee',
+              500: '#06b6d4',
+            },
+            emerald: {
+              400: '#34d399',
+              500: '#10b981',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'fade-in': 'fadeIn 0.3s ease-in-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(8px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- QRCode.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070b14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    /* Hide scrollbar for tabs navigation */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Glassmorphism Classes */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(51, 65, 85, 0.5);
+    }
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+    }
+
+    /* Drag over active state */
+    .drag-active {
+      border-color: #22d3ee !important;
+      background: rgba(6, 182, 212, 0.1) !important;
+      transform: scale(1.008);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 relative overflow-x-hidden">
+
+  <!-- Ambient Background Glows -->
+  <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+  <div class="fixed bottom-10 right-1/4 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-0 sm:h-20 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center space-x-3 text-left w-full sm:w-auto">
+        <img src="/assets/logo.png" alt="PrasaTek Logo" class="h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-xl shadow-md shadow-cyan-500/10 flex-shrink-0" onerror="this.onerror=null; this.src='assets/logo.png';">
+        <div class="truncate">
+          <div class="flex items-center space-x-2">
+            <span class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+              PrasaTek SupiriConvert
+            </span>
+            <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300">
+              PRO
+            </span>
+          </div>
+          <p class="text-[11px] sm:text-xs text-slate-400 font-medium truncate">
+            Powered by PrasaTek System Solutions | 100% Free Unlimited Engine
+          </p>
+        </div>
+      </div>
+
+      <!-- Engine Status & Badges -->
+      <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto space-x-3">
+        <div id="system-status-badge" class="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-medium text-slate-300 shadow-inner">
+          <span class="relative flex h-2 w-2">
+            <span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span id="status-dot" class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span id="status-text">Engine Online</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    
+    <!-- Hero Title -->
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-3 shadow-lg shadow-cyan-500/10">
+        <i class="fa-solid fa-shield-halved text-cyan-400"></i>
+        <span>Powered by PrasaTek System Solutions</span>
+      </div>
+      <h1 class="font-heading text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-2 sm:mb-3">
+        Unlimited Conversions, <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">100% Free</span>
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-base leading-relaxed px-2">
+        Fast, secure, and 100% free conversion suite powered by PrasaTek System Solutions. Full matrix Office & PDF conversions, audio/video tools, image compressor, and offline utilities.
+      </p>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="flex items-center justify-start sm:justify-center overflow-x-auto pb-3 mb-8 gap-2 no-scrollbar px-1">
+      <button onclick="switchTab('doc-tab')" id="tab-btn-doc-tab" class="tab-button active flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/20 whitespace-nowrap">
+        <i class="fa-solid fa-file-contract"></i>
+        <span>Document Converter</span>
+      </button>
+
+      <button onclick="switchTab('pdf-tab')" id="tab-btn-pdf-tab" class="tab-button flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+        <i class="fa-solid fa-file-pdf"></i>
+        <span>PDF Studio</span>
+      </button>
+
+      <button onclick="switchTab('media-tab')" id="tab-btn-media-tab" class="tab-button flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+        <i class="fa-solid fa-photo-film"></i>
+        <span>Media Converter</span>
+      </button>
+
+      <button onclick="switchTab('image-tab')" id="tab-btn-image-tab" class="tab-button flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+        <i class="fa-solid fa-image"></i>
+        <span>Image Studio</span>
+      </button>
+
+      <button onclick="switchTab('utils-tab')" id="tab-btn-utils-tab" class="tab-button flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+        <i class="fa-solid fa-toolbox"></i>
+        <span>Free Utilities</span>
+      </button>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- TAB 1: DOCUMENT CONVERTER (FULL MATRIX) -->
+    <!-- ======================================================== -->
+    <section id="doc-tab" class="tab-content block">
+      <div class="glass-card rounded-2xl p-5 sm:p-8 max-w-3xl mx-auto shadow-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+          <div>
+            <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-arrows-split-up-and-left text-cyan-400"></i> Full Matrix Document Converter
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Convert between Word (.docx), Excel (.xlsx), PowerPoint (.pptx), and PDF (.pdf)</p>
+          </div>
+          <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Any-to-Any Matrix</span>
+        </div>
+
+        <!-- Drag & Drop Zone -->
+        <div id="doc-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all duration-200 bg-slate-900/40 relative">
+          <input type="file" id="doc-file-input" class="hidden" accept=".docx,.doc,.xlsx,.xls,.pptx,.ppt,.pdf,.txt,.rtf">
+          
+          <div id="doc-empty-state">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-cyan-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <p class="text-sm sm:text-base font-semibold text-slate-200">Click or Drag & Drop document here</p>
+            <p class="text-xs text-slate-400 mt-1">Word (.docx), Excel (.xlsx), PowerPoint (.pptx), PDF (.pdf)</p>
+          </div>
+
+          <!-- Selected File Preview -->
+          <div id="doc-file-preview" class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+            <div class="flex items-center space-x-3 overflow-hidden text-left">
+              <div id="doc-file-icon" class="text-2xl text-cyan-400 flex-shrink-0">
+                <i class="fa-solid fa-file"></i>
+              </div>
+              <div class="truncate">
+                <p id="doc-filename" class="text-sm font-semibold text-white truncate">filename.docx</p>
+                <p id="doc-filesize" class="text-xs text-slate-400">0 KB</p>
+              </div>
+            </div>
+            <button type="button" onclick="clearDocFile(event)" class="text-slate-400 hover:text-rose-400 p-2 transition" title="Remove file">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Conversion Options -->
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target Format</label>
+            <div class="relative">
+              <select id="doc-target-format" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+                <option value="pdf">PDF Document (.pdf)</option>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+            </div>
+          </div>
+
+          <div class="flex items-end">
+            <button id="doc-convert-btn" onclick="convertDocument()" disabled class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-rotate"></i>
+              <span>Convert Document</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Manual Download Flow Success Card -->
+        <div id="doc-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+          <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
+          <p id="doc-success-meta" class="text-xs text-slate-300 font-mono mb-5">document.pdf (0 KB)</p>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+            <button onclick="downloadConvertedFile('doc')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-cloud-arrow-down text-base"></i>
+              <span>⬇️ Download File Now</span>
+            </button>
+            <button onclick="resetToolView('doc')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+              <span>Convert Another File</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] sm:text-xs text-slate-400 flex items-start space-x-2">
+          <i class="fa-solid fa-shield-halved text-emerald-400 mt-0.5 flex-shrink-0"></i>
+          <span>Privacy Guaranteed: Processed inside an isolated container with self-cleaning storage by PrasaTek System Solutions.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 2: PDF STUDIO -->
+    <!-- ======================================================== -->
+    <section id="pdf-tab" class="tab-content hidden">
+      <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+        
+        <!-- Tool 1: Merge PDFs -->
+        <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+            <div>
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-emerald-400"></i> Merge Multiple PDFs
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Combine two or more PDF files into a single unified document</p>
+            </div>
+            <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">PyPDF Powered</span>
+          </div>
+
+          <!-- Multi PDF Dropzone -->
+          <div id="pdf-merge-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 text-center cursor-pointer transition-all bg-slate-900/40">
+            <input type="file" id="pdf-merge-input" class="hidden" accept=".pdf" multiple>
+            <div class="w-12 h-12 rounded-full bg-slate-800 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-xl">
+              <i class="fa-solid fa-copy"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Select or Drop 2+ PDF files here</p>
+            <p class="text-xs text-slate-400 mt-1">Files can be reordered before merging</p>
+          </div>
+
+          <!-- Merge File List -->
+          <div id="pdf-merge-list" class="mt-4 space-y-2 max-h-60 overflow-y-auto pr-1"></div>
+
+          <!-- Merge Action -->
+          <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <button type="button" onclick="clearMergeList()" class="text-xs text-slate-400 hover:text-rose-400 transition flex items-center space-x-1">
+              <i class="fa-solid fa-trash-can"></i>
+              <span>Clear List</span>
+            </button>
+            <button id="pdf-merge-btn" onclick="mergePdfs()" disabled class="w-full sm:w-auto py-2.5 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-500/20 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-object-group"></i>
+              <span>Merge PDFs</span>
+            </button>
+          </div>
+
+          <!-- PDF Merge Success Card -->
+          <div id="pdf-merge-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+            <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
+            <p id="pdf-merge-success-meta" class="text-xs text-slate-300 font-mono mb-5">merged_document.pdf (0 KB)</p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+              <button onclick="downloadConvertedFile('pdf-merge')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-cloud-arrow-down text-base"></i>
+                <span>⬇️ Download File Now</span>
+              </button>
+              <button onclick="resetToolView('pdf-merge')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+                <span>Merge More Files</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 2: Images to PDF -->
+        <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+            <div>
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-images text-cyan-400"></i> Images to PDF
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Convert multiple pictures (PNG, JPG, WEBP, BMP) into a high-res PDF booklet</p>
+            </div>
+            <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Pillow Engine</span>
+          </div>
+
+          <div id="img2pdf-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 text-center cursor-pointer transition-all bg-slate-900/40">
+            <input type="file" id="img2pdf-input" class="hidden" accept=".png,.jpg,.jpeg,.webp,.bmp" multiple>
+            <div class="w-12 h-12 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center mx-auto mb-3 text-xl">
+              <i class="fa-solid fa-images"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Select or Drop images here</p>
+            <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, WEBP, BMP</p>
+          </div>
+
+          <div id="img2pdf-preview-grid" class="mt-4 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 max-h-56 overflow-y-auto"></div>
+
+          <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <button type="button" onclick="clearImg2PdfList()" class="text-xs text-slate-400 hover:text-rose-400 transition flex items-center space-x-1">
+              <i class="fa-solid fa-trash-can"></i>
+              <span>Clear All Images</span>
+            </button>
+            <button id="img2pdf-btn" onclick="convertImagesToPdf()" disabled class="w-full sm:w-auto py-2.5 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-file-pdf"></i>
+              <span>Create PDF</span>
+            </button>
+          </div>
+
+          <!-- Images to PDF Success Card -->
+          <div id="img2pdf-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+            <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
+            <p id="img2pdf-success-meta" class="text-xs text-slate-300 font-mono mb-5">images_combined.pdf (0 KB)</p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+              <button onclick="downloadConvertedFile('img2pdf')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-cloud-arrow-down text-base"></i>
+                <span>⬇️ Download File Now</span>
+              </button>
+              <button onclick="resetToolView('img2pdf')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+                <span>Create Another PDF</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 3: MEDIA CONVERTER -->
+    <!-- ======================================================== -->
+    <section id="media-tab" class="tab-content hidden">
+      <div class="glass-card rounded-2xl p-5 sm:p-8 max-w-3xl mx-auto shadow-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+          <div>
+            <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-film text-cyan-400"></i> Video & Audio Converter
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Extract audio, transcode video formats, or craft smooth animated GIFs</p>
+          </div>
+          <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">FFmpeg Engine</span>
+        </div>
+
+        <!-- Drag & Drop Zone -->
+        <div id="media-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40">
+          <input type="file" id="media-file-input" class="hidden" accept=".mp4,.mkv,.avi,.mov,.webm,.flv,.wmv,.mp3,.wav,.aac,.ogg,.m4a">
+          
+          <div id="media-empty-state">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-cyan-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
+              <i class="fa-solid fa-play"></i>
+            </div>
+            <p class="text-sm sm:text-base font-semibold text-slate-200">Select or Drop media file here</p>
+            <p class="text-xs text-slate-400 mt-1">MP4, MKV, AVI, MOV, WEBM, MP3, WAV, AAC, etc.</p>
+          </div>
+
+          <div id="media-file-preview" class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+            <div class="flex items-center space-x-3 overflow-hidden text-left">
+              <div id="media-file-icon" class="text-2xl text-cyan-400 flex-shrink-0">
+                <i class="fa-solid fa-file-video"></i>
+              </div>
+              <div class="truncate">
+                <p id="media-filename" class="text-sm font-semibold text-white truncate">video.mp4</p>
+                <p id="media-filesize" class="text-xs text-slate-400">0 MB</p>
+              </div>
+            </div>
+            <button type="button" onclick="clearMediaFile(event)" class="text-slate-400 hover:text-rose-400 p-2 transition">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Options -->
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target Format</label>
+            <div class="relative">
+              <select id="media-target-format" onchange="onMediaFormatChange()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-cyan-500">
+                <optgroup label="Audio Extraction">
+                  <option value="mp3" selected>MP3 Audio (.mp3)</option>
+                  <option value="wav">WAV Audio (.wav)</option>
+                  <option value="aac">AAC Audio (.aac)</option>
+                  <option value="ogg">OGG Vorbis (.ogg)</option>
+                </optgroup>
+                <optgroup label="Video Conversion">
+                  <option value="mp4">MP4 Video (H.264/AAC)</option>
+                  <option value="webm">WebM Video (VP9)</option>
+                  <option value="mkv">MKV Video</option>
+                  <option value="avi">AVI Video</option>
+                  <option value="mov">QuickTime MOV</option>
+                </optgroup>
+                <optgroup label="Animation">
+                  <option value="gif">Animated GIF (.gif)</option>
+                </optgroup>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+            </div>
+          </div>
+
+          <div id="gif-fps-container" class="hidden">
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">GIF Frame Rate (FPS)</label>
+            <div class="flex items-center space-x-3 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5">
+              <input type="range" id="gif-fps" min="6" max="24" value="12" class="w-full accent-cyan-400 cursor-pointer" oninput="document.getElementById('fps-val').innerText = this.value">
+              <span id="fps-val" class="text-sm font-bold text-cyan-400 w-8 text-right">12</span>
+            </div>
+          </div>
+
+          <div class="flex items-end">
+            <button id="media-convert-btn" onclick="convertMedia()" disabled class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-film"></i>
+              <span>Convert Media</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Media Success Card -->
+        <div id="media-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+          <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
+          <p id="media-success-meta" class="text-xs text-slate-300 font-mono mb-5">output.mp3 (0 MB)</p>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+            <button onclick="downloadConvertedFile('media')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-cloud-arrow-down text-base"></i>
+              <span>⬇️ Download File Now</span>
+            </button>
+            <button onclick="resetToolView('media')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+              <span>Convert Another File</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 4: IMAGE STUDIO -->
+    <!-- ======================================================== -->
+    <section id="image-tab" class="tab-content hidden">
+      <div class="glass-card rounded-2xl p-5 sm:p-8 max-w-3xl mx-auto shadow-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+          <div>
+            <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-wand-magic-sparkles text-emerald-400"></i> Image Studio & Compressor
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Convert between PNG, JPG, WEBP, BMP & adjust file compression quality</p>
+          </div>
+          <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">Pillow Engine</span>
+        </div>
+
+        <div id="img-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40">
+          <input type="file" id="img-file-input" class="hidden" accept=".png,.jpg,.jpeg,.webp,.bmp">
+          
+          <div id="img-empty-state">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-emerald-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
+              <i class="fa-regular fa-image"></i>
+            </div>
+            <p class="text-sm sm:text-base font-semibold text-slate-200">Select or Drop an image here</p>
+            <p class="text-xs text-slate-400 mt-1">PNG, JPG, WEBP, or BMP</p>
+          </div>
+
+          <div id="img-file-preview" class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+            <div class="flex items-center space-x-4 overflow-hidden text-left">
+              <img id="img-thumbnail" class="w-12 h-12 rounded object-cover border border-slate-700 flex-shrink-0" src="" alt="Thumbnail">
+              <div class="truncate">
+                <p id="img-filename" class="text-sm font-semibold text-white truncate">image.png</p>
+                <p id="img-filesize" class="text-xs text-slate-400">0 KB</p>
+              </div>
+            </div>
+            <button type="button" onclick="clearImageFile(event)" class="text-slate-400 hover:text-rose-400 p-2 transition">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target Format</label>
+            <div class="relative">
+              <select id="img-target-format" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-emerald-500">
+                <option value="webp">WebP (.webp) - Modern & Small</option>
+                <option value="jpg">JPEG (.jpg) - Universal</option>
+                <option value="png">PNG (.png) - Lossless</option>
+                <option value="bmp">BMP (.bmp) - Uncompressed</option>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Quality / Compression</label>
+              <span id="img-quality-val" class="text-xs font-bold text-emerald-400">85%</span>
+            </div>
+            <div class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 flex items-center">
+              <input type="range" id="img-quality" min="10" max="100" value="85" class="w-full accent-emerald-400 cursor-pointer" oninput="document.getElementById('img-quality-val').innerText = this.value + '%'">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <button id="img-convert-btn" onclick="convertImage()" disabled class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-500/20 transition duration-200 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Process & Prepare Image</span>
+          </button>
+        </div>
+
+        <!-- Image Success Card -->
+        <div id="img-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+          <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
+          <p id="img-success-meta" class="text-xs text-slate-300 font-mono mb-5">image.webp (0 KB)</p>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+            <button onclick="downloadConvertedFile('img')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-cloud-arrow-down text-base"></i>
+              <span>⬇️ Download File Now</span>
+            </button>
+            <button onclick="resetToolView('img')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+              <span>Convert Another Image</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 5: FREE UTILITIES -->
+    <!-- ======================================================== -->
+    <section id="utils-tab" class="tab-content hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
+        
+        <!-- Utility 1: QR Code Generator -->
+        <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+              <div>
+                <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-qrcode text-cyan-400"></i> Instant QR Generator
+                </h2>
+                <p class="text-xs text-slate-400 mt-1">Generate high-res downloadable QR codes in real-time</p>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Client-Side</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Text or URL</label>
+                <input type="text" id="qr-input" value="https://prasatek.com" placeholder="Type or paste any URL or text..." oninput="generateQRCode()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">QR Color</label>
+                  <div class="flex items-center space-x-2 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5">
+                    <input type="color" id="qr-color-fg" value="#06b6d4" onchange="generateQRCode()" class="w-8 h-8 rounded border-0 bg-transparent cursor-pointer">
+                    <span class="text-xs text-slate-300 font-mono">Foreground</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Background</label>
+                  <div class="flex items-center space-x-2 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5">
+                    <input type="color" id="qr-color-bg" value="#0f172a" onchange="generateQRCode()" class="w-8 h-8 rounded border-0 bg-transparent cursor-pointer">
+                    <span class="text-xs text-slate-300 font-mono">Background</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- QR Display Box -->
+              <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col items-center justify-center min-h-[220px]">
+                <div id="qrcode-container" class="p-3 bg-slate-900 rounded-xl border border-slate-700 shadow-xl"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <button onclick="downloadQRCode()" class="w-full py-2.5 px-4 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-download"></i>
+              <span>Download QR Code (PNG)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Utility 2: Strong Password Generator -->
+        <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+              <div>
+                <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-key text-emerald-400"></i> Password Generator
+                </h2>
+                <p class="text-xs text-slate-400 mt-1">Cryptographically secure, random client-side passwords</p>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">100% Private</span>
+            </div>
+
+            <!-- Password Display Box -->
+            <div class="relative mb-6">
+              <input type="text" id="pwd-display" readonly class="w-full bg-slate-900 border-2 border-emerald-500/40 rounded-xl px-4 py-3.5 pr-24 text-base font-mono font-bold text-emerald-300 tracking-wider focus:outline-none select-all shadow-inner">
+              <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-1">
+                <button onclick="generatePassword()" class="p-2 text-slate-400 hover:text-cyan-400 transition" title="Regenerate">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+                <button onclick="copyPassword()" class="p-2 text-slate-400 hover:text-emerald-400 transition" title="Copy to clipboard">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Strength Meter -->
+            <div class="mb-6">
+              <div class="flex justify-between items-center text-xs mb-1.5">
+                <span class="text-slate-400 font-medium">Strength Rating</span>
+                <span id="pwd-strength-text" class="font-bold text-emerald-400">Very Strong</span>
+              </div>
+              <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden flex gap-1 p-0.5">
+                <div id="str-bar-1" class="h-full w-1/4 rounded-full bg-emerald-500 transition-all duration-300"></div>
+                <div id="str-bar-2" class="h-full w-1/4 rounded-full bg-emerald-500 transition-all duration-300"></div>
+                <div id="str-bar-3" class="h-full w-1/4 rounded-full bg-emerald-500 transition-all duration-300"></div>
+                <div id="str-bar-4" class="h-full w-1/4 rounded-full bg-emerald-500 transition-all duration-300"></div>
+              </div>
+            </div>
+
+            <!-- Customization Controls -->
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Password Length</label>
+                  <span id="pwd-length-val" class="text-xs font-bold text-cyan-400">20 characters</span>
+                </div>
+                <input type="range" id="pwd-length" min="8" max="64" value="20" class="w-full accent-cyan-400 cursor-pointer" oninput="onPwdLengthChange(this.value)">
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-300">
+                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                  <input type="checkbox" id="pwd-opt-upper" checked onchange="generatePassword()" class="accent-emerald-400 w-4 h-4 rounded">
+                  <span>Uppercase (A-Z)</span>
+                </label>
+                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                  <input type="checkbox" id="pwd-opt-lower" checked onchange="generatePassword()" class="accent-emerald-400 w-4 h-4 rounded">
+                  <span>Lowercase (a-z)</span>
+                </label>
+                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                  <input type="checkbox" id="pwd-opt-nums" checked onchange="generatePassword()" class="accent-emerald-400 w-4 h-4 rounded">
+                  <span>Numbers (0-9)</span>
+                </label>
+                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                  <input type="checkbox" id="pwd-opt-syms" checked onchange="generatePassword()" class="accent-emerald-400 w-4 h-4 rounded">
+                  <span>Symbols (!@#$%)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <button onclick="copyPassword()" class="w-full py-2.5 px-4 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/20 transition flex items-center justify-center space-x-2">
+              <i class="fa-regular fa-clipboard"></i>
+              <span>Copy Password</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Processing Modal Overlay -->
+  <div id="processing-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-card max-w-sm w-full p-6 rounded-2xl text-center shadow-2xl border border-cyan-500/30">
+      <div class="relative w-16 h-16 mx-auto mb-4">
+        <div class="w-16 h-16 rounded-full border-4 border-slate-800 border-t-cyan-400 animate-spin"></div>
+        <div class="absolute inset-0 flex items-center justify-center text-cyan-400">
+          <i class="fa-solid fa-arrows-rotate text-lg"></i>
+        </div>
+      </div>
+      <h3 id="modal-title" class="font-heading font-bold text-lg text-white mb-1">Converting File...</h3>
+      <p id="modal-status" class="text-xs text-slate-400 mb-4">Processing with PrasaTek conversion engine...</p>
+      
+      <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+        <div class="h-full bg-gradient-to-r from-emerald-400 to-cyan-400 animate-pulse w-full"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/90 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xs sm:text-sm text-slate-300 font-medium">
+        © PrasaTek System Solutions — PrasaTek SupiriConvertPRO. 100% Free to Use. All Rights Reserved.
+      </p>
+      <p class="text-[11px] text-slate-500 mt-1">
+        Fast, secure, and unlimited processing • Zero tracking • Automatic self-cleaning container storage
+      </p>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript Logic -->
+  <script>
+    // --- Client-Side Code Protection (Anti-Inspect & Anti-Copy) ---
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'i', 'j', 'c'].includes(e.key)) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && ['u', 'U', 's', 'S'].includes(e.key)) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // --- Smart API Base URL Detection ---
+    const getApiBaseUrl = () => {
+      const port = window.location.port;
+      const protocol = window.location.protocol;
+      if (port === "7860") {
+        return "";
+      }
+      if (protocol === "https:" && !window.location.hostname.includes("localhost") && !window.location.hostname.includes("127.0.0.1")) {
+        return "";
+      }
+      return "http://127.0.0.1:7860";
+    };
+    const API_BASE_URL = getApiBaseUrl();
+
+    // --- State Variables ---
+    let docFile = null;
+    let pdfMergeFiles = [];
+    let img2pdfFiles = [];
+    let mediaFile = null;
+    let imageFile = null;
+    let qrCodeInstance = null;
+
+    // --- Download State Cache for Manual Download Flow ---
+    const downloadState = {};
+
+    // --- Tab Switching Logic ---
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('bg-gradient-to-r', 'from-emerald-500', 'to-cyan-500', 'text-slate-950', 'shadow-lg');
+        btn.classList.add('bg-slate-900/80', 'text-slate-400', 'border', 'border-slate-800');
+      });
+
+      const targetTab = document.getElementById(tabId);
+      const targetBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (targetTab && targetBtn) {
+        targetTab.classList.remove('hidden');
+        targetBtn.classList.remove('bg-slate-900/80', 'text-slate-400', 'border', 'border-slate-800');
+        targetBtn.classList.add('bg-gradient-to-r', 'from-emerald-500', 'to-cyan-500', 'text-slate-950', 'shadow-lg');
+      }
+
+      if (tabId === 'utils-tab' && !qrCodeInstance) {
+        setTimeout(generateQRCode, 100);
+        generatePassword();
+      }
+    }
+
+    // --- Toast Notifications ---
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      
+      let borderCol = 'border-cyan-500/50';
+      let textCol = 'text-cyan-400';
+      let icon = 'fa-circle-info';
+
+      if (type === 'success') {
+        borderCol = 'border-emerald-500/50';
+        textCol = 'text-emerald-400';
+        icon = 'fa-circle-check';
+      } else if (type === 'error') {
+        borderCol = 'border-rose-500/50';
+        textCol = 'text-rose-400';
+        icon = 'fa-triangle-exclamation';
+      }
+
+      toast.className = `pointer-events-auto flex items-center space-x-3 px-4 py-3 rounded-xl glass-card border ${borderCol} shadow-2xl transition-all duration-300 transform translate-y-2 opacity-0`;
+      toast.innerHTML = `
+        <i class="fa-solid ${icon} ${textCol} text-base flex-shrink-0"></i>
+        <span class="text-xs font-medium text-slate-200">${message}</span>
+      `;
+
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-x-4');
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    // --- Modal Progress ---
+    function showModal(title, status) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-status').innerText = status;
+      document.getElementById('processing-modal').classList.remove('hidden');
+    }
+
+    function hideModal() {
+      document.getElementById('processing-modal').classList.add('hidden');
+    }
+
+    // --- Helper: Format Bytes ---
+    function formatBytes(bytes, decimals = 1) {
+      if (!bytes || bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const dm = decimals < 0 ? 0 : decimals;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+
+    // --- Manual Download Flow Handler ---
+    async function handleConversionSuccess(toolKey, response, defaultFilename) {
+      let filename = defaultFilename;
+      const disposition = response.headers.get('content-disposition');
+      if (disposition) {
+        const utf8Match = disposition.match(/filename\*=UTF-8''([^;]+)/i);
+        if (utf8Match && utf8Match[1]) {
+          filename = decodeURIComponent(utf8Match[1]);
+        } else {
+          const match = disposition.match(/filename="?([^"]+)"?/i);
+          if (match && match[1]) filename = match[1];
+        }
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      if (downloadState[toolKey]?.url) {
+        window.URL.revokeObjectURL(downloadState[toolKey].url);
+      }
+
+      downloadState[toolKey] = {
+        url: url,
+        filename: filename,
+        size: blob.size,
+      };
+
+      const card = document.getElementById(`${toolKey}-success-card`);
+      const meta = document.getElementById(`${toolKey}-success-meta`);
+      if (meta) {
+        meta.innerText = `${filename} • ${formatBytes(blob.size)}`;
+      }
+      if (card) {
+        card.classList.remove('hidden');
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      showToast(`Success! Your file is ready for download.`, 'success');
+    }
+
+    function downloadConvertedFile(toolKey) {
+      const item = downloadState[toolKey];
+      if (!item || !item.url) return;
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = item.url;
+      a.download = item.filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToast(`Downloading ${item.filename}...`, 'success');
+    }
+
+    function resetToolView(toolKey) {
+      const card = document.getElementById(`${toolKey}-success-card`);
+      if (card) card.classList.add('hidden');
+      if (toolKey === 'doc') clearDocFile();
+      else if (toolKey === 'pdf-merge') clearMergeList();
+      else if (toolKey === 'img2pdf') clearImg2PdfList();
+      else if (toolKey === 'media') clearMediaFile();
+      else if (toolKey === 'img') clearImageFile();
+    }
+
+    // ========================================================
+    // TAB 1: DOCUMENT CONVERTER LOGIC (FULL MATRIX)
+    // ========================================================
+    const docDropzone = document.getElementById('doc-dropzone');
+    const docInput = document.getElementById('doc-file-input');
+    const docTargetFormat = document.getElementById('doc-target-format');
+    const docConvertBtn = document.getElementById('doc-convert-btn');
+
+    docDropzone.addEventListener('click', () => docInput.click());
+    docDropzone.addEventListener('dragover', (e) => { e.preventDefault(); docDropzone.classList.add('drag-active'); });
+    docDropzone.addEventListener('dragleave', () => docDropzone.classList.remove('drag-active'));
+    docDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      docDropzone.classList.remove('drag-active');
+      if (e.dataTransfer.files.length) handleDocFileSelected(e.dataTransfer.files[0]);
+    });
+    docInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleDocFileSelected(e.target.files[0]);
+    });
+
+    function handleDocFileSelected(file) {
+      docFile = file;
+      document.getElementById('doc-empty-state').classList.add('hidden');
+      document.getElementById('doc-file-preview').classList.remove('hidden');
+      document.getElementById('doc-filename').innerText = file.name;
+      document.getElementById('doc-filesize').innerText = formatBytes(file.size);
+
+      // Hide success card if previous conversion was done
+      document.getElementById('doc-success-card').classList.add('hidden');
+
+      // Full Matrix Format Auto-Detection
+      const ext = file.name.split('.').pop().toLowerCase();
+      docTargetFormat.innerHTML = '';
+
+      if (['docx', 'doc'].includes(ext)) {
+        document.getElementById('doc-file-icon').innerHTML = '<i class="fa-solid fa-file-word text-blue-400"></i>';
+        docTargetFormat.innerHTML = `
+          <option value="pdf" selected>PDF Document (.pdf)</option>
+          <option value="xlsx">Excel Spreadsheet (.xlsx)</option>
+          <option value="pptx">PowerPoint Presentation (.pptx)</option>
+        `;
+      } else if (['xlsx', 'xls'].includes(ext)) {
+        document.getElementById('doc-file-icon').innerHTML = '<i class="fa-solid fa-file-excel text-emerald-400"></i>';
+        docTargetFormat.innerHTML = `
+          <option value="pdf" selected>PDF Document (.pdf)</option>
+          <option value="docx">Word Document (.docx)</option>
+          <option value="pptx">PowerPoint Presentation (.pptx)</option>
+        `;
+      } else if (['pptx', 'ppt'].includes(ext)) {
+        document.getElementById('doc-file-icon').innerHTML = '<i class="fa-solid fa-file-powerpoint text-amber-400"></i>';
+        docTargetFormat.innerHTML = `
+          <option value="pdf" selected>PDF Document (.pdf)</option>
+          <option value="docx">Word Document (.docx)</option>
+          <option value="xlsx">Excel Spreadsheet (.xlsx)</option>
+        `;
+      } else if (ext === 'pdf') {
+        document.getElementById('doc-file-icon').innerHTML = '<i class="fa-solid fa-file-pdf text-rose-400"></i>';
+        docTargetFormat.innerHTML = `
+          <option value="docx" selected>Word Document (.docx)</option>
+          <option value="xlsx">Excel Spreadsheet (.xlsx)</option>
+          <option value="pptx">PowerPoint Presentation (.pptx)</option>
+        `;
+      } else {
+        document.getElementById('doc-file-icon').innerHTML = '<i class="fa-solid fa-file-lines text-cyan-400"></i>';
+        docTargetFormat.innerHTML = `
+          <option value="pdf" selected>PDF Document (.pdf)</option>
+        `;
+      }
+
+      docConvertBtn.disabled = false;
+    }
+
+    function clearDocFile(e) {
+      if (e) e.stopPropagation();
+      docFile = null;
+      docInput.value = '';
+      document.getElementById('doc-empty-state').classList.remove('hidden');
+      document.getElementById('doc-file-preview').classList.add('hidden');
+      document.getElementById('doc-success-card').classList.add('hidden');
+      docConvertBtn.disabled = true;
+    }
+
+    async function convertDocument() {
+      if (!docFile) return;
+
+      const targetFmt = docTargetFormat.value;
+      const formData = new FormData();
+      formData.append('file', docFile);
+      formData.append('target_format', targetFmt);
+
+      showModal('Converting Document', `Transforming ${docFile.name} to .${targetFmt}...`);
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/convert/document`, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ detail: 'Conversion failed' }));
+          throw new Error(err.detail || 'Document conversion error');
+        }
+
+        const outName = docFile.name.substring(0, docFile.name.lastIndexOf('.')) + `.${targetFmt}`;
+        await handleConversionSuccess('doc', res, outName);
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        hideModal();
+      }
+    }
+
+    // ========================================================
+    // TAB 2: PDF STUDIO LOGIC
+    // ========================================================
+    const mergeDropzone = document.getElementById('pdf-merge-dropzone');
+    const mergeInput = document.getElementById('pdf-merge-input');
+    const mergeListEl = document.getElementById('pdf-merge-list');
+    const mergeBtn = document.getElementById('pdf-merge-btn');
+
+    mergeDropzone.addEventListener('click', () => mergeInput.click());
+    mergeDropzone.addEventListener('dragover', (e) => { e.preventDefault(); mergeDropzone.classList.add('drag-active'); });
+    mergeDropzone.addEventListener('dragleave', () => mergeDropzone.classList.remove('drag-active'));
+    mergeDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      mergeDropzone.classList.remove('drag-active');
+      if (e.dataTransfer.files.length) handleMergeFiles(e.dataTransfer.files);
+    });
+    mergeInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleMergeFiles(e.target.files);
+    });
+
+    function handleMergeFiles(files) {
+      document.getElementById('pdf-merge-success-card').classList.add('hidden');
+      for (const f of files) {
+        if (f.name.toLowerCase().endsWith('.pdf')) {
+          pdfMergeFiles.push(f);
+        }
+      }
+      renderMergeList();
+    }
+
+    function renderMergeList() {
+      mergeListEl.innerHTML = '';
+      pdfMergeFiles.forEach((f, idx) => {
+        const item = document.createElement('div');
+        item.className = 'flex items-center justify-between p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs';
+        item.innerHTML = `
+          <div class="flex items-center space-x-3 truncate">
+            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center flex-shrink-0">${idx + 1}</span>
+            <span class="font-medium text-slate-200 truncate">${f.name}</span>
+            <span class="text-slate-500 flex-shrink-0">(${formatBytes(f.size)})</span>
+          </div>
+          <div class="flex items-center space-x-1 flex-shrink-0">
+            <button onclick="moveMergeFile(${idx}, -1)" ${idx === 0 ? 'disabled class="text-slate-700"' : 'class="text-slate-400 hover:text-cyan-400"'} p-1 title="Move Up"><i class="fa-solid fa-arrow-up"></i></button>
+            <button onclick="moveMergeFile(${idx}, 1)" ${idx === pdfMergeFiles.length - 1 ? 'disabled class="text-slate-700"' : 'class="text-slate-400 hover:text-cyan-400"'} p-1 title="Move Down"><i class="fa-solid fa-arrow-down"></i></button>
+            <button onclick="removeMergeFile(${idx})" class="text-slate-400 hover:text-rose-400 p-1 title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+          </div>
+        `;
+        mergeListEl.appendChild(item);
+      });
+      mergeBtn.disabled = pdfMergeFiles.length < 2;
+    }
+
+    function moveMergeFile(index, dir) {
+      const newIdx = index + dir;
+      if (newIdx < 0 || newIdx >= pdfMergeFiles.length) return;
+      const temp = pdfMergeFiles[index];
+      pdfMergeFiles[index] = pdfMergeFiles[newIdx];
+      pdfMergeFiles[newIdx] = temp;
+      renderMergeList();
+    }
+
+    function removeMergeFile(index) {
+      pdfMergeFiles.splice(index, 1);
+      renderMergeList();
+    }
+
+    function clearMergeList() {
+      pdfMergeFiles = [];
+      mergeInput.value = '';
+      document.getElementById('pdf-merge-success-card').classList.add('hidden');
+      renderMergeList();
+    }
+
+    async function mergePdfs() {
+      if (pdfMergeFiles.length < 2) {
+        showToast("Please upload at least 2 PDF files to merge.", "error");
+        return;
+      }
+
+      const formData = new FormData();
+      pdfMergeFiles.forEach(f => formData.append('files', f));
+
+      showModal('Merging PDFs', `Combining ${pdfMergeFiles.length} PDF documents...`);
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/pdf/merge`, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ detail: 'PDF merge failed' }));
+          throw new Error(err.detail || 'PDF merge error');
+        }
+
+        await handleConversionSuccess('pdf-merge', res, 'merged_document.pdf');
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        hideModal();
+      }
+    }
+
+    // --- Sub-tool B: Images to PDF ---
+    const img2pdfDropzone = document.getElementById('img2pdf-dropzone');
+    const img2pdfInput = document.getElementById('img2pdf-input');
+    const img2pdfGrid = document.getElementById('img2pdf-preview-grid');
+    const img2pdfBtn = document.getElementById('img2pdf-btn');
+
+    img2pdfDropzone.addEventListener('click', () => img2pdfInput.click());
+    img2pdfDropzone.addEventListener('dragover', (e) => { e.preventDefault(); img2pdfDropzone.classList.add('drag-active'); });
+    img2pdfDropzone.addEventListener('dragleave', () => img2pdfDropzone.classList.remove('drag-active'));
+    img2pdfDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      img2pdfDropzone.classList.remove('drag-active');
+      if (e.dataTransfer.files.length) handleImg2PdfFiles(e.dataTransfer.files);
+    });
+    img2pdfInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleImg2PdfFiles(e.target.files);
+    });
+
+    function handleImg2PdfFiles(files) {
+      document.getElementById('img2pdf-success-card').classList.add('hidden');
+      const validExts = ['png', 'jpg', 'jpeg', 'webp', 'bmp'];
+      for (const f of files) {
+        const ext = f.name.split('.').pop().toLowerCase();
+        if (validExts.includes(ext)) {
+          img2pdfFiles.push(f);
+        }
+      }
+      renderImg2PdfGrid();
+    }
+
+    function renderImg2PdfGrid() {
+      img2pdfGrid.innerHTML = '';
+      img2pdfFiles.forEach((f, idx) => {
+        const card = document.createElement('div');
+        card.className = 'relative group rounded-lg overflow-hidden border border-slate-700 bg-slate-900 aspect-square';
+        
+        const img = document.createElement('img');
+        img.className = 'w-full h-full object-cover';
+        img.src = URL.createObjectURL(f);
+        card.appendChild(img);
+
+        const overlay = document.createElement('div');
+        overlay.className = 'absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center';
+        overlay.innerHTML = `
+          <button onclick="removeImg2PdfFile(${idx})" class="p-1.5 rounded-full bg-rose-500/80 text-white hover:bg-rose-600 transition">
+            <i class="fa-solid fa-trash text-xs"></i>
+          </button>
+        `;
+        card.appendChild(overlay);
+
+        img2pdfGrid.appendChild(card);
+      });
+      img2pdfBtn.disabled = img2pdfFiles.length === 0;
+    }
+
+    function removeImg2PdfFile(index) {
+      img2pdfFiles.splice(index, 1);
+      renderImg2PdfGrid();
+    }
+
+    function clearImg2PdfList() {
+      img2pdfFiles = [];
+      img2pdfInput.value = '';
+      document.getElementById('img2pdf-success-card').classList.add('hidden');
+      renderImg2PdfGrid();
+    }
+
+    async function convertImagesToPdf() {
+      if (!img2pdfFiles.length) return;
+
+      const formData = new FormData();
+      img2pdfFiles.forEach(f => formData.append('files', f));
+
+      showModal('Creating PDF', `Combining ${img2pdfFiles.length} images into PDF...`);
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/pdf/images-to-pdf`, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ detail: 'Failed to create PDF' }));
+          throw new Error(err.detail || 'Images to PDF failed');
+        }
+
+        await handleConversionSuccess('img2pdf', res, 'images_combined.pdf');
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        hideModal();
+      }
+    }
+
+    // ========================================================
+    // TAB 3: MEDIA CONVERTER LOGIC
+    // ========================================================
+    const mediaDropzone = document.getElementById('media-dropzone');
+    const mediaInput = document.getElementById('media-file-input');
+    const mediaTargetFormat = document.getElementById('media-target-format');
+    const mediaConvertBtn = document.getElementById('media-convert-btn');
+
+    mediaDropzone.addEventListener('click', () => mediaInput.click());
+    mediaDropzone.addEventListener('dragover', (e) => { e.preventDefault(); mediaDropzone.classList.add('drag-active'); });
+    mediaDropzone.addEventListener('dragleave', () => mediaDropzone.classList.remove('drag-active'));
+    mediaDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      mediaDropzone.classList.remove('drag-active');
+      if (e.dataTransfer.files.length) handleMediaFileSelected(e.dataTransfer.files[0]);
+    });
+    mediaInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleMediaFileSelected(e.target.files[0]);
+    });
+
+    function handleMediaFileSelected(file) {
+      mediaFile = file;
+      document.getElementById('media-empty-state').classList.add('hidden');
+      document.getElementById('media-file-preview').classList.remove('hidden');
+      document.getElementById('media-filename').innerText = file.name;
+      document.getElementById('media-filesize').innerText = formatBytes(file.size);
+      document.getElementById('media-success-card').classList.add('hidden');
+
+      const ext = file.name.split('.').pop().toLowerCase();
+      const isAudio = ['mp3', 'wav', 'aac', 'ogg', 'm4a'].includes(ext);
+      
+      document.getElementById('media-file-icon').innerHTML = isAudio 
+        ? '<i class="fa-solid fa-file-audio text-emerald-400"></i>' 
+        : '<i class="fa-solid fa-file-video text-cyan-400"></i>';
+
+      mediaConvertBtn.disabled = false;
+    }
+
+    function clearMediaFile(e) {
+      if (e) e.stopPropagation();
+      mediaFile = null;
+      mediaInput.value = '';
+      document.getElementById('media-empty-state').classList.remove('hidden');
+      document.getElementById('media-file-preview').classList.add('hidden');
+      document.getElementById('media-success-card').classList.add('hidden');
+      mediaConvertBtn.disabled = true;
+    }
+
+    function onMediaFormatChange() {
+      const isGif = mediaTargetFormat.value === 'gif';
+      document.getElementById('gif-fps-container').classList.toggle('hidden', !isGif);
+    }
+
+    async function convertMedia() {
+      if (!mediaFile) return;
+
+      const targetFmt = mediaTargetFormat.value;
+      const formData = new FormData();
+      formData.append('file', mediaFile);
+      formData.append('target_format', targetFmt);
+
+      if (targetFmt === 'gif') {
+        const fps = document.getElementById('gif-fps').value;
+        formData.append('fps', fps);
+      }
+
+      showModal('Converting Media', `Processing media with FFmpeg to .${targetFmt}...`);
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/convert/media`, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ detail: 'Media conversion failed' }));
+          throw new Error(err.detail || 'FFmpeg conversion error');
+        }
+
+        const outName = mediaFile.name.substring(0, mediaFile.name.lastIndexOf('.')) + `.${targetFmt}`;
+        await handleConversionSuccess('media', res, outName);
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        hideModal();
+      }
+    }
+
+    // ========================================================
+    // TAB 4: IMAGE STUDIO LOGIC
+    // ========================================================
+    const imgDropzone = document.getElementById('img-dropzone');
+    const imgInput = document.getElementById('img-file-input');
+    const imgTargetFormat = document.getElementById('img-target-format');
+    const imgConvertBtn = document.getElementById('img-convert-btn');
+
+    imgDropzone.addEventListener('click', () => imgInput.click());
+    imgDropzone.addEventListener('dragover', (e) => { e.preventDefault(); imgDropzone.classList.add('drag-active'); });
+    imgDropzone.addEventListener('dragleave', () => imgDropzone.classList.remove('drag-active'));
+    imgDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      imgDropzone.classList.remove('drag-active');
+      if (e.dataTransfer.files.length) handleImageFileSelected(e.dataTransfer.files[0]);
+    });
+    imgInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleImageFileSelected(e.target.files[0]);
+    });
+
+    function handleImageFileSelected(file) {
+      imageFile = file;
+      document.getElementById('img-empty-state').classList.add('hidden');
+      document.getElementById('img-file-preview').classList.remove('hidden');
+      document.getElementById('img-filename').innerText = file.name;
+      document.getElementById('img-filesize').innerText = formatBytes(file.size);
+      document.getElementById('img-thumbnail').src = URL.createObjectURL(file);
+      document.getElementById('img-success-card').classList.add('hidden');
+      imgConvertBtn.disabled = false;
+    }
+
+    function clearImageFile(e) {
+      if (e) e.stopPropagation();
+      imageFile = null;
+      imgInput.value = '';
+      document.getElementById('img-empty-state').classList.remove('hidden');
+      document.getElementById('img-file-preview').classList.add('hidden');
+      document.getElementById('img-success-card').classList.add('hidden');
+      imgConvertBtn.disabled = true;
+    }
+
+    async function convertImage() {
+      if (!imageFile) return;
+
+      const targetFmt = imgTargetFormat.value;
+      const quality = document.getElementById('img-quality').value;
+
+      const formData = new FormData();
+      formData.append('file', imageFile);
+      formData.append('target_format', targetFmt);
+      formData.append('quality', quality);
+
+      showModal('Processing Image', `Converting & compressing to .${targetFmt} (${quality}%)...`);
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/image/convert`, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ detail: 'Image processing failed' }));
+          throw new Error(err.detail || 'Image processing error');
+        }
+
+        const outName = imageFile.name.substring(0, imageFile.name.lastIndexOf('.')) + `.${targetFmt}`;
+        await handleConversionSuccess('img', res, outName);
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        hideModal();
+      }
+    }
+
+    // ========================================================
+    // TAB 5: FREE UTILITIES (CLIENT-SIDE)
+    // ========================================================
+
+    // --- Utility 1: QR Code Generator ---
+    function generateQRCode() {
+      const text = document.getElementById('qr-input').value.trim() || 'https://prasatek.com';
+      const fgColor = document.getElementById('qr-color-fg').value;
+      const bgColor = document.getElementById('qr-color-bg').value;
+      const container = document.getElementById('qrcode-container');
+
+      container.innerHTML = '';
+      qrCodeInstance = new QRCode(container, {
+        text: text,
+        width: 180,
+        height: 180,
+        colorDark: fgColor,
+        colorLight: bgColor,
+        correctLevel: QRCode.CorrectLevel.H,
+      });
+    }
+
+    function downloadQRCode() {
+      const container = document.getElementById('qrcode-container');
+      const img = container.querySelector('img');
+      const canvas = container.querySelector('canvas');
+
+      if (!img && !canvas) return;
+
+      const a = document.createElement('a');
+      a.download = 'qrcode-prasatek.png';
+      a.href = img ? img.src : canvas.toDataURL('image/png');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToast('QR Code downloaded!', 'success');
+    }
+
+    // --- Utility 2: Password Generator ---
+    function onPwdLengthChange(val) {
+      document.getElementById('pwd-length-val').innerText = `${val} characters`;
+      generatePassword();
+    }
+
+    function generatePassword() {
+      const length = parseInt(document.getElementById('pwd-length').value, 10);
+      const incUpper = document.getElementById('pwd-opt-upper').checked;
+      const incLower = document.getElementById('pwd-opt-lower').checked;
+      const incNums = document.getElementById('pwd-opt-nums').checked;
+      const incSyms = document.getElementById('pwd-opt-syms').checked;
+
+      let charset = '';
+      if (incUpper) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (incLower) charset += 'abcdefghijklmnopqrstuvwxyz';
+      if (incNums) charset += '0123456789';
+      if (incSyms) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+      if (!charset) {
+        charset = 'abcdefghijklmnopqrstuvwxyz';
+        document.getElementById('pwd-opt-lower').checked = true;
+      }
+
+      const array = new Uint32Array(length);
+      window.crypto.getRandomValues(array);
+      let pwd = '';
+      for (let i = 0; i < length; i++) {
+        pwd += charset[array[i] % charset.length];
+      }
+
+      document.getElementById('pwd-display').value = pwd;
+      updateStrengthMeter(pwd);
+    }
+
+    function updateStrengthMeter(pwd) {
+      let score = 0;
+      if (pwd.length >= 10) score += 1;
+      if (pwd.length >= 16) score += 1;
+      if (/[A-Z]/.test(pwd) && /[a-z]/.test(pwd)) score += 1;
+      if (/[0-9]/.test(pwd) && /[^A-Za-z0-9]/.test(pwd)) score += 1;
+
+      const bars = [
+        document.getElementById('str-bar-1'),
+        document.getElementById('str-bar-2'),
+        document.getElementById('str-bar-3'),
+        document.getElementById('str-bar-4'),
+      ];
+
+      const label = document.getElementById('pwd-strength-text');
+
+      bars.forEach(b => {
+        b.className = 'h-full w-1/4 rounded-full transition-all duration-300';
+      });
+
+      if (score <= 1) {
+        label.innerText = 'Weak';
+        label.className = 'font-bold text-rose-400';
+        bars[0].classList.add('bg-rose-500');
+        bars[1].classList.add('bg-slate-800');
+        bars[2].classList.add('bg-slate-800');
+        bars[3].classList.add('bg-slate-800');
+      } else if (score === 2) {
+        label.innerText = 'Fair';
+        label.className = 'font-bold text-amber-400';
+        bars[0].classList.add('bg-amber-500');
+        bars[1].classList.add('bg-amber-500');
+        bars[2].classList.add('bg-slate-800');
+        bars[3].classList.add('bg-slate-800');
+      } else if (score === 3) {
+        label.innerText = 'Strong';
+        label.className = 'font-bold text-cyan-400';
+        bars[0].classList.add('bg-cyan-500');
+        bars[1].classList.add('bg-cyan-500');
+        bars[2].classList.add('bg-cyan-500');
+        bars[3].classList.add('bg-slate-800');
+      } else {
+        label.innerText = 'Very Strong';
+        label.className = 'font-bold text-emerald-400';
+        bars.forEach(b => b.classList.add('bg-emerald-500'));
+      }
+    }
+
+    function copyPassword() {
+      const pwd = document.getElementById('pwd-display').value;
+      if (!pwd) return;
+      navigator.clipboard.writeText(pwd).then(() => {
+        showToast('Password copied to clipboard!', 'success');
+      }).catch(() => {
+        showToast('Failed to copy password', 'error');
+      });
+    }
+
+    // --- On Window Load: Status Check & Init ---
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        let isOnline = false;
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/status`);
+          if (res.ok) isOnline = true;
+        } catch (_) {
+          try {
+            const healthRes = await fetch(`${API_BASE_URL}/api/health`);
+            if (healthRes.ok) isOnline = true;
+          } catch (__) {}
+        }
+
+        if (isOnline) {
+          document.getElementById('status-ping').className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75';
+          document.getElementById('status-dot').className = 'relative inline-flex rounded-full h-2 w-2 bg-emerald-500';
+          document.getElementById('status-text').innerText = 'Engine Online';
+        } else {
+          throw new Error('Offline');
+        }
+      } catch (e) {
+        document.getElementById('status-ping').className = 'hidden';
+        document.getElementById('status-dot').className = 'relative inline-flex rounded-full h-2 w-2 bg-amber-500';
+        document.getElementById('status-text').innerText = 'Offline Mode';
+      }
+
+      generateQRCode();
+      generatePassword();
+    });
+  </script>
+</body>
+</html>
