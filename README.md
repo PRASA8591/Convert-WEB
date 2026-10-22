@@ -1,6 +1,6 @@
-# ⚡ PrasaTek SupiriConvertPRO
+# ⚡ SupiriConvertPRO
 
-> **100% Free & Unlimited All-in-One File Converter & Utility Web Application by PrasaTek**  
+> **100% Free & Unlimited All-in-One File Converter & Utility Web Application — Powered by PrasaTek System Solutions**  
 > Fast, Secure, Enterprise-Grade • Zero paid third-party APIs • Zero limits • Self-cleaning container storage
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -29,13 +29,27 @@
 - **Transcode Video:** Convert between major video formats using **FFmpeg**.
 - **Animated GIF:** Convert video clips into smooth animated `.gif` files with custom frame-rate settings and two-pass Lanczos palette optimization.
 
-### 🖼️ Tab 4: Image Studio (Backend)
+### 🖼️ Tab 4: Image Studio (Client-Side & Backend)
 - **Format Conversion:** Convert between `.png`, `.jpg`, `.webp`, and `.bmp`.
 - **Compression & Quality Control:** Interactive slider (10% to 100%) to compress file size while preserving visual quality.
 
-### 🛠️ Tab 5: Free Offline Utilities (Client-Side)
+### 🔤 Tab 5: Case Converter & Text Studio (100% Client-Side)
+- **Comprehensive Case Transformations:** Instant, zero-latency conversion for:
+  - **`UPPER CASE`**: All uppercase letters
+  - **`lower case`**: All lowercase letters
+  - **`Sentence case`**: Automatic capitalization of initial letters and characters following punctuation (`.`, `!`, `?`, or newlines)
+  - **`Capitalized Case`**: Title Case capitalization of each word
+  - **`aLtErNaTiNg cAsE`**: Alternating letter casing
+  - **`iNVERSE cASE`**: Flip existing uppercase and lowercase letters
+  - **`Clean Extra Spaces`**: Remove duplicate spaces and trim line edges
+  - **`kebab-case (Slug)`**: Clean URL-friendly slug generation
+- **Real-Time Text Statistics:** Live counters for Total Characters, Characters (No Spaces), Words, Sentences, Lines, and Reading Time.
+- **Client-Side Actions:** 1-Click Clipboard Copy, Download as `.txt` (`SupiriConvert_Text.txt`), Multi-level Undo stack, Sample text loader, and Clear.
+
+### 🛠️ Tab 6: Free Offline Utilities (Client-Side)
 - **Instant QR Code Generator:** Generate and download crisp QR codes from text/URLs with custom foreground and background colors (`qrcode.js`).
 - **Strong Password Generator:** Cryptographically secure password generator with customizable length, character sets, and live strength indicator.
+- **Quick Studio Launcher:** Direct 1-click launcher linking into Case Converter & Text Studio.
 
 ---
 

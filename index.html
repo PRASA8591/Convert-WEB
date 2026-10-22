@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PrasaTek SupiriConvertPRO | 100% Free All-in-One File Converter & Utilities</title>
+  <title>SupiriConvertPRO | 100% Free All-in-One File Converter & Utilities</title>
   <meta name="description" content="100% Free and unlimited all-in-one file converter and utility suite powered by PrasaTek System Solutions. Convert documents, PDFs, media, and images with zero limits and maximum privacy.">
 
   <!-- Favicon -->
@@ -61,6 +61,9 @@
 
   <!-- QRCode.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- jsPDF Library for Instant Client-Side Image to PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <style>
     /* Custom Scrollbar */
@@ -123,18 +126,18 @@
       
       <!-- Brand Logo -->
       <div class="flex items-center space-x-3 text-left w-full sm:w-auto">
-        <img src="/assets/logo.png" alt="PrasaTek Logo" class="h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-xl shadow-md shadow-cyan-500/10 flex-shrink-0" onerror="this.onerror=null; this.src='assets/logo.png';">
+        <img src="/assets/logo.png" alt="SupiriConvertPRO Logo" class="h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-xl shadow-md shadow-cyan-500/10 flex-shrink-0" onerror="this.onerror=null; this.src='assets/logo.png';">
         <div class="truncate">
           <div class="flex items-center space-x-2">
             <span class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-              PrasaTek SupiriConvert
+              SupiriConvert
             </span>
             <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300">
               PRO
             </span>
           </div>
           <p class="text-[11px] sm:text-xs text-slate-400 font-medium truncate">
-            Powered by PrasaTek System Solutions | 100% Free Unlimited Engine
+            Powered by PrasaTek System Solutions
           </p>
         </div>
       </div>
@@ -153,45 +156,53 @@
   </header>
 
   <!-- Main Content Container -->
-  <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+  <main class="flex-grow max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
     
-    <!-- Hero Title -->
-    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-3 shadow-lg shadow-cyan-500/10">
+    <!-- Hero Title (Compact & Mobile-Optimized) -->
+    <div class="text-center max-w-3xl mx-auto mb-4 sm:mb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900/90 border border-cyan-500/30 text-[11px] sm:text-xs font-semibold text-cyan-300 mb-2 sm:mb-3 shadow-lg shadow-cyan-500/10">
         <i class="fa-solid fa-shield-halved text-cyan-400"></i>
         <span>Powered by PrasaTek System Solutions</span>
       </div>
-      <h1 class="font-heading text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-2 sm:mb-3">
-        Unlimited Conversions, <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">100% Free</span>
+      <h1 class="font-heading text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-1.5 sm:mb-2">
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">SupiriConvert</span><span class="text-[10px] sm:text-xs md:text-sm px-2 py-0.5 ml-2 align-middle rounded-full font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300">PRO</span>
       </h1>
-      <p class="text-slate-400 text-xs sm:text-base leading-relaxed px-2">
-        Fast, secure, and 100% free conversion suite powered by PrasaTek System Solutions. Full matrix Office & PDF conversions, audio/video tools, image compressor, and offline utilities.
+      <p class="text-xs sm:text-base font-medium text-slate-300 mb-1">
+        Unlimited Conversions, <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-bold">100% Free</span>
+      </p>
+      <p class="text-slate-400 text-xs sm:text-sm leading-relaxed px-2 max-w-2xl mx-auto hidden sm:block">
+        Fast, secure, and unlimited conversion suite. Full matrix Office & PDF conversions, audio/video encoding, client-side image studio, and offline utilities.
       </p>
     </div>
 
-    <!-- Navigation Tabs -->
-    <div class="flex items-center justify-start sm:justify-center overflow-x-auto pb-3 mb-8 gap-2 no-scrollbar px-1">
-      <button onclick="switchTab('doc-tab')" id="tab-btn-doc-tab" class="tab-button active flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/20 whitespace-nowrap">
+    <!-- Navigation Tabs: 2x3 Grid on Mobile, 3x2 on Tablet, Single Centered Row on Desktop -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-wrap lg:justify-center gap-2 mb-6 sm:mb-8 px-1">
+      <button onclick="switchTab('doc-tab')" id="tab-btn-doc-tab" class="tab-button active flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/20 whitespace-nowrap">
         <i class="fa-solid fa-file-contract"></i>
         <span>Document Converter</span>
       </button>
 
-      <button onclick="switchTab('pdf-tab')" id="tab-btn-pdf-tab" class="tab-button flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('pdf-tab')" id="tab-btn-pdf-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-file-pdf"></i>
         <span>PDF Studio</span>
       </button>
 
-      <button onclick="switchTab('media-tab')" id="tab-btn-media-tab" class="tab-button flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('media-tab')" id="tab-btn-media-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-photo-film"></i>
         <span>Media Converter</span>
       </button>
 
-      <button onclick="switchTab('image-tab')" id="tab-btn-image-tab" class="tab-button flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('image-tab')" id="tab-btn-image-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-image"></i>
         <span>Image Studio</span>
       </button>
 
-      <button onclick="switchTab('utils-tab')" id="tab-btn-utils-tab" class="tab-button flex items-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('text-tab')" id="tab-btn-text-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+        <i class="fa-solid fa-font"></i>
+        <span>🔤 Case Converter</span>
+      </button>
+
+      <button onclick="switchTab('utils-tab')" id="tab-btn-utils-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-toolbox"></i>
         <span>Free Utilities</span>
       </button>
@@ -609,7 +620,188 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 5: FREE UTILITIES -->
+    <!-- TAB 5: CASE CONVERTER & TEXT STUDIO -->
+    <!-- ======================================================== -->
+    <section id="text-tab" class="tab-content hidden">
+      <div class="glass-card rounded-2xl p-4 sm:p-7 max-w-4xl mx-auto shadow-2xl">
+        
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-3 border-b border-slate-800 gap-2 sm:gap-0">
+          <div>
+            <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-font text-cyan-400"></i> Case Converter & Text Studio
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Instant client-side case conversion, live word & character statistics</p>
+          </div>
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <span class="text-[10px] sm:text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-bolt-lightning text-emerald-400"></i> 100% Client-Side Instant
+            </span>
+          </div>
+        </div>
+
+        <!-- Textarea Toolbar & Input -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label for="case-textarea" class="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-pen-to-square text-cyan-400"></i> Enter or Paste English Text
+            </label>
+            <div class="flex items-center space-x-1.5 sm:space-x-2">
+              <button onclick="loadSampleText()" type="button" class="text-[11px] text-cyan-400 hover:text-cyan-300 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 hover:border-cyan-500/50 transition flex items-center gap-1">
+                <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i>
+                <span>Sample</span>
+              </button>
+              <button onclick="pasteFromClipboard()" type="button" class="text-[11px] text-slate-300 hover:text-white font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 hover:border-slate-600 transition flex items-center gap-1">
+                <i class="fa-regular fa-paste text-[10px]"></i>
+                <span>Paste</span>
+              </button>
+              <button id="btn-case-undo" onclick="undoCaseText()" type="button" title="Undo Last Conversion" disabled class="text-[11px] text-slate-400 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 opacity-40 cursor-not-allowed transition flex items-center gap-1">
+                <i class="fa-solid fa-rotate-left text-[10px]"></i>
+                <span>Undo</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="relative rounded-xl border border-slate-700/80 focus-within:border-cyan-500 focus-within:ring-2 focus-within:ring-cyan-500/20 transition-all overflow-hidden bg-slate-950/70 shadow-inner">
+            <textarea
+              id="case-textarea"
+              rows="6"
+              placeholder="Type or paste your English text here to convert case..."
+              oninput="updateTextStats()"
+              class="w-full bg-transparent p-3 sm:p-4 text-sm sm:text-base text-slate-100 placeholder-slate-500 focus:outline-none resize-y font-mono leading-relaxed min-h-[160px] sm:min-h-[190px]"
+              autofocus
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Case Conversion Buttons (Directly Below Textarea in Compact Touch Grid) -->
+        <div class="mt-3">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <!-- 1. UPPER CASE -->
+            <button onclick="applyCaseConversion('upper')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 text-left transition duration-150 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300">UPPER CASE</span>
+                <i class="fa-solid fa-arrow-up-a-z text-slate-500 group-hover:text-cyan-400 text-xs"></i>
+              </div>
+              <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">ALL CAPITALIZED</p>
+            </button>
+
+            <!-- 2. lower case -->
+            <button onclick="applyCaseConversion('lower')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 text-left transition duration-150 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300">lower case</span>
+                <i class="fa-solid fa-arrow-down-z-a text-slate-500 group-hover:text-cyan-400 text-xs"></i>
+              </div>
+              <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">all small letters</p>
+            </button>
+
+            <!-- 3. Sentence case -->
+            <button onclick="applyCaseConversion('sentence')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-emerald-500/50 text-left transition duration-150 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300">Sentence case</span>
+                <i class="fa-solid fa-paragraph text-slate-500 group-hover:text-emerald-400 text-xs"></i>
+              </div>
+              <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">Capitalize after . ! ?</p>
+            </button>
+
+            <!-- 4. Capitalized Case (Title Case) -->
+            <button onclick="applyCaseConversion('title')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-emerald-500/50 text-left transition duration-150 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300">Capitalized Case</span>
+                <i class="fa-solid fa-heading text-slate-500 group-hover:text-emerald-400 text-xs"></i>
+              </div>
+              <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">Title Case Every Word</p>
+            </button>
+
+            <!-- 5. aLtErNaTiNg cAsE -->
+            <button onclick="applyCaseConversion('alternating')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-teal-500/50 text-left transition duration-150 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-teal-300">aLtErNaTiNg</span>
+                <i class="fa-solid fa-shuffle text-slate-500 group-hover:text-teal-400 text-xs"></i>
+              </div>
+              <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">aLtErNaTiNg lEtTeRs</p>
+            </button>
+
+            <!-- 6. iNVERSE cASE -->
+            <button onclick="applyCaseConversion('inverse')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-teal-500/50 text-left transition duration-150 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-teal-300">iNVERSE cASE</span>
+                <i class="fa-solid fa-repeat text-slate-500 group-hover:text-teal-400 text-xs"></i>
+              </div>
+              <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">fLIP eVeRy LeTtEr</p>
+            </button>
+
+            <!-- 7. Clean Extra Spaces -->
+            <button onclick="applyCaseConversion('clean-spaces')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-amber-500/50 text-left transition duration-150 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300">Clean Spaces</span>
+                <i class="fa-solid fa-broom text-slate-500 group-hover:text-amber-400 text-xs"></i>
+              </div>
+              <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">Trim extra spaces</p>
+            </button>
+
+            <!-- Bonus 8: kebab-case (Slug) -->
+            <button onclick="applyCaseConversion('slug')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-indigo-500/50 text-left transition duration-150 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-indigo-300">kebab-case</span>
+                <i class="fa-solid fa-link text-slate-500 group-hover:text-indigo-400 text-xs"></i>
+              </div>
+              <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">url-slug-format</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Primary Action Buttons (Copy, Download .TXT, Clear) -->
+        <div class="mt-3 flex flex-row items-center gap-2">
+          <!-- 📋 Copy Text -->
+          <button onclick="copyCaseText()" type="button" class="flex-1 py-2.5 px-3 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20 transition flex items-center justify-center space-x-1.5 whitespace-nowrap">
+            <i class="fa-regular fa-clipboard text-sm"></i>
+            <span>Copy Text</span>
+          </button>
+
+          <!-- 💾 Download as .TXT -->
+          <button onclick="downloadCaseText()" type="button" class="flex-1 py-2.5 px-3 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-slate-900 hover:bg-slate-850 text-slate-200 hover:text-white border border-slate-750 hover:border-cyan-500/50 transition flex items-center justify-center space-x-1.5 whitespace-nowrap">
+            <i class="fa-solid fa-file-arrow-down text-cyan-400 text-sm"></i>
+            <span>Download .TXT</span>
+          </button>
+
+          <!-- 🗑️ Clear Text -->
+          <button onclick="clearCaseText()" type="button" class="py-2.5 px-3.5 sm:px-4 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-slate-900 hover:bg-rose-950/40 text-slate-400 hover:text-rose-300 border border-slate-800 hover:border-rose-700/60 transition flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-trash-can text-rose-400 text-xs"></i>
+            <span class="hidden sm:inline">Clear</span>
+          </button>
+        </div>
+
+        <!-- Ultra-Compact Live Statistics Horizontal Bar -->
+        <div class="mt-3 pt-2.5 border-t border-slate-800/70 flex flex-wrap items-center justify-between text-[11px] sm:text-xs py-1.5 px-3 rounded-xl bg-slate-900/60 border border-slate-800/60 text-slate-400 gap-y-1 gap-x-3">
+          <div class="flex items-center space-x-1.5">
+            <span>Chars:</span>
+            <strong id="stat-chars" class="font-bold text-cyan-400">0</strong>
+            <span class="text-[10px] text-slate-500">(<span id="stat-chars-no-space" class="text-emerald-400">0</span> no space)</span>
+          </div>
+          <div class="flex items-center space-x-1">
+            <span>Words:</span>
+            <strong id="stat-words" class="font-bold text-teal-400">0</strong>
+          </div>
+          <div class="flex items-center space-x-1">
+            <span>Sentences:</span>
+            <strong id="stat-sentences" class="font-bold text-indigo-400">0</strong>
+          </div>
+          <div class="flex items-center space-x-1">
+            <span>Lines:</span>
+            <strong id="stat-lines" class="font-bold text-purple-400">0</strong>
+          </div>
+          <div class="flex items-center space-x-1">
+            <span>Reading:</span>
+            <strong id="stat-reading" class="font-bold text-amber-400">0s</strong>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 6: FREE UTILITIES -->
     <!-- ======================================================== -->
     <section id="utils-tab" class="tab-content hidden">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
@@ -630,7 +822,13 @@
             <div class="space-y-4">
               <div>
                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Text or URL</label>
-                <input type="text" id="qr-input" value="https://prasatek.com" placeholder="Type or paste any URL or text..." oninput="generateQRCode()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+                <div class="flex gap-2">
+                  <input type="text" id="qr-input" value="" placeholder="Enter URL or text here..." oninput="generateQRCode()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+                  <button onclick="generateQRCode()" type="button" class="px-4 py-2.5 rounded-xl font-heading font-semibold text-xs bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition whitespace-nowrap flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Generate</span>
+                  </button>
+                </div>
               </div>
 
               <div class="grid grid-cols-2 gap-3">
@@ -651,15 +849,22 @@
                 </div>
               </div>
 
-              <!-- QR Display Box -->
+              <!-- QR Display Box with Empty Placeholder State -->
               <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col items-center justify-center min-h-[220px]">
-                <div id="qrcode-container" class="p-3 bg-slate-900 rounded-xl border border-slate-700 shadow-xl"></div>
+                <div id="qr-empty-state" class="flex flex-col items-center justify-center text-slate-500 text-center py-4">
+                  <div class="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-400 mb-3 text-2xl">
+                    <i class="fa-solid fa-qrcode"></i>
+                  </div>
+                  <p class="text-sm font-semibold text-slate-300">No QR Code Generated Yet</p>
+                  <p class="text-xs text-slate-500 mt-1">Enter a URL or text above to preview and download</p>
+                </div>
+                <div id="qrcode-container" class="hidden p-3 bg-slate-900 rounded-xl border border-slate-700 shadow-xl"></div>
               </div>
             </div>
           </div>
 
           <div class="mt-6">
-            <button onclick="downloadQRCode()" class="w-full py-2.5 px-4 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center justify-center space-x-2">
+            <button id="qr-download-btn" onclick="downloadQRCode()" disabled class="w-full py-2.5 px-4 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center justify-center space-x-2 opacity-40 cursor-not-allowed">
               <i class="fa-solid fa-download"></i>
               <span>Download QR Code (PNG)</span>
             </button>
@@ -745,25 +950,84 @@
           </div>
         </div>
 
+        <!-- Utility 3: Case Converter & Text Studio Quick Launcher -->
+        <div class="glass-card rounded-2xl p-5 sm:p-7 shadow-2xl flex flex-col justify-between lg:col-span-2 border border-slate-800 hover:border-cyan-500/40 transition">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-start gap-3.5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-500/20 to-cyan-500/20 border border-cyan-500/40 flex items-center justify-center flex-shrink-0 text-cyan-400 text-xl shadow-md shadow-cyan-500/10">
+                <i class="fa-solid fa-font"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-heading text-lg font-bold text-white">
+                    🔤 Case Converter & Text Studio
+                  </h3>
+                  <span class="text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">100% Client-Side</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1 max-w-2xl">
+                  Transform uppercase, lowercase, sentence case, title case, and alternating case instantly. Includes real-time character, word, sentence, and line statistics with 1-click clipboard copy and .TXT download.
+                </p>
+              </div>
+            </div>
+            <button onclick="switchTab('text-tab')" type="button" class="py-2.5 px-5 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center justify-center space-x-2 whitespace-nowrap self-start md:self-auto">
+              <span>Open Case Converter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </div>
+        </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- Processing Modal Overlay -->
-  <div id="processing-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="glass-card max-w-sm w-full p-6 rounded-2xl text-center shadow-2xl border border-cyan-500/30">
-      <div class="relative w-16 h-16 mx-auto mb-4">
-        <div class="w-16 h-16 rounded-full border-4 border-slate-800 border-t-cyan-400 animate-spin"></div>
-        <div class="absolute inset-0 flex items-center justify-center text-cyan-400">
-          <i class="fa-solid fa-arrows-rotate text-lg"></i>
+  <!-- Processing Modal Overlay with Real-Time Percentage Progress Bar -->
+  <div id="processing-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 sm:p-8 rounded-2xl text-center shadow-2xl border border-cyan-500/30 relative overflow-hidden animate-fade-in">
+      <!-- Glow ambient background effects -->
+      <div class="absolute -top-12 -left-12 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
+
+      <!-- Animated Stage Icon -->
+      <div class="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border-2 border-cyan-500/20 animate-ping opacity-30"></div>
+        <div class="absolute inset-0 rounded-2xl border border-cyan-500/30 rotate-6 transition-transform"></div>
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-800 border border-cyan-500/50 flex items-center justify-center shadow-lg shadow-cyan-500/10 relative z-10">
+          <i id="modal-icon" class="fa-solid fa-bolt-lightning text-xl sm:text-2xl text-cyan-400 animate-pulse"></i>
         </div>
       </div>
-      <h3 id="modal-title" class="font-heading font-bold text-lg text-white mb-1">Converting File...</h3>
-      <p id="modal-status" class="text-xs text-slate-400 mb-4">Processing with PrasaTek conversion engine...</p>
+
+      <h3 id="modal-title" class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Converting File...</h3>
       
-      <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-        <div class="h-full bg-gradient-to-r from-emerald-400 to-cyan-400 animate-pulse w-full"></div>
+      <!-- Dynamic Stage Text: 0-40% Uploading, 40-85% Converting, 85-100% Finalizing -->
+      <p id="modal-status" class="text-xs sm:text-sm text-cyan-300 font-semibold mb-3 min-h-[22px] transition-all">
+        Uploading file... (0%)
+      </p>
+
+      <!-- Percentage Counter Badge & Substage info -->
+      <div class="flex items-center justify-between text-xs font-semibold mb-2 px-1">
+        <span class="flex items-center gap-1.5 text-slate-400">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span id="modal-substage" class="text-[11px] sm:text-xs text-slate-300 truncate max-w-[220px]">High-Speed Engine Active</span>
+        </span>
+        <span id="modal-percent" class="font-heading font-extrabold text-base sm:text-xl bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+          0%
+        </span>
+      </div>
+      
+      <!-- Real-Time Animated Progress Bar -->
+      <div class="w-full bg-slate-900/90 h-3.5 rounded-full overflow-hidden p-0.5 border border-slate-700/80 shadow-inner relative">
+        <div id="modal-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full transition-all duration-200 relative overflow-hidden" style="width: 0%;">
+          <div class="absolute inset-0 bg-white/25 transform -skew-x-12 animate-pulse" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="mt-4 flex items-center justify-center gap-2 text-[11px] text-slate-400">
+        <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+        <span>Isolated Memory Engine • Zero Data Retention</span>
       </div>
     </div>
   </div>
@@ -775,7 +1039,7 @@
   <footer class="border-t border-slate-800/80 bg-slate-950/90 py-6 mt-12">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <p class="text-xs sm:text-sm text-slate-300 font-medium">
-        © PrasaTek System Solutions — PrasaTek SupiriConvertPRO. 100% Free to Use. All Rights Reserved.
+        © PrasaTek System Solutions — SupiriConvertPRO. 100% Free to Use. All Rights Reserved.
       </p>
       <p class="text-[11px] text-slate-500 mt-1">
         Fast, secure, and unlimited processing • Zero tracking • Automatic self-cleaning container storage
@@ -843,9 +1107,15 @@
         targetBtn.classList.add('bg-gradient-to-r', 'from-emerald-500', 'to-cyan-500', 'text-slate-950', 'shadow-lg');
       }
 
-      if (tabId === 'utils-tab' && !qrCodeInstance) {
-        setTimeout(generateQRCode, 100);
+      if (tabId === 'utils-tab') {
         generatePassword();
+      }
+
+      if (tabId === 'text-tab') {
+        setTimeout(() => {
+          const ta = document.getElementById('case-textarea');
+          if (ta) ta.focus();
+        }, 80);
       }
     }
 
@@ -885,15 +1155,127 @@
       }, 4000);
     }
 
-    // --- Modal Progress ---
-    function showModal(title, status) {
+    // --- Real-Time Progress Bar & Modal Controller ---
+    let progressInterval = null;
+
+    function setModalProgress(targetPct, stageText, substageText) {
+      const currentProgress = Math.max(0, Math.min(100, Math.round(targetPct)));
+      const bar = document.getElementById('modal-progress-bar');
+      const pctEl = document.getElementById('modal-percent');
+      const statusEl = document.getElementById('modal-status');
+      const subEl = document.getElementById('modal-substage');
+
+      if (bar) bar.style.width = `${currentProgress}%`;
+      if (pctEl) pctEl.innerText = `${currentProgress}%`;
+      if (statusEl && stageText) statusEl.innerText = stageText;
+      if (subEl && substageText) subEl.innerText = substageText;
+    }
+
+    function stopProgressInterval() {
+      if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+      }
+    }
+
+    function showModal(title, initialStatus) {
+      stopProgressInterval();
       document.getElementById('modal-title').innerText = title;
-      document.getElementById('modal-status').innerText = status;
+      setModalProgress(0, initialStatus || 'Uploading file... (0%)', 'Connecting to high-speed engine');
       document.getElementById('processing-modal').classList.remove('hidden');
     }
 
     function hideModal() {
+      stopProgressInterval();
       document.getElementById('processing-modal').classList.add('hidden');
+    }
+
+    function requestWithProgress(url, formData) {
+      return new Promise((resolve, reject) => {
+        stopProgressInterval();
+        setModalProgress(0, 'Uploading file... (0%)', 'Sending file payload to server');
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true);
+        xhr.responseType = 'blob';
+
+        // Stage 1: Upload Progress (0% - 40%)
+        xhr.upload.onprogress = (e) => {
+          if (e.lengthComputable && e.total > 0) {
+            const uploadRatio = e.loaded / e.total;
+            const pct = Math.min(40, Math.max(1, Math.round(uploadRatio * 40)));
+            setModalProgress(pct, `Uploading file... (${pct}%)`, `${formatBytes(e.loaded)} / ${formatBytes(e.total)} uploaded`);
+          } else {
+            setModalProgress(20, 'Uploading file... (20%)', 'Uploading payload to conversion engine');
+          }
+        };
+
+        // Transition: Upload completed -> Stage 2: Processing (40% - 85%)
+        xhr.upload.onload = () => {
+          setModalProgress(40, 'Converting file on high-speed engine... (40%)', 'Multi-thread engine executing');
+          
+          let current = 40;
+          progressInterval = setInterval(() => {
+            if (current < 84) {
+              const step = current < 65 ? 2 : 1;
+              current += step;
+              setModalProgress(
+                current,
+                `Converting file on high-speed engine... (${current}%)`,
+                'High-Speed Multi-Thread Processing'
+              );
+            }
+          }, 90);
+        };
+
+        // Stage 3: Download / Response Progress (85% - 99%)
+        xhr.onprogress = (e) => {
+          stopProgressInterval();
+          if (e.lengthComputable && e.total > 0) {
+            const dlRatio = e.loaded / e.total;
+            const pct = Math.min(99, Math.round(85 + dlRatio * 14));
+            setModalProgress(pct, `Finalizing & preparing download... (${pct}%)`, 'Preparing output stream');
+          } else {
+            setModalProgress(92, 'Finalizing & preparing download... (92%)', 'Generating download package');
+          }
+        };
+
+        // Complete: Snap to 100% and resolve
+        xhr.onload = async () => {
+          stopProgressInterval();
+          if (xhr.status >= 200 && xhr.status < 300) {
+            setModalProgress(100, 'Finalizing & preparing download... (100%)', 'Complete! File ready.');
+            setTimeout(() => {
+              resolve({
+                blob: xhr.response,
+                headers: {
+                  get: (headerName) => xhr.getResponseHeader(headerName)
+                }
+              });
+            }, 250);
+          } else {
+            try {
+              const text = await xhr.response.text();
+              const err = JSON.parse(text);
+              reject(new Error(err.detail || `Server error (${xhr.status})`));
+            } catch (_) {
+              reject(new Error(`Server error (${xhr.status})`));
+            }
+          }
+        };
+
+        xhr.onerror = () => {
+          stopProgressInterval();
+          reject(new Error("Network connection error during conversion."));
+        };
+
+        xhr.ontimeout = () => {
+          stopProgressInterval();
+          reject(new Error("Request timed out. Please try again."));
+        };
+
+        xhr.send(formData);
+      });
     }
 
     // --- Helper: Format Bytes ---
@@ -907,20 +1289,42 @@
     }
 
     // --- Manual Download Flow Handler ---
-    async function handleConversionSuccess(toolKey, response, defaultFilename) {
+    async function handleConversionSuccess(toolKey, responseOrData, defaultFilename) {
       let filename = defaultFilename;
-      const disposition = response.headers.get('content-disposition');
-      if (disposition) {
-        const utf8Match = disposition.match(/filename\*=UTF-8''([^;]+)/i);
-        if (utf8Match && utf8Match[1]) {
-          filename = decodeURIComponent(utf8Match[1]);
-        } else {
-          const match = disposition.match(/filename="?([^"]+)"?/i);
-          if (match && match[1]) filename = match[1];
+      let blob;
+
+      if (responseOrData instanceof Blob) {
+        blob = responseOrData;
+      } else if (responseOrData && responseOrData.blob) {
+        blob = responseOrData.blob;
+        const disposition = responseOrData.headers?.get ? responseOrData.headers.get('content-disposition') : null;
+        if (disposition) {
+          const utf8Match = disposition.match(/filename\*=UTF-8''([^;]+)/i);
+          if (utf8Match && utf8Match[1]) {
+            filename = decodeURIComponent(utf8Match[1]);
+          } else {
+            const match = disposition.match(/filename="?([^"]+)"?/i);
+            if (match && match[1]) filename = match[1];
+          }
         }
+      } else if (responseOrData && typeof responseOrData.blob === 'function') {
+        const disposition = responseOrData.headers.get('content-disposition');
+        if (disposition) {
+          const utf8Match = disposition.match(/filename\*=UTF-8''([^;]+)/i);
+          if (utf8Match && utf8Match[1]) {
+            filename = decodeURIComponent(utf8Match[1]);
+          } else {
+            const match = disposition.match(/filename="?([^"]+)"?/i);
+            if (match && match[1]) filename = match[1];
+          }
+        }
+        blob = await responseOrData.blob();
       }
 
-      const blob = await response.blob();
+      if (!blob) {
+        throw new Error("Invalid conversion response: No data received.");
+      }
+
       const url = window.URL.createObjectURL(blob);
 
       if (downloadState[toolKey]?.url) {
@@ -1059,21 +1463,12 @@
       formData.append('file', docFile);
       formData.append('target_format', targetFmt);
 
-      showModal('Converting Document', `Transforming ${docFile.name} to .${targetFmt}...`);
+      showModal('Converting Document', `Uploading ${docFile.name}... (0%)`);
 
       try {
-        const res = await fetch(`${API_BASE_URL}/api/convert/document`, {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({ detail: 'Conversion failed' }));
-          throw new Error(err.detail || 'Document conversion error');
-        }
-
+        const result = await requestWithProgress(`${API_BASE_URL}/api/convert/document`, formData);
         const outName = docFile.name.substring(0, docFile.name.lastIndexOf('.')) + `.${targetFmt}`;
-        await handleConversionSuccess('doc', res, outName);
+        await handleConversionSuccess('doc', result, outName);
       } catch (err) {
         showToast(err.message, 'error');
       } finally {
@@ -1163,20 +1558,11 @@
       const formData = new FormData();
       pdfMergeFiles.forEach(f => formData.append('files', f));
 
-      showModal('Merging PDFs', `Combining ${pdfMergeFiles.length} PDF documents...`);
+      showModal('Merging PDFs', `Uploading ${pdfMergeFiles.length} PDF documents... (0%)`);
 
       try {
-        const res = await fetch(`${API_BASE_URL}/api/pdf/merge`, {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({ detail: 'PDF merge failed' }));
-          throw new Error(err.detail || 'PDF merge error');
-        }
-
-        await handleConversionSuccess('pdf-merge', res, 'merged_document.pdf');
+        const result = await requestWithProgress(`${API_BASE_URL}/api/pdf/merge`, formData);
+        await handleConversionSuccess('pdf-merge', result, 'merged_document.pdf');
       } catch (err) {
         showToast(err.message, 'error');
       } finally {
@@ -1254,23 +1640,80 @@
     async function convertImagesToPdf() {
       if (!img2pdfFiles.length) return;
 
-      const formData = new FormData();
-      img2pdfFiles.forEach(f => formData.append('files', f));
+      const outName = 'images_combined.pdf';
+      showModal('Creating PDF', 'Uploading file... (0%)');
 
-      showModal('Creating PDF', `Combining ${img2pdfFiles.length} images into PDF...`);
-
+      // 1. Instant Client-Side Conversion using jsPDF (ZERO network delay)
       try {
-        const res = await fetch(`${API_BASE_URL}/api/pdf/images-to-pdf`, {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({ detail: 'Failed to create PDF' }));
-          throw new Error(err.detail || 'Images to PDF failed');
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+          throw new Error("Client jsPDF library not loaded");
         }
 
-        await handleConversionSuccess('img2pdf', res, 'images_combined.pdf');
+        setModalProgress(15, 'Uploading file... (15%)', 'Reading local image assets');
+        await new Promise(r => setTimeout(r, 60));
+
+        const { jsPDF } = window.jspdf;
+        let doc = null;
+
+        for (let i = 0; i < img2pdfFiles.length; i++) {
+          const file = img2pdfFiles[i];
+          const pct = Math.round(20 + ((i + 1) / img2pdfFiles.length) * 65);
+          setModalProgress(pct, `Converting file on high-speed engine... (${pct}%)`, `Processing image ${i + 1} of ${img2pdfFiles.length}`);
+
+          const dataUrl = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+
+          const img = await new Promise((resolve, reject) => {
+            const image = new Image();
+            image.onload = () => resolve(image);
+            image.onerror = reject;
+            image.src = dataUrl;
+          });
+
+          const w = img.naturalWidth || 800;
+          const h = img.naturalHeight || 600;
+          const orientation = w > h ? 'l' : 'p';
+
+          if (i === 0) {
+            doc = new jsPDF({
+              orientation: orientation,
+              unit: 'px',
+              format: [w, h],
+              hotfixes: ['px_scaling'],
+            });
+            doc.addImage(dataUrl, 0, 0, w, h);
+          } else {
+            doc.addPage([w, h], orientation);
+            doc.addImage(dataUrl, 0, 0, w, h);
+          }
+        }
+
+        setModalProgress(90, 'Finalizing & preparing download... (90%)', 'Compiling PDF document');
+        await new Promise(r => setTimeout(r, 80));
+
+        const blob = doc.output('blob');
+        setModalProgress(100, 'Finalizing & preparing download... (100%)', 'Complete! File ready.');
+        await new Promise(r => setTimeout(r, 200));
+
+        await handleConversionSuccess('img2pdf', blob, outName);
+        return;
+      } catch (clientErr) {
+        console.warn("Client-side Images-to-PDF falling back to high-speed backend:", clientErr);
+      } finally {
+        hideModal();
+      }
+
+      // 2. High-Speed Backend Fallback
+      showModal('Creating PDF', `Uploading ${img2pdfFiles.length} images... (0%)`);
+      try {
+        const formData = new FormData();
+        img2pdfFiles.forEach(f => formData.append('files', f));
+        const result = await requestWithProgress(`${API_BASE_URL}/api/pdf/images-to-pdf`, formData);
+        await handleConversionSuccess('img2pdf', result, outName);
       } catch (err) {
         showToast(err.message, 'error');
       } finally {
@@ -1344,21 +1787,12 @@
         formData.append('fps', fps);
       }
 
-      showModal('Converting Media', `Processing media with FFmpeg to .${targetFmt}...`);
+      showModal('Converting Media', `Uploading ${mediaFile.name}... (0%)`);
 
       try {
-        const res = await fetch(`${API_BASE_URL}/api/convert/media`, {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({ detail: 'Media conversion failed' }));
-          throw new Error(err.detail || 'FFmpeg conversion error');
-        }
-
+        const result = await requestWithProgress(`${API_BASE_URL}/api/convert/media`, formData);
         const outName = mediaFile.name.substring(0, mediaFile.name.lastIndexOf('.')) + `.${targetFmt}`;
-        await handleConversionSuccess('media', res, outName);
+        await handleConversionSuccess('media', result, outName);
       } catch (err) {
         showToast(err.message, 'error');
       } finally {
@@ -1410,29 +1844,94 @@
     async function convertImage() {
       if (!imageFile) return;
 
-      const targetFmt = imgTargetFormat.value;
-      const quality = document.getElementById('img-quality').value;
+      let targetFmt = imgTargetFormat.value.toLowerCase().replace('.', '');
+      if (targetFmt === 'jpeg') targetFmt = 'jpg';
+      const quality = parseInt(document.getElementById('img-quality').value, 10) || 85;
+      const outName = imageFile.name.substring(0, imageFile.name.lastIndexOf('.')) + `.${targetFmt}`;
 
-      const formData = new FormData();
-      formData.append('file', imageFile);
-      formData.append('target_format', targetFmt);
-      formData.append('quality', quality);
+      showModal('Processing Image', 'Uploading file... (0%)');
 
-      showModal('Processing Image', `Converting & compressing to .${targetFmt} (${quality}%)...`);
-
+      // 1. Instant Client-Side Image Conversion & Compression (< 200ms)
       try {
-        const res = await fetch(`${API_BASE_URL}/api/image/convert`, {
-          method: 'POST',
-          body: formData,
+        setModalProgress(25, 'Uploading file... (25%)', 'Loading image into browser canvas');
+        await new Promise(r => setTimeout(r, 50));
+
+        const blob = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onerror = reject;
+          reader.onload = () => {
+            const img = new Image();
+            img.onerror = () => reject(new Error("Unable to decode image"));
+            img.onload = () => {
+              setModalProgress(60, 'Converting file on high-speed engine... (60%)', 'HTML5 Canvas Rendering & Compression');
+
+              const canvas = document.createElement('canvas');
+              canvas.width = img.naturalWidth;
+              canvas.height = img.naturalHeight;
+              const ctx = canvas.getContext('2d');
+
+              if (targetFmt === 'jpg' || targetFmt === 'bmp') {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+              }
+              ctx.drawImage(img, 0, 0);
+
+              let mimeType = 'image/jpeg';
+              if (targetFmt === 'png') mimeType = 'image/png';
+              else if (targetFmt === 'webp') mimeType = 'image/webp';
+              else if (targetFmt === 'bmp') mimeType = 'image/bmp';
+
+              const qRatio = Math.max(0.1, Math.min(1.0, quality / 100));
+
+              if (canvas.toBlob) {
+                canvas.toBlob((b) => {
+                  if (b) resolve(b);
+                  else {
+                    try {
+                      const dataUrl = canvas.toDataURL(mimeType, qRatio);
+                      fetch(dataUrl).then(r => r.blob()).then(resolve).catch(reject);
+                    } catch (e) {
+                      reject(e);
+                    }
+                  }
+                }, mimeType, qRatio);
+              } else {
+                try {
+                  const dataUrl = canvas.toDataURL(mimeType, qRatio);
+                  fetch(dataUrl).then(r => r.blob()).then(resolve).catch(reject);
+                } catch (e) {
+                  reject(e);
+                }
+              }
+            };
+            img.src = reader.result;
+          };
+          reader.readAsDataURL(imageFile);
         });
 
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({ detail: 'Image processing failed' }));
-          throw new Error(err.detail || 'Image processing error');
-        }
+        setModalProgress(90, 'Finalizing & preparing download... (90%)', 'Finalizing output file');
+        await new Promise(r => setTimeout(r, 60));
+        setModalProgress(100, 'Finalizing & preparing download... (100%)', 'Complete! File ready.');
+        await new Promise(r => setTimeout(r, 200));
 
-        const outName = imageFile.name.substring(0, imageFile.name.lastIndexOf('.')) + `.${targetFmt}`;
-        await handleConversionSuccess('img', res, outName);
+        await handleConversionSuccess('img', blob, outName);
+        return;
+      } catch (clientErr) {
+        console.warn("Client-side image conversion falling back to backend:", clientErr);
+      } finally {
+        hideModal();
+      }
+
+      // 2. High-Speed Backend Fallback
+      showModal('Processing Image', `Uploading ${imageFile.name}... (0%)`);
+      try {
+        const formData = new FormData();
+        formData.append('file', imageFile);
+        formData.append('target_format', targetFmt);
+        formData.append('quality', quality);
+
+        const result = await requestWithProgress(`${API_BASE_URL}/api/image/convert`, formData);
+        await handleConversionSuccess('img', result, outName);
       } catch (err) {
         showToast(err.message, 'error');
       } finally {
@@ -1446,12 +1945,39 @@
 
     // --- Utility 1: QR Code Generator ---
     function generateQRCode() {
-      const text = document.getElementById('qr-input').value.trim() || 'https://prasatek.com';
+      const inputEl = document.getElementById('qr-input');
+      const text = inputEl ? inputEl.value.trim() : '';
+      const emptyState = document.getElementById('qr-empty-state');
+      const container = document.getElementById('qrcode-container');
+      const downloadBtn = document.getElementById('qr-download-btn');
+
+      if (!text) {
+        if (emptyState) emptyState.classList.remove('hidden');
+        if (container) {
+          container.classList.add('hidden');
+          container.innerHTML = '';
+        }
+        if (downloadBtn) {
+          downloadBtn.classList.add('opacity-40', 'cursor-not-allowed');
+          downloadBtn.setAttribute('disabled', 'true');
+        }
+        qrCodeInstance = null;
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+      if (container) {
+        container.classList.remove('hidden');
+        container.innerHTML = '';
+      }
+      if (downloadBtn) {
+        downloadBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+        downloadBtn.removeAttribute('disabled');
+      }
+
       const fgColor = document.getElementById('qr-color-fg').value;
       const bgColor = document.getElementById('qr-color-bg').value;
-      const container = document.getElementById('qrcode-container');
 
-      container.innerHTML = '';
       qrCodeInstance = new QRCode(container, {
         text: text,
         width: 180,
@@ -1463,14 +1989,24 @@
     }
 
     function downloadQRCode() {
-      const container = document.getElementById('qrcode-container');
-      const img = container.querySelector('img');
-      const canvas = container.querySelector('canvas');
+      const inputEl = document.getElementById('qr-input');
+      const text = inputEl ? inputEl.value.trim() : '';
+      if (!text || !qrCodeInstance) {
+        showToast('Please enter URL or text first!', 'error');
+        return;
+      }
 
-      if (!img && !canvas) return;
+      const container = document.getElementById('qrcode-container');
+      const img = container ? container.querySelector('img') : null;
+      const canvas = container ? container.querySelector('canvas') : null;
+
+      if (!img && !canvas) {
+        showToast('QR Code not ready yet', 'error');
+        return;
+      }
 
       const a = document.createElement('a');
-      a.download = 'qrcode-prasatek.png';
+      a.download = 'qrcode-supiriconvert.png';
       a.href = img ? img.src : canvas.toDataURL('image/png');
       document.body.appendChild(a);
       a.click();
@@ -1571,6 +2107,290 @@
       });
     }
 
+    // ========================================================
+    // CASE CONVERTER & TEXT STUDIO LOGIC (100% CLIENT-SIDE)
+    // ========================================================
+    let caseHistoryStack = [];
+
+    function pushCaseHistory(val) {
+      if (typeof val !== 'string') return;
+      if (caseHistoryStack.length === 0 || caseHistoryStack[caseHistoryStack.length - 1] !== val) {
+        caseHistoryStack.push(val);
+        if (caseHistoryStack.length > 30) caseHistoryStack.shift();
+        const undoBtn = document.getElementById('btn-case-undo');
+        if (undoBtn) {
+          undoBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+          undoBtn.removeAttribute('disabled');
+        }
+      }
+    }
+
+    function updateTextStats() {
+      const textarea = document.getElementById('case-textarea');
+      const text = textarea ? textarea.value : '';
+
+      // 1. Character Count (with spaces)
+      const charsTotal = text.length;
+
+      // 2. Character Count (without spaces)
+      const charsNoSpace = text.replace(/\s/g, '').length;
+
+      // 3. Word Count
+      const trimmed = text.trim();
+      const words = trimmed ? trimmed.split(/\s+/).length : 0;
+
+      // 4. Sentence Count
+      // Counts sentences delimited by '.', '!', '?', or paragraphs
+      let sentences = 0;
+      if (trimmed) {
+        const sentenceMatches = trimmed.match(/[^.!?\n]+(?:[.!?]+|$)/g);
+        sentences = sentenceMatches ? sentenceMatches.filter(s => s.trim().length > 0).length : 0;
+      }
+
+      // 5. Line Count
+      const lines = text.length === 0 ? 0 : text.split('\n').length;
+
+      // 6. Reading Time Estimate (based on standard 200 words per minute)
+      let readingTimeStr = '0s';
+      if (words > 0) {
+        const seconds = Math.round((words / 200) * 60);
+        if (seconds < 60) {
+          readingTimeStr = `${Math.max(1, seconds)}s`;
+        } else {
+          const mins = Math.floor(seconds / 60);
+          const remSecs = seconds % 60;
+          readingTimeStr = remSecs > 0 ? `${mins}m ${remSecs}s` : `${mins}m`;
+        }
+      }
+
+      // Update counters in DOM
+      const elChars = document.getElementById('stat-chars');
+      const elCharsNoSpace = document.getElementById('stat-chars-no-space');
+      const elWords = document.getElementById('stat-words');
+      const elSentences = document.getElementById('stat-sentences');
+      const elLines = document.getElementById('stat-lines');
+      const elReading = document.getElementById('stat-reading');
+
+      if (elChars) elChars.textContent = charsTotal.toLocaleString();
+      if (elCharsNoSpace) elCharsNoSpace.textContent = charsNoSpace.toLocaleString();
+      if (elWords) elWords.textContent = words.toLocaleString();
+      if (elSentences) elSentences.textContent = sentences.toLocaleString();
+      if (elLines) elLines.textContent = lines.toLocaleString();
+      if (elReading) elReading.textContent = readingTimeStr;
+    }
+
+    function applyCaseConversion(mode) {
+      const textarea = document.getElementById('case-textarea');
+      if (!textarea) return;
+      const text = textarea.value;
+
+      if (!text || text.trim().length === 0) {
+        showToast('Please type or paste some text first!', 'info');
+        textarea.focus();
+        return;
+      }
+
+      pushCaseHistory(text);
+      let converted = text;
+
+      switch (mode) {
+        case 'upper':
+          // 1. UPPER CASE: Converts all letters to uppercase
+          converted = text.toUpperCase();
+          break;
+
+        case 'lower':
+          // 2. lower case: Converts all letters to lowercase
+          converted = text.toLowerCase();
+          break;
+
+        case 'sentence':
+          // 3. Sentence case: Lowercases text and capitalizes the very first letter of the text and the first letter after every period (.), exclamation (!), Question mark (?), or new line (\n).
+          converted = text.toLowerCase().replace(/(^\s*|[.!?\n]+[\s"'([{<]*)([\p{L}])/gu, (match, prefix, char) => {
+            return prefix + char.toUpperCase();
+          });
+          break;
+
+        case 'title':
+          // 4. Capitalized Case (Title Case): Capitalizes the first letter of every single word
+          converted = text.toLowerCase().replace(/(^|[^\p{L}\p{N}])([\p{L}])/gu, (match, prefix, char) => {
+            return prefix + char.toUpperCase();
+          });
+          break;
+
+        case 'alternating':
+          // 5. aLtErNaTiNg cAsE: Alternates between lowercase and uppercase letters
+          {
+            let upper = false;
+            let res = '';
+            for (let i = 0; i < text.length; i++) {
+              const ch = text[i];
+              if (/\p{L}/u.test(ch)) {
+                res += upper ? ch.toUpperCase() : ch.toLowerCase();
+                upper = !upper;
+              } else {
+                res += ch;
+              }
+            }
+            converted = res;
+          }
+          break;
+
+        case 'inverse':
+          // 6. iNVERSE cASE: Flips current uppercase letters to lowercase and vice versa
+          {
+            let res = '';
+            for (let i = 0; i < text.length; i++) {
+              const ch = text[i];
+              if (ch === ch.toUpperCase() && ch !== ch.toLowerCase()) {
+                res += ch.toLowerCase();
+              } else if (ch === ch.toLowerCase() && ch !== ch.toUpperCase()) {
+                res += ch.toUpperCase();
+              } else {
+                res += ch;
+              }
+            }
+            converted = res;
+          }
+          break;
+
+        case 'clean-spaces':
+          // 7. Clean Extra Spaces: Removes duplicate spaces and trims leading/trailing whitespace
+          converted = text
+            .split('\n')
+            .map(line => line.replace(/[^\S\r\n]+/g, ' ').trim())
+            .join('\n')
+            .replace(/\n{3,}/g, '\n\n')
+            .trim();
+          break;
+
+        case 'slug':
+          // 8. kebab-case: URL slug format
+          converted = text
+            .toLowerCase()
+            .replace(/[^\p{L}\p{N}\s-]/gu, '')
+            .trim()
+            .replace(/[\s_-]+/g, '-');
+          break;
+      }
+
+      textarea.value = converted;
+      updateTextStats();
+      showToast('Text converted successfully!', 'success');
+    }
+
+    function copyCaseText() {
+      const textarea = document.getElementById('case-textarea');
+      const text = textarea ? textarea.value : '';
+      if (!text) {
+        showToast('Nothing to copy! Please enter some text.', 'error');
+        return;
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Copied to clipboard!', 'success');
+        }).catch(() => {
+          fallbackCopyCaseText(textarea);
+        });
+      } else {
+        fallbackCopyCaseText(textarea);
+      }
+    }
+
+    function fallbackCopyCaseText(textarea) {
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast('Copied to clipboard!', 'success');
+      } catch (err) {
+        showToast('Failed to copy text', 'error');
+      }
+    }
+
+    function downloadCaseText() {
+      const textarea = document.getElementById('case-textarea');
+      const text = textarea ? textarea.value : '';
+      if (!text) {
+        showToast('Text area is empty! Nothing to download.', 'error');
+        return;
+      }
+
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'SupiriConvert_Text.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Downloaded SupiriConvert_Text.txt', 'success');
+    }
+
+    function clearCaseText() {
+      const textarea = document.getElementById('case-textarea');
+      if (!textarea) return;
+      if (textarea.value.length > 0) {
+        pushCaseHistory(textarea.value);
+      }
+      textarea.value = '';
+      updateTextStats();
+      textarea.focus();
+      showToast('Text cleared', 'info');
+    }
+
+    function undoCaseText() {
+      if (caseHistoryStack.length === 0) {
+        showToast('No actions to undo', 'info');
+        return;
+      }
+      const prev = caseHistoryStack.pop();
+      const textarea = document.getElementById('case-textarea');
+      if (textarea) {
+        textarea.value = prev;
+        updateTextStats();
+        showToast('Action undone', 'info');
+      }
+      if (caseHistoryStack.length === 0) {
+        const undoBtn = document.getElementById('btn-case-undo');
+        if (undoBtn) {
+          undoBtn.classList.add('opacity-40', 'cursor-not-allowed');
+          undoBtn.setAttribute('disabled', 'true');
+        }
+      }
+    }
+
+    function loadSampleText() {
+      const sample = "SupiriConvertPRO is an all-in-one file converter and text studio engineered by PrasaTek System Solutions.\n\nIt features lightning-fast document conversion, advanced PDF tools, media transcoders, and full client-side text manipulation! Did you know? This case converter processes all transformations instantly in your browser without uploading your sensitive text to any server.\n\nTry testing UPPER CASE, lower case, Sentence case, and Capitalized Case right now!";
+      const textarea = document.getElementById('case-textarea');
+      if (textarea) {
+        pushCaseHistory(textarea.value);
+        textarea.value = sample;
+        updateTextStats();
+        showToast('Sample text loaded!', 'info');
+      }
+    }
+
+    async function pasteFromClipboard() {
+      const textarea = document.getElementById('case-textarea');
+      if (!textarea) return;
+      try {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+          const clipText = await navigator.clipboard.readText();
+          if (clipText) {
+            pushCaseHistory(textarea.value);
+            textarea.value = clipText;
+            updateTextStats();
+            showToast('Pasted from clipboard!', 'success');
+            return;
+          }
+        }
+      } catch (_) {}
+      textarea.focus();
+      showToast('Please press Ctrl+V to paste', 'info');
+    }
+
     // --- On Window Load: Status Check & Init ---
     window.addEventListener('DOMContentLoaded', async () => {
       try {
@@ -1598,8 +2418,8 @@
         document.getElementById('status-text').innerText = 'Offline Mode';
       }
 
-      generateQRCode();
       generatePassword();
+      updateTextStats();
     });
   </script>
 </body>

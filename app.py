@@ -12,10 +12,11 @@ from fastapi import FastAPI, UploadFile, File, Form, HTTPException, BackgroundTa
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.concurrency import run_in_threadpool
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger("PrasaTek_SupiriConvertPRO")
+logger = logging.getLogger("SupiriConvertPRO")
 
 # Base and Temporary Directories
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -33,8 +34,8 @@ logger.info(f"Initialized temporary upload directory at: {UPLOAD_DIR}")
 
 # Initialize FastAPI App
 app = FastAPI(
-    title="PrasaTek SupiriConvertPRO",
-    description="100% Free & Unlimited All-in-One File Converter and Utility Web Application by PrasaTek System Solutions",
+    title="SupiriConvertPRO",
+    description="100% Free & Unlimited All-in-One File Converter and Utility Web Application powered by PrasaTek System Solutions",
     version="2.0.0",
 )
 
@@ -653,7 +654,7 @@ def get_health():
     """Health check endpoint for frontend status indicator."""
     return {
         "status": "online",
-        "app": "PrasaTek SupiriConvertPRO",
+        "app": "SupiriConvertPRO",
         "provider": "PrasaTek System Solutions",
         "healthy": True,
     }
@@ -667,7 +668,7 @@ def get_system_status():
     pop = check_poppler_installed()
     return {
         "status": "online",
-        "app": "PrasaTek SupiriConvertPRO",
+        "app": "SupiriConvertPRO",
         "provider": "PrasaTek System Solutions",
         "libreoffice": bool(lo),
         "libreoffice_path": lo or "Using Pure-Python High-Accuracy Fallback",
@@ -682,6 +683,101 @@ def get_system_status():
 # TAB 1: FULL MATRIX DOCUMENT CONVERTER
 # =====================================================================
 
+def sync_convert_document(input_path: str, output_path: str, orig_ext: str, target_format: str):
+    """Synchronous CPU-bound document conversion executed in worker threadpool."""
+    # 1. Any Office / Text to PDF
+    if target_format == "pdf":
+        lo_bin = get_libreoffice_bin()
+        lo_success = False
+        if lo_bin:
+            try:
+                cmd = [lo_bin, "--headless", "--convert-to", "pdf", "--outdir", UPLOAD_DIR, input_path]
+                logger.info(f"Running LibreOffice headless: {' '.join(cmd)}")
+                res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=120)
+                if res.returncode == 0:
+                    lo_output = os.path.splitext(input_path)[0] + ".pdf"
+                    if not os.path.exists(lo_output):
+                        base_no_ext = os.path.splitext(os.path.basename(input_path))[0]
+                        candidates = [
+                            os.path.join(UPLOAD_DIR, f)
+                            for f in os.listdir(UPLOAD_DIR)
+                            if f.startswith(base_no_ext) and f.endswith(".pdf")
+                        ]
+                        if candidates:
+                            lo_output = candidates[0]
+                    if os.path.exists(lo_output):
+                        shutil.move(lo_output, output_path)
+                        lo_success = True
+            except Exception as lo_err:
+                logger.warning(f"LibreOffice failed, falling back to pure-Python: {lo_err}")
+
+        if not lo_success:
+            logger.info(f"Using pure-Python engine for {orig_ext} -> pdf")
+            if orig_ext in [".docx", ".doc"]:
+                docx_to_pdf_pure_python(input_path, output_path)
+            elif orig_ext in [".xlsx", ".xls"]:
+                xlsx_to_pdf_pure_python(input_path, output_path)
+            elif orig_ext in [".pptx", ".ppt"]:
+                pptx_to_pdf_pure_python(input_path, output_path)
+            elif orig_ext == ".txt":
+                from fpdf import FPDF
+                with open(input_path, "r", encoding="utf-8", errors="ignore") as f:
+                    lines = f.readlines()
+                pdf = FPDF()
+                pdf.set_auto_page_break(auto=True, margin=15)
+                pdf.add_page()
+                pdf.set_font("helvetica", size=10)
+                for l in lines:
+                    pdf.multi_cell(0, 6, l.strip().encode('latin-1', 'replace').decode('latin-1'))
+                pdf.output(output_path)
+            else:
+                raise ValueError(f"Cannot convert '{orig_ext}' to PDF.")
+
+    # 2. Word (DOCX) -> Excel (XLSX)
+    elif orig_ext in [".docx", ".doc"] and target_format == "xlsx":
+        docx_to_xlsx(input_path, output_path)
+
+    # 3. Word (DOCX) -> PowerPoint (PPTX)
+    elif orig_ext in [".docx", ".doc"] and target_format == "pptx":
+        docx_to_pptx(input_path, output_path)
+
+    # 4. Excel (XLSX) -> Word (DOCX)
+    elif orig_ext in [".xlsx", ".xls"] and target_format == "docx":
+        xlsx_to_docx(input_path, output_path)
+
+    # 5. Excel (XLSX) -> PowerPoint (PPTX)
+    elif orig_ext in [".xlsx", ".xls"] and target_format == "pptx":
+        xlsx_to_pptx(input_path, output_path)
+
+    # 6. PowerPoint (PPTX) -> Word (DOCX)
+    elif orig_ext in [".pptx", ".ppt"] and target_format == "docx":
+        pptx_to_docx(input_path, output_path)
+
+    # 7. PowerPoint (PPTX) -> Excel (XLSX)
+    elif orig_ext in [".pptx", ".ppt"] and target_format == "xlsx":
+        pptx_to_xlsx(input_path, output_path)
+
+    # 8. PDF -> Word (DOCX)
+    elif orig_ext == ".pdf" and target_format == "docx":
+        from pdf2docx import Converter
+        cv = Converter(input_path)
+        cv.convert(output_path, start=0, end=None)
+        cv.close()
+
+    # 9. PDF -> Excel (XLSX)
+    elif orig_ext == ".pdf" and target_format == "xlsx":
+        pdf_to_xlsx(input_path, output_path)
+
+    # 10. PDF -> PowerPoint (PPTX) using PyMuPDF (fast 150 DPI)
+    elif orig_ext == ".pdf" and target_format == "pptx":
+        pdf_to_pptx_pymupdf(input_path, output_path)
+
+    else:
+        raise ValueError(
+            f"Unsupported conversion matrix path from '{orig_ext}' to '{target_format}'."
+        )
+
+
 @app.post("/api/convert/document")
 async def convert_document(
     background_tasks: BackgroundTasks,
@@ -694,6 +790,7 @@ async def convert_document(
     - XLSX to: PDF, DOCX, PPTX
     - PPTX to: PDF, DOCX, XLSX
     - PDF to: DOCX, XLSX, PPTX
+    Executes in high-performance worker threadpool to prevent blocking the event loop.
     """
     orig_name = file.filename or "document"
     orig_root, orig_ext = os.path.splitext(orig_name)
@@ -709,98 +806,7 @@ async def convert_document(
     output_path = os.path.join(UPLOAD_DIR, f"doc_out_{out_uid}_{output_filename}")
 
     try:
-        # 1. Any Office / Text to PDF
-        if target_format == "pdf":
-            lo_bin = get_libreoffice_bin()
-            lo_success = False
-            if lo_bin:
-                try:
-                    cmd = [lo_bin, "--headless", "--convert-to", "pdf", "--outdir", UPLOAD_DIR, input_path]
-                    logger.info(f"Running LibreOffice headless: {' '.join(cmd)}")
-                    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=120)
-                    if res.returncode == 0:
-                        lo_output = os.path.splitext(input_path)[0] + ".pdf"
-                        if not os.path.exists(lo_output):
-                            base_no_ext = os.path.splitext(os.path.basename(input_path))[0]
-                            candidates = [
-                                os.path.join(UPLOAD_DIR, f)
-                                for f in os.listdir(UPLOAD_DIR)
-                                if f.startswith(base_no_ext) and f.endswith(".pdf")
-                            ]
-                            if candidates:
-                                lo_output = candidates[0]
-                        if os.path.exists(lo_output):
-                            shutil.move(lo_output, output_path)
-                            lo_success = True
-                except Exception as lo_err:
-                    logger.warning(f"LibreOffice failed, falling back to pure-Python: {lo_err}")
-
-            if not lo_success:
-                logger.info(f"Using pure-Python engine for {orig_ext} -> pdf")
-                if orig_ext in [".docx", ".doc"]:
-                    docx_to_pdf_pure_python(input_path, output_path)
-                elif orig_ext in [".xlsx", ".xls"]:
-                    xlsx_to_pdf_pure_python(input_path, output_path)
-                elif orig_ext in [".pptx", ".ppt"]:
-                    pptx_to_pdf_pure_python(input_path, output_path)
-                elif orig_ext == ".txt":
-                    from fpdf import FPDF
-                    with open(input_path, "r", encoding="utf-8", errors="ignore") as f:
-                        lines = f.readlines()
-                    pdf = FPDF()
-                    pdf.set_auto_page_break(auto=True, margin=15)
-                    pdf.add_page()
-                    pdf.set_font("helvetica", size=10)
-                    for l in lines:
-                        pdf.multi_cell(0, 6, l.strip().encode('latin-1', 'replace').decode('latin-1'))
-                    pdf.output(output_path)
-                else:
-                    raise HTTPException(status_code=400, detail=f"Cannot convert '{orig_ext}' to PDF.")
-
-        # 2. Word (DOCX) -> Excel (XLSX)
-        elif orig_ext in [".docx", ".doc"] and target_format == "xlsx":
-            docx_to_xlsx(input_path, output_path)
-
-        # 3. Word (DOCX) -> PowerPoint (PPTX)
-        elif orig_ext in [".docx", ".doc"] and target_format == "pptx":
-            docx_to_pptx(input_path, output_path)
-
-        # 4. Excel (XLSX) -> Word (DOCX)
-        elif orig_ext in [".xlsx", ".xls"] and target_format == "docx":
-            xlsx_to_docx(input_path, output_path)
-
-        # 5. Excel (XLSX) -> PowerPoint (PPTX)
-        elif orig_ext in [".xlsx", ".xls"] and target_format == "pptx":
-            xlsx_to_pptx(input_path, output_path)
-
-        # 6. PowerPoint (PPTX) -> Word (DOCX)
-        elif orig_ext in [".pptx", ".ppt"] and target_format == "docx":
-            pptx_to_docx(input_path, output_path)
-
-        # 7. PowerPoint (PPTX) -> Excel (XLSX)
-        elif orig_ext in [".pptx", ".ppt"] and target_format == "xlsx":
-            pptx_to_xlsx(input_path, output_path)
-
-        # 8. PDF -> Word (DOCX)
-        elif orig_ext == ".pdf" and target_format == "docx":
-            from pdf2docx import Converter
-            cv = Converter(input_path)
-            cv.convert(output_path, start=0, end=None)
-            cv.close()
-
-        # 9. PDF -> Excel (XLSX)
-        elif orig_ext == ".pdf" and target_format == "xlsx":
-            pdf_to_xlsx(input_path, output_path)
-
-        # 10. PDF -> PowerPoint (PPTX) using PyMuPDF
-        elif orig_ext == ".pdf" and target_format == "pptx":
-            pdf_to_pptx_pymupdf(input_path, output_path)
-
-        else:
-            raise HTTPException(
-                status_code=400,
-                detail=f"Unsupported conversion matrix path from '{orig_ext}' to '{target_format}'."
-            )
+        await run_in_threadpool(sync_convert_document, input_path, output_path, orig_ext, target_format)
 
         if not os.path.exists(output_path) or os.path.getsize(output_path) == 0:
             raise HTTPException(status_code=500, detail="Conversion completed, but output file is missing or empty.")
@@ -817,6 +823,9 @@ async def convert_document(
             },
         )
 
+    except ValueError as ve:
+        remove_temp_paths(input_path, output_path)
+        raise HTTPException(status_code=400, detail=str(ve))
     except HTTPException:
         remove_temp_paths(input_path, output_path)
         raise
@@ -835,7 +844,7 @@ async def merge_pdfs(
     background_tasks: BackgroundTasks,
     files: List[UploadFile] = File(...),
 ):
-    """Merge multiple PDF files into one using pypdf.PdfWriter.append."""
+    """Merge multiple PDF files into one using pypdf.PdfWriter.append in threadpool."""
     if not files or len(files) < 2:
         raise HTTPException(status_code=400, detail="Please upload at least 2 PDF files to merge.")
 
@@ -849,7 +858,6 @@ async def merge_pdfs(
     output_path = os.path.join(UPLOAD_DIR, f"merged_{out_uid}.pdf")
 
     try:
-        writer = PdfWriter()
         for idx, file in enumerate(files):
             ext = os.path.splitext(file.filename or "")[1].lower()
             if ext != ".pdf":
@@ -857,10 +865,15 @@ async def merge_pdfs(
             
             fpath = await save_upload_file(file, f"merge_{idx}")
             saved_inputs.append(fpath)
-            writer.append(fpath)
 
-        with open(output_path, "wb") as f_out:
-            writer.write(f_out)
+        def sync_merge(paths: List[str], target: str):
+            writer = PdfWriter()
+            for p in paths:
+                writer.append(p)
+            with open(target, "wb") as f_out:
+                writer.write(f_out)
+
+        await run_in_threadpool(sync_merge, saved_inputs, output_path)
 
         background_tasks.add_task(remove_temp_paths, *saved_inputs, output_path)
 
@@ -886,7 +899,7 @@ async def images_to_pdf(
     background_tasks: BackgroundTasks,
     files: List[UploadFile] = File(...),
 ):
-    """Combine multiple images (.png, .jpg, .webp, .bmp) into a single PDF using Pillow."""
+    """Combine multiple images (.png, .jpg, .webp, .bmp) into a single PDF using Pillow in threadpool."""
     if not files:
         raise HTTPException(status_code=400, detail="Please upload at least 1 image.")
 
@@ -900,30 +913,34 @@ async def images_to_pdf(
     output_path = os.path.join(UPLOAD_DIR, f"images_combined_{out_uid}.pdf")
 
     try:
-        rgb_images = []
         for idx, file in enumerate(files):
             fpath = await save_upload_file(file, f"img2pdf_{idx}")
             saved_inputs.append(fpath)
 
-            img = Image.open(fpath)
-            if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
-                bg = Image.new("RGB", img.size, (255, 255, 255))
-                alpha = img.convert("RGBA").split()[-1]
-                bg.paste(img.convert("RGBA"), mask=alpha)
-                rgb_images.append(bg)
-            else:
-                rgb_images.append(img.convert("RGB"))
+        def sync_images_to_pdf(paths: List[str], target: str):
+            rgb_images = []
+            for p in paths:
+                img = Image.open(p)
+                if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
+                    bg = Image.new("RGB", img.size, (255, 255, 255))
+                    alpha = img.convert("RGBA").split()[-1]
+                    bg.paste(img.convert("RGBA"), mask=alpha)
+                    rgb_images.append(bg)
+                else:
+                    rgb_images.append(img.convert("RGB"))
 
-        if not rgb_images:
-            raise HTTPException(status_code=400, detail="No valid images processed.")
+            if not rgb_images:
+                raise ValueError("No valid images processed.")
 
-        rgb_images[0].save(
-            output_path,
-            "PDF",
-            resolution=100.0,
-            save_all=True,
-            append_images=rgb_images[1:],
-        )
+            rgb_images[0].save(
+                target,
+                "PDF",
+                resolution=150.0,
+                save_all=True,
+                append_images=rgb_images[1:],
+            )
+
+        await run_in_threadpool(sync_images_to_pdf, saved_inputs, output_path)
 
         background_tasks.add_task(remove_temp_paths, *saved_inputs, output_path)
 
@@ -945,7 +962,7 @@ async def images_to_pdf(
 
 
 # =====================================================================
-# TAB 3: MEDIA CONVERTER (FFmpeg Video & Audio)
+# TAB 3: MEDIA CONVERTER (FFmpeg Video & Audio - Ultrafast Engine)
 # =====================================================================
 
 @app.post("/api/convert/media")
@@ -956,11 +973,10 @@ async def convert_media(
     fps: Optional[int] = Form(12),
 ):
     """
-    Handle media conversions using FFmpeg:
-    - Video to Audio (.mp3, .wav, .aac, .ogg, .m4a, .flac)
-    - Video to Video (.mp4, .mkv, .avi, .mov, .webm)
-    - Video to Animated GIF (.gif with palette optimization)
-    - Audio to Audio
+    Handle media conversions using FFmpeg with maximum speed optimization:
+    - Ultrafast presets and multithreading (-preset ultrafast -threads 0)
+    - High-speed MP3 encoding (-q:a 2 -threads 0)
+    - Offloaded to threadpool to keep event loop 100% responsive
     """
     ff_bin = get_ffmpeg_bin()
     if not ff_bin:
@@ -981,17 +997,17 @@ async def convert_media(
     try:
         cmd = [ff_bin, "-y", "-i", input_path]
 
-        # Case 1: Audio extraction / transcode
+        # Case 1: Audio extraction / transcode (Fast MP3 with -q:a 2 -threads 0)
         if target_format == "mp3":
-            cmd += ["-vn", "-c:a", "libmp3lame", "-b:a", "192k", output_path]
+            cmd += ["-vn", "-c:a", "libmp3lame", "-q:a", "2", "-threads", "0", output_path]
         elif target_format == "wav":
-            cmd += ["-vn", "-c:a", "pcm_s16le", output_path]
+            cmd += ["-vn", "-c:a", "pcm_s16le", "-threads", "0", output_path]
         elif target_format in ("aac", "m4a"):
-            cmd += ["-vn", "-c:a", "aac", "-b:a", "192k", output_path]
+            cmd += ["-vn", "-c:a", "aac", "-b:a", "192k", "-threads", "0", output_path]
         elif target_format == "ogg":
-            cmd += ["-vn", "-c:a", "libvorbis", "-q:a", "5", output_path]
+            cmd += ["-vn", "-c:a", "libvorbis", "-q:a", "5", "-threads", "0", output_path]
         elif target_format == "flac":
-            cmd += ["-vn", "-c:a", "flac", output_path]
+            cmd += ["-vn", "-c:a", "flac", "-threads", "0", output_path]
 
         # Case 2: Animated GIF
         elif target_format == "gif":
@@ -1001,24 +1017,27 @@ async def convert_media(
                 f"[s0]palettegen=max_colors=128[p];"
                 f"[s1][p]paletteuse=dither=bayer"
             )
-            cmd += ["-vf", filter_chain, output_path]
+            cmd += ["-threads", "0", "-vf", filter_chain, output_path]
 
-        # Case 3: Video Transcoding
+        # Case 3: Video Transcoding (ultrafast preset + all threads)
         elif target_format == "mp4":
-            cmd += ["-c:v", "libx264", "-preset", "fast", "-crf", "23", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", output_path]
+            cmd += ["-c:v", "libx264", "-preset", "ultrafast", "-threads", "0", "-crf", "23", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", output_path]
         elif target_format == "webm":
-            cmd += ["-c:v", "libvpx-vp9", "-crf", "30", "-b:v", "0", "-c:a", "libopus", output_path]
+            cmd += ["-c:v", "libvpx-vp9", "-deadline", "realtime", "-threads", "0", "-crf", "30", "-b:v", "0", "-c:a", "libopus", output_path]
         elif target_format == "mkv":
-            cmd += ["-c:v", "libx264", "-preset", "fast", "-c:a", "aac", output_path]
+            cmd += ["-c:v", "libx264", "-preset", "ultrafast", "-threads", "0", "-c:a", "aac", output_path]
         elif target_format == "avi":
-            cmd += ["-c:v", "mpeg4", "-q:v", "5", "-c:a", "mp3", output_path]
+            cmd += ["-c:v", "mpeg4", "-threads", "0", "-q:v", "5", "-c:a", "mp3", output_path]
         elif target_format == "mov":
-            cmd += ["-c:v", "libx264", "-c:a", "aac", output_path]
+            cmd += ["-c:v", "libx264", "-preset", "ultrafast", "-threads", "0", "-c:a", "aac", output_path]
         else:
             raise HTTPException(status_code=400, detail=f"Unsupported target media format: {target_format}")
 
-        logger.info(f"Executing FFmpeg ({ff_bin}): {' '.join(cmd)}")
-        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=180)
+        def run_ffmpeg_sync(command: list):
+            logger.info(f"Executing FFmpeg: {' '.join(command)}")
+            return subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=180)
+
+        res = await run_in_threadpool(run_ffmpeg_sync, cmd)
 
         if res.returncode != 0:
             logger.error(f"FFmpeg failed: {res.stderr}")
@@ -1049,7 +1068,7 @@ async def convert_media(
 
 
 # =====================================================================
-# TAB 4: IMAGE STUDIO (Pillow Conversion & Compression)
+# TAB 4: IMAGE STUDIO (Pillow Conversion & Compression in Threadpool)
 # =====================================================================
 
 @app.post("/api/image/convert")
@@ -1061,6 +1080,7 @@ async def convert_image(
 ):
     """
     Convert image formats (.png, .jpg, .webp, .bmp) and compress with quality slider (10% to 100%).
+    Executes in high-performance worker threadpool to maximize speed and responsiveness.
     """
     try:
         from PIL import Image
@@ -1084,27 +1104,30 @@ async def convert_image(
     output_path = os.path.join(UPLOAD_DIR, f"img_out_{out_uid}_{output_filename}")
 
     try:
-        with Image.open(input_path) as img:
-            if target_format in ("jpg", "bmp"):
-                if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
-                    bg = Image.new("RGB", img.size, (255, 255, 255))
-                    alpha = img.convert("RGBA").split()[-1]
-                    bg.paste(img.convert("RGBA"), mask=alpha)
-                    processed_img = bg
+        def sync_convert_image(in_p: str, out_p: str, t_fmt: str, q_val: int):
+            with Image.open(in_p) as img:
+                if t_fmt in ("jpg", "bmp"):
+                    if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
+                        bg = Image.new("RGB", img.size, (255, 255, 255))
+                        alpha = img.convert("RGBA").split()[-1]
+                        bg.paste(img.convert("RGBA"), mask=alpha)
+                        processed_img = bg
+                    else:
+                        processed_img = img.convert("RGB")
                 else:
-                    processed_img = img.convert("RGB")
-            else:
-                processed_img = img
+                    processed_img = img
 
-            if target_format == "jpg":
-                processed_img.save(output_path, "JPEG", quality=quality_val, optimize=True)
-            elif target_format == "webp":
-                processed_img.save(output_path, "WEBP", quality=quality_val, method=6)
-            elif target_format == "png":
-                comp_level = int((100 - quality_val) / 100 * 9)
-                processed_img.save(output_path, "PNG", compress_level=comp_level, optimize=True)
-            elif target_format == "bmp":
-                processed_img.save(output_path, "BMP")
+                if t_fmt == "jpg":
+                    processed_img.save(out_p, "JPEG", quality=q_val, optimize=True)
+                elif t_fmt == "webp":
+                    processed_img.save(out_p, "WEBP", quality=q_val, method=4)
+                elif t_fmt == "png":
+                    comp_level = int((100 - q_val) / 100 * 9)
+                    processed_img.save(out_p, "PNG", compress_level=comp_level, optimize=True)
+                elif t_fmt == "bmp":
+                    processed_img.save(out_p, "BMP")
+
+        await run_in_threadpool(sync_convert_image, input_path, output_path, target_format, quality_val)
 
         background_tasks.add_task(remove_temp_paths, input_path, output_path)
 
