@@ -1,0 +1,39 @@
+[project]
+name = "supiriconvertpro"
+version = "2.1.0"
+description = "SupiriConvertPRO by PrasaTek System Solutions"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.28.0",
+    "python-multipart>=0.0.9",
+    "pypdf>=4.1.0",
+    "pdf2docx>=0.5.8",
+    "pdfplumber>=0.11.0",
+    "pandas>=2.2.0",
+    "openpyxl>=3.1.2",
+    "pdf2image>=1.17.0",
+    "python-pptx>=0.6.23",
+    "Pillow>=10.2.0",
+    "python-docx>=1.1.0",
+    "PyMuPDF>=1.24.0",
+    "fpdf2>=2.7.9",
+    "imageio-ffmpeg>=0.4.9",
+]
+
+[tool.pyright]
+include = ["."]
+extraPaths = [
+    "C:/Users/PRASA/AppData/Local/Programs/Python/Python314/Lib/site-packages",
+    "C:/Users/PRASA/AppData/Local/Programs/Python/Python312/Lib/site-packages"
+]
+pythonVersion = "3.14"
+pythonPlatform = "Windows"
+
+[tool.pyrefly]
+include = ["."]
+extraPaths = [
+    "C:/Users/PRASA/AppData/Local/Programs/Python/Python314/Lib/site-packages",
+    "C:/Users/PRASA/AppData/Local/Programs/Python/Python312/Lib/site-packages"
+]
+pythonVersion = "3.14"

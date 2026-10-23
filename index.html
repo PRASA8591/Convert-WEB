@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SupiriConvertPRO | 100% Free All-in-One File Converter & Utilities</title>
-  <meta name="description" content="100% Free and unlimited all-in-one file converter and utility suite powered by PrasaTek System Solutions. Convert documents, PDFs, media, and images with zero limits and maximum privacy.">
+  <title>SupiriConvert PRO — 100% Free All-in-One Converter | PrasaTek</title>
+  <link rel="canonical" href="https://supiriconvert.prasatek.lk/">
+  <meta name="description"
+    content="SupiriConvert PRO by PrasaTek System Solutions — 100% Free Unlimited All-in-One File Converter. Convert PDF, Word, Excel, PowerPoint, Video, Audio, Images, OCR & Case Converter online.">
+  <meta name="keywords"
+    content="SupiriConvert PRO, PrasaTek, PrasaTek System Solutions, free file converter Sri Lanka, PDF to Word, Word to PDF, video to MP3, case converter, OCR Sinhala, PDF merge split">
+  <meta name="author" content="PrasaTek System Solutions">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Open Graph / Facebook / WhatsApp / Telegram -->
+  <meta property="og:title" content="SupiriConvert PRO — 100% Free All-in-One Converter | PrasaTek">
+  <meta property="og:description"
+    content="Unlimited Document, PDF, Video, Audio, Image, OCR & Text Conversions. Powered by PrasaTek System Solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://supiriconvert.prasatek.lk/">
+  <meta property="og:image" content="https://supiriconvert.prasatek.lk/assets/logo.png">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SupiriConvert PRO — 100% Free All-in-One Converter | PrasaTek">
+  <meta name="twitter:description"
+    content="Unlimited Document, PDF, Video, Audio, Image, OCR & Text Conversions. Powered by PrasaTek System Solutions.">
+  <meta name="twitter:image" content="https://supiriconvert.prasatek.lk/assets/logo.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/favicon.png">
@@ -13,7 +35,9 @@
   <!-- Google Fonts: Inter & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -65,19 +89,42 @@
   <!-- jsPDF Library for Instant Client-Side Image to PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+  <!-- Tesseract.js Library for Client-Side AI OCR (English + Sinhala) -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+  <!-- Sinhala Studio Real-Time Phonetic Engine & FM Abhaya Converter -->
+  <script src="/assets/sinhala.js"></script>
+
   <style>
+    /* Sinhala Guide Chip */
+    .guide-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.375rem;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(51, 65, 85, 0.6);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      color: #f1f5f9;
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
+
     ::-webkit-scrollbar-track {
       background: #070b14;
     }
+
     ::-webkit-scrollbar-thumb {
       background: #1e293b;
       border-radius: 4px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: #334155;
     }
@@ -86,6 +133,7 @@
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
+
     .no-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -98,9 +146,11 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(51, 65, 85, 0.5);
     }
+
     .glass-card-hover {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .glass-card-hover:hover {
       border-color: rgba(6, 182, 212, 0.4);
       box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
@@ -114,25 +164,36 @@
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 relative overflow-x-hidden">
+
+<body
+  class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 relative overflow-x-hidden">
 
   <!-- Ambient Background Glows -->
-  <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
-  <div class="fixed bottom-10 right-1/4 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div
+    class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow">
+  </div>
+  <div
+    class="fixed bottom-10 right-1/4 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none">
+  </div>
 
   <!-- Header -->
   <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-0 sm:h-20 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
-      
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-0 sm:h-20 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+
       <!-- Brand Logo -->
       <div class="flex items-center space-x-3 text-left w-full sm:w-auto">
-        <img src="/assets/logo.png" alt="SupiriConvertPRO Logo" class="h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-xl shadow-md shadow-cyan-500/10 flex-shrink-0" onerror="this.onerror=null; this.src='assets/logo.png';">
+        <img src="/assets/logo.png" alt="SupiriConvert PRO Logo"
+          class="h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-xl shadow-md shadow-cyan-500/10 flex-shrink-0"
+          onerror="this.onerror=null; this.src='assets/logo.png';">
         <div class="truncate">
           <div class="flex items-center space-x-2">
-            <span class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+            <span
+              class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
               SupiriConvert
             </span>
-            <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300">
+            <span
+              class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300">
               PRO
             </span>
           </div>
@@ -144,9 +205,11 @@
 
       <!-- Engine Status & Badges -->
       <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto space-x-3">
-        <div id="system-status-badge" class="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-medium text-slate-300 shadow-inner">
+        <div id="system-status-badge"
+          class="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-medium text-slate-300 shadow-inner">
           <span class="relative flex h-2 w-2">
-            <span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span id="status-ping"
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span id="status-dot" class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
           <span id="status-text">Engine Online</span>
@@ -155,54 +218,77 @@
     </div>
   </header>
 
+  <!-- Render Cold-Start Keep-Alive Wake-Up Banner -->
+  <div id="cold-start-banner"
+    class="hidden transition-all duration-500 bg-gradient-to-r from-amber-500/20 via-cyan-500/20 to-emerald-500/20 border-b border-cyan-500/30 px-4 py-2.5 text-center text-xs sm:text-sm font-medium text-cyan-200 flex items-center justify-center space-x-2 shadow-lg backdrop-blur-md">
+    <span class="animate-spin inline-block w-4 h-4 border-2 border-cyan-400 border-t-transparent rounded-full"></span>
+    <span>⚡ Waking up high-speed cloud engine... Ready in a few seconds!</span>
+  </div>
+
   <!-- Main Content Container -->
   <main class="flex-grow max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
-    
+
     <!-- Hero Title (Compact & Mobile-Optimized) -->
     <div class="text-center max-w-3xl mx-auto mb-4 sm:mb-8">
-      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900/90 border border-cyan-500/30 text-[11px] sm:text-xs font-semibold text-cyan-300 mb-2 sm:mb-3 shadow-lg shadow-cyan-500/10">
+      <div
+        class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900/90 border border-cyan-500/30 text-[11px] sm:text-xs font-semibold text-cyan-300 mb-2 sm:mb-3 shadow-lg shadow-cyan-500/10">
         <i class="fa-solid fa-shield-halved text-cyan-400"></i>
         <span>Powered by PrasaTek System Solutions</span>
       </div>
       <h1 class="font-heading text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-1.5 sm:mb-2">
-        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">SupiriConvert</span><span class="text-[10px] sm:text-xs md:text-sm px-2 py-0.5 ml-2 align-middle rounded-full font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300">PRO</span>
+        <span
+          class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">SupiriConvert</span><span
+          class="text-[10px] sm:text-xs md:text-sm px-2 py-0.5 ml-2 align-middle rounded-full font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300">PRO</span>
       </h1>
       <p class="text-xs sm:text-base font-medium text-slate-300 mb-1">
-        Unlimited Conversions, <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-bold">100% Free</span>
+        Unlimited Conversions, <span
+          class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-bold">100% Free</span>
       </p>
       <p class="text-slate-400 text-xs sm:text-sm leading-relaxed px-2 max-w-2xl mx-auto hidden sm:block">
-        Fast, secure, and unlimited conversion suite. Full matrix Office & PDF conversions, audio/video encoding, client-side image studio, and offline utilities.
+        Fast, secure, and unlimited conversion suite. Full matrix Office & PDF conversions, audio/video encoding,
+        client-side image studio, and offline utilities.
       </p>
     </div>
 
     <!-- Navigation Tabs: 2x3 Grid on Mobile, 3x2 on Tablet, Single Centered Row on Desktop -->
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-wrap lg:justify-center gap-2 mb-6 sm:mb-8 px-1">
-      <button onclick="switchTab('doc-tab')" id="tab-btn-doc-tab" class="tab-button active flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/20 whitespace-nowrap">
+      <button onclick="switchTab('doc-tab')" id="tab-btn-doc-tab"
+        class="tab-button active flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/20 whitespace-nowrap">
         <i class="fa-solid fa-file-contract"></i>
         <span>Document Converter</span>
       </button>
 
-      <button onclick="switchTab('pdf-tab')" id="tab-btn-pdf-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('pdf-tab')" id="tab-btn-pdf-tab"
+        class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-file-pdf"></i>
         <span>PDF Studio</span>
       </button>
 
-      <button onclick="switchTab('media-tab')" id="tab-btn-media-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('media-tab')" id="tab-btn-media-tab"
+        class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-photo-film"></i>
         <span>Media Converter</span>
       </button>
 
-      <button onclick="switchTab('image-tab')" id="tab-btn-image-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('image-tab')" id="tab-btn-image-tab"
+        class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-image"></i>
         <span>Image Studio</span>
       </button>
 
-      <button onclick="switchTab('text-tab')" id="tab-btn-text-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('sinhala-tab')" id="tab-btn-sinhala-tab"
+        class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+        <span>🇱🇰 Sinhala Studio</span>
+      </button>
+
+      <button onclick="switchTab('text-tab')" id="tab-btn-text-tab"
+        class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-font"></i>
         <span>🔤 Case Converter</span>
       </button>
 
-      <button onclick="switchTab('utils-tab')" id="tab-btn-utils-tab" class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
+      <button onclick="switchTab('utils-tab')" id="tab-btn-utils-tab"
+        class="tab-button flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 whitespace-nowrap">
         <i class="fa-solid fa-toolbox"></i>
         <span>Free Utilities</span>
       </button>
@@ -213,30 +299,38 @@
     <!-- ======================================================== -->
     <section id="doc-tab" class="tab-content block">
       <div class="glass-card rounded-2xl p-5 sm:p-8 max-w-3xl mx-auto shadow-2xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
           <div>
             <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
               <i class="fa-solid fa-arrows-split-up-and-left text-cyan-400"></i> Full Matrix Document Converter
             </h2>
-            <p class="text-xs text-slate-400 mt-1">Convert between Word (.docx), Excel (.xlsx), PowerPoint (.pptx), and PDF (.pdf)</p>
+            <p class="text-xs text-slate-400 mt-1">Convert between Word (.docx), Excel (.xlsx), PowerPoint (.pptx), and
+              PDF (.pdf)</p>
           </div>
-          <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Any-to-Any Matrix</span>
+          <span
+            class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Any-to-Any
+            Matrix</span>
         </div>
 
         <!-- Drag & Drop Zone -->
-        <div id="doc-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all duration-200 bg-slate-900/40 relative">
-          <input type="file" id="doc-file-input" class="hidden" accept=".docx,.doc,.xlsx,.xls,.pptx,.ppt,.pdf,.txt,.rtf">
-          
+        <div id="doc-dropzone"
+          class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all duration-200 bg-slate-900/40 relative">
+          <input type="file" id="doc-file-input" class="hidden"
+            accept=".docx,.doc,.xlsx,.xls,.pptx,.ppt,.pdf,.txt,.rtf">
+
           <div id="doc-empty-state">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-cyan-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
+            <div
+              class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-cyan-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <p class="text-sm sm:text-base font-semibold text-slate-200">Click or Drag & Drop document here</p>
-            <p class="text-xs text-slate-400 mt-1">Word (.docx), Excel (.xlsx), PowerPoint (.pptx), PDF (.pdf)</p>
+            <p class="text-xs text-slate-400 mt-1">Word (.docx), Excel (.xlsx), PowerPoint (.pptx), PDF (.pdf) • Max file size: 50 MB</p>
           </div>
 
           <!-- Selected File Preview -->
-          <div id="doc-file-preview" class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+          <div id="doc-file-preview"
+            class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
             <div class="flex items-center space-x-3 overflow-hidden text-left">
               <div id="doc-file-icon" class="text-2xl text-cyan-400 flex-shrink-0">
                 <i class="fa-solid fa-file"></i>
@@ -246,7 +340,8 @@
                 <p id="doc-filesize" class="text-xs text-slate-400">0 KB</p>
               </div>
             </div>
-            <button type="button" onclick="clearDocFile(event)" class="text-slate-400 hover:text-rose-400 p-2 transition" title="Remove file">
+            <button type="button" onclick="clearDocFile(event)"
+              class="text-slate-400 hover:text-rose-400 p-2 transition" title="Remove file">
               <i class="fa-solid fa-xmark text-lg"></i>
             </button>
           </div>
@@ -255,17 +350,21 @@
         <!-- Conversion Options -->
         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target Format</label>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target
+              Format</label>
             <div class="relative">
-              <select id="doc-target-format" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+              <select id="doc-target-format"
+                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
                 <option value="pdf">PDF Document (.pdf)</option>
               </select>
-              <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+              <i
+                class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
             </div>
           </div>
 
           <div class="flex items-end">
-            <button id="doc-convert-btn" onclick="convertDocument()" disabled class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
+            <button id="doc-convert-btn" onclick="convertDocument()" disabled
+              class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
               <i class="fa-solid fa-rotate"></i>
               <span>Convert Document</span>
             </button>
@@ -273,27 +372,33 @@
         </div>
 
         <!-- Manual Download Flow Success Card -->
-        <div id="doc-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
-          <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+        <div id="doc-success-card"
+          class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+          <div
+            class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
             <i class="fa-solid fa-circle-check"></i>
           </div>
           <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
           <p id="doc-success-meta" class="text-xs text-slate-300 font-mono mb-5">document.pdf (0 KB)</p>
-          
+
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-            <button onclick="downloadConvertedFile('doc')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition duration-200 flex items-center justify-center space-x-2">
+            <button onclick="downloadConvertedFile('doc')"
+              class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition duration-200 flex items-center justify-center space-x-2">
               <i class="fa-solid fa-cloud-arrow-down text-base"></i>
               <span>⬇️ Download File Now</span>
             </button>
-            <button onclick="resetToolView('doc')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+            <button onclick="resetToolView('doc')"
+              class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
               <span>Convert Another File</span>
             </button>
           </div>
         </div>
 
-        <div class="mt-4 p-3 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] sm:text-xs text-slate-400 flex items-start space-x-2">
+        <div
+          class="mt-4 p-3 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] sm:text-xs text-slate-400 flex items-start space-x-2">
           <i class="fa-solid fa-shield-halved text-emerald-400 mt-0.5 flex-shrink-0"></i>
-          <span>Privacy Guaranteed: Processed inside an isolated container with self-cleaning storage by PrasaTek System Solutions.</span>
+          <span>Privacy Guaranteed: Processed inside an isolated container with self-cleaning storage by PrasaTek System
+            Solutions.</span>
         </div>
       </div>
     </section>
@@ -302,28 +407,58 @@
     <!-- TAB 2: PDF STUDIO -->
     <!-- ======================================================== -->
     <section id="pdf-tab" class="tab-content hidden">
-      <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
-        
-        <!-- Tool 1: Merge PDFs -->
-        <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+      <div class="max-w-4xl mx-auto space-y-6">
+
+        <!-- PDF Studio Sub-tool Navigation Selector -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-2">
+          <button type="button" onclick="switchPdfSubtool('merge')" id="pdf-subtab-btn-merge"
+            class="pdf-subtab-btn px-3 py-2.5 rounded-xl font-heading font-semibold text-xs sm:text-sm transition-all duration-200 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Merge PDFs</span>
+          </button>
+          <button type="button" onclick="switchPdfSubtool('split')" id="pdf-subtab-btn-split"
+            class="pdf-subtab-btn px-3 py-2.5 rounded-xl font-heading font-semibold text-xs sm:text-sm transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-scissors text-amber-400"></i>
+            <span>✂️ Split / Extract</span>
+          </button>
+          <button type="button" onclick="switchPdfSubtool('security')" id="pdf-subtab-btn-security"
+            class="pdf-subtab-btn px-3 py-2.5 rounded-xl font-heading font-semibold text-xs sm:text-sm transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-shield-halved text-cyan-400"></i>
+            <span>🔒 Protect / Unlock</span>
+          </button>
+          <button type="button" onclick="switchPdfSubtool('img2pdf')" id="pdf-subtab-btn-img2pdf"
+            class="pdf-subtab-btn px-3 py-2.5 rounded-xl font-heading font-semibold text-xs sm:text-sm transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-images text-emerald-400"></i>
+            <span>Images to PDF</span>
+          </button>
+        </div>
+
+        <!-- Subtool 1: Merge PDFs -->
+        <div id="pdf-subtool-merge" class="pdf-subtool-pane glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
             <div>
               <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
                 <i class="fa-solid fa-layer-group text-emerald-400"></i> Merge Multiple PDFs
               </h2>
-              <p class="text-xs text-slate-400 mt-1">Combine two or more PDF files into a single unified document</p>
+              <p class="text-xs text-slate-400 mt-1">Combine two or more PDF files into a single unified document (Max
+                50 MB total)</p>
             </div>
-            <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">PyPDF Powered</span>
+            <span
+              class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">PyPDF
+              Powered</span>
           </div>
 
           <!-- Multi PDF Dropzone -->
-          <div id="pdf-merge-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 text-center cursor-pointer transition-all bg-slate-900/40">
+          <div id="pdf-merge-dropzone"
+            class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 text-center cursor-pointer transition-all bg-slate-900/40">
             <input type="file" id="pdf-merge-input" class="hidden" accept=".pdf" multiple>
-            <div class="w-12 h-12 rounded-full bg-slate-800 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-xl">
+            <div
+              class="w-12 h-12 rounded-full bg-slate-800 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-xl">
               <i class="fa-solid fa-copy"></i>
             </div>
             <p class="text-sm font-semibold text-slate-200">Select or Drop 2+ PDF files here</p>
-            <p class="text-xs text-slate-400 mt-1">Files can be reordered before merging</p>
+            <p class="text-xs text-slate-400 mt-1">Files can be reordered before merging • Max 50 MB limit</p>
           </div>
 
           <!-- Merge File List -->
@@ -331,84 +466,319 @@
 
           <!-- Merge Action -->
           <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <button type="button" onclick="clearMergeList()" class="text-xs text-slate-400 hover:text-rose-400 transition flex items-center space-x-1">
+            <button type="button" onclick="clearMergeList()"
+              class="text-xs text-slate-400 hover:text-rose-400 transition flex items-center space-x-1">
               <i class="fa-solid fa-trash-can"></i>
               <span>Clear List</span>
             </button>
-            <button id="pdf-merge-btn" onclick="mergePdfs()" disabled class="w-full sm:w-auto py-2.5 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-500/20 transition duration-200 flex items-center justify-center space-x-2">
+            <button id="pdf-merge-btn" onclick="mergePdfs()" disabled
+              class="w-full sm:w-auto py-2.5 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-500/20 transition duration-200 flex items-center justify-center space-x-2">
               <i class="fa-solid fa-object-group"></i>
               <span>Merge PDFs</span>
             </button>
           </div>
 
           <!-- PDF Merge Success Card -->
-          <div id="pdf-merge-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
-            <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+          <div id="pdf-merge-success-card"
+            class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+            <div
+              class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
               <i class="fa-solid fa-circle-check"></i>
             </div>
             <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
             <p id="pdf-merge-success-meta" class="text-xs text-slate-300 font-mono mb-5">merged_document.pdf (0 KB)</p>
-            
+
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-              <button onclick="downloadConvertedFile('pdf-merge')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+              <button onclick="downloadConvertedFile('pdf-merge')"
+                class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
                 <i class="fa-solid fa-cloud-arrow-down text-base"></i>
                 <span>⬇️ Download File Now</span>
               </button>
-              <button onclick="resetToolView('pdf-merge')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+              <button onclick="resetToolView('pdf-merge')"
+                class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
                 <span>Merge More Files</span>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Tool 2: Images to PDF -->
-        <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+        <!-- Subtool 2: Split / Extract PDF Pages (NEW) -->
+        <div id="pdf-subtool-split" class="pdf-subtool-pane hidden glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+            <div>
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-scissors text-amber-400"></i> Split / Extract PDF Pages
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Extract specific pages or page ranges into a separate PDF file (Max
+                50 MB)</p>
+            </div>
+            <span
+              class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-amber-950/80 border border-amber-800/60 text-amber-300 font-medium">PyPDF
+              Powered</span>
+          </div>
+
+          <!-- Split Dropzone -->
+          <div id="split-dropzone"
+            class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40 relative">
+            <input type="file" id="split-file-input" class="hidden" accept=".pdf">
+
+            <div id="split-empty-state">
+              <div
+                class="w-14 h-14 rounded-full bg-slate-800 text-amber-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-slate-700/60">
+                <i class="fa-solid fa-file-pdf"></i>
+              </div>
+              <p class="text-sm sm:text-base font-semibold text-slate-200">Select or Drop a PDF file here</p>
+              <p class="text-xs text-slate-400 mt-1">Extract pages 100% losslessly • Max 50 MB</p>
+            </div>
+
+            <div id="split-file-preview"
+              class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+              <div class="flex items-center space-x-3 overflow-hidden text-left">
+                <div class="text-2xl text-rose-400 flex-shrink-0">
+                  <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="truncate">
+                  <p id="split-filename" class="text-sm font-semibold text-white truncate">document.pdf</p>
+                  <p id="split-filesize" class="text-xs text-slate-400">0 KB</p>
+                </div>
+              </div>
+              <button type="button" onclick="clearSplitFile(event)"
+                class="text-slate-400 hover:text-rose-400 p-2 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Page Range Input -->
+          <div class="mt-6">
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+              Page Range To Extract (1-Indexed)
+            </label>
+            <div class="relative">
+              <input type="text" id="split-page-range" placeholder="e.g., 1-3, 5, 7-9 or all"
+                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-amber-400">
+              <span
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 bg-slate-800 px-2 py-1 rounded">e.g.
+                1-3, 5</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-1.5 flex items-center gap-1">
+              <i class="fa-solid fa-circle-info text-amber-400"></i>
+              <span>Enter comma-separated page numbers or ranges (e.g., <code
+                  class="text-amber-300">1-4, 7, 10-12</code>, or <code class="text-amber-300">all</code>).</span>
+            </p>
+          </div>
+
+          <div class="mt-6">
+            <button id="split-btn" onclick="splitPdf()" disabled
+              class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-amber-500/20 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-scissors"></i>
+              <span>Extract Selected Pages</span>
+            </button>
+          </div>
+
+          <!-- Split Success Card -->
+          <div id="pdf-split-success-card"
+            class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+            <div
+              class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
+            <p id="pdf-split-success-meta" class="text-xs text-slate-300 font-mono mb-5">extracted_pages.pdf (0 KB)</p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+              <button onclick="downloadConvertedFile('pdf-split')"
+                class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-cloud-arrow-down text-base"></i>
+                <span>⬇️ Download File Now</span>
+              </button>
+              <button onclick="resetToolView('pdf-split')"
+                class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+                <span>Split Another PDF</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subtool 3: Protect / Unlock PDF Password (NEW) -->
+        <div id="pdf-subtool-security" class="pdf-subtool-pane hidden glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+            <div>
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-cyan-400"></i> Protect & Unlock PDF Password
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Encrypt your PDF with password security or decrypt an encrypted PDF
+                (Max 50 MB)</p>
+            </div>
+            <span
+              class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">AES
+              Encryption</span>
+          </div>
+
+          <!-- Security Dropzone -->
+          <div id="security-dropzone"
+            class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40 relative">
+            <input type="file" id="security-file-input" class="hidden" accept=".pdf">
+
+            <div id="security-empty-state">
+              <div
+                class="w-14 h-14 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-slate-700/60">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <p class="text-sm sm:text-base font-semibold text-slate-200">Select or Drop a PDF file here</p>
+              <p class="text-xs text-slate-400 mt-1">Secure AES encryption & decryption • Max 50 MB</p>
+            </div>
+
+            <div id="security-file-preview"
+              class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+              <div class="flex items-center space-x-3 overflow-hidden text-left">
+                <div class="text-2xl text-cyan-400 flex-shrink-0">
+                  <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="truncate">
+                  <p id="security-filename" class="text-sm font-semibold text-white truncate">document.pdf</p>
+                  <p id="security-filesize" class="text-xs text-slate-400">0 KB</p>
+                </div>
+              </div>
+              <button type="button" onclick="clearSecurityFile(event)"
+                class="text-slate-400 hover:text-rose-400 p-2 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Mode & Password Input -->
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Operation
+                Mode</label>
+              <div class="grid grid-cols-2 gap-2">
+                <label
+                  class="flex items-center space-x-2 p-3 rounded-xl bg-slate-900 border border-slate-700 cursor-pointer hover:border-cyan-500 transition">
+                  <input type="radio" name="pdf-sec-action" value="encrypt" checked class="accent-cyan-400"
+                    onchange="updateSecurityActionLabel()">
+                  <span class="text-xs font-semibold text-slate-200">🔒 Encrypt</span>
+                </label>
+                <label
+                  class="flex items-center space-x-2 p-3 rounded-xl bg-slate-900 border border-slate-700 cursor-pointer hover:border-cyan-500 transition">
+                  <input type="radio" name="pdf-sec-action" value="decrypt" class="accent-cyan-400"
+                    onchange="updateSecurityActionLabel()">
+                  <span class="text-xs font-semibold text-slate-200">🔓 Decrypt</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label id="security-password-label"
+                class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Password to Encrypt
+                With</label>
+              <div class="relative">
+                <input type="password" id="security-password" placeholder="Enter password"
+                  class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 pr-10">
+                <button type="button" onclick="toggleSecurityPasswordVisibility()"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1">
+                  <i id="sec-eye-icon" class="fa-solid fa-eye text-xs"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <button id="security-btn" onclick="processPdfSecurity()" disabled
+              class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-lock"></i>
+              <span id="security-btn-text">Encrypt PDF with Password</span>
+            </button>
+          </div>
+
+          <!-- Security Success Card -->
+          <div id="pdf-security-success-card"
+            class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+            <div
+              class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
+            <p id="pdf-security-success-meta" class="text-xs text-slate-300 font-mono mb-5">document_protected.pdf (0
+              KB)</p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+              <button onclick="downloadConvertedFile('pdf-security')"
+                class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-cloud-arrow-down text-base"></i>
+                <span>⬇️ Download File Now</span>
+              </button>
+              <button onclick="resetToolView('pdf-security')"
+                class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+                <span>Process Another PDF</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subtool 4: Images to PDF -->
+        <div id="pdf-subtool-img2pdf" class="pdf-subtool-pane hidden glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
             <div>
               <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
                 <i class="fa-solid fa-images text-cyan-400"></i> Images to PDF
               </h2>
-              <p class="text-xs text-slate-400 mt-1">Convert multiple pictures (PNG, JPG, WEBP, BMP) into a high-res PDF booklet</p>
+              <p class="text-xs text-slate-400 mt-1">Convert multiple pictures (PNG, JPG, WEBP, BMP) into a high-res PDF
+                booklet (Max 50 MB total)</p>
             </div>
-            <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Pillow Engine</span>
+            <span
+              class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Pillow
+              Engine</span>
           </div>
 
-          <div id="img2pdf-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 text-center cursor-pointer transition-all bg-slate-900/40">
+          <div id="img2pdf-dropzone"
+            class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 text-center cursor-pointer transition-all bg-slate-900/40">
             <input type="file" id="img2pdf-input" class="hidden" accept=".png,.jpg,.jpeg,.webp,.bmp" multiple>
-            <div class="w-12 h-12 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center mx-auto mb-3 text-xl">
+            <div
+              class="w-12 h-12 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center mx-auto mb-3 text-xl">
               <i class="fa-solid fa-images"></i>
             </div>
             <p class="text-sm font-semibold text-slate-200">Select or Drop images here</p>
-            <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, WEBP, BMP</p>
+            <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, WEBP, BMP • Max 50 MB</p>
           </div>
 
-          <div id="img2pdf-preview-grid" class="mt-4 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 max-h-56 overflow-y-auto"></div>
+          <div id="img2pdf-preview-grid"
+            class="mt-4 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 max-h-56 overflow-y-auto"></div>
 
           <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <button type="button" onclick="clearImg2PdfList()" class="text-xs text-slate-400 hover:text-rose-400 transition flex items-center space-x-1">
+            <button type="button" onclick="clearImg2PdfList()"
+              class="text-xs text-slate-400 hover:text-rose-400 transition flex items-center space-x-1">
               <i class="fa-solid fa-trash-can"></i>
               <span>Clear All Images</span>
             </button>
-            <button id="img2pdf-btn" onclick="convertImagesToPdf()" disabled class="w-full sm:w-auto py-2.5 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
+            <button id="img2pdf-btn" onclick="convertImagesToPdf()" disabled
+              class="w-full sm:w-auto py-2.5 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
               <i class="fa-solid fa-file-pdf"></i>
               <span>Create PDF</span>
             </button>
           </div>
 
           <!-- Images to PDF Success Card -->
-          <div id="img2pdf-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
-            <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+          <div id="img2pdf-success-card"
+            class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+            <div
+              class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
               <i class="fa-solid fa-circle-check"></i>
             </div>
             <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
             <p id="img2pdf-success-meta" class="text-xs text-slate-300 font-mono mb-5">images_combined.pdf (0 KB)</p>
-            
+
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-              <button onclick="downloadConvertedFile('img2pdf')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+              <button onclick="downloadConvertedFile('img2pdf')"
+                class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
                 <i class="fa-solid fa-cloud-arrow-down text-base"></i>
                 <span>⬇️ Download File Now</span>
               </button>
-              <button onclick="resetToolView('img2pdf')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+              <button onclick="resetToolView('img2pdf')"
+                class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
                 <span>Create Another PDF</span>
               </button>
             </div>
@@ -423,29 +793,37 @@
     <!-- ======================================================== -->
     <section id="media-tab" class="tab-content hidden">
       <div class="glass-card rounded-2xl p-5 sm:p-8 max-w-3xl mx-auto shadow-2xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
           <div>
             <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
               <i class="fa-solid fa-film text-cyan-400"></i> Video & Audio Converter
             </h2>
-            <p class="text-xs text-slate-400 mt-1">Extract audio, transcode video formats, or craft smooth animated GIFs</p>
+            <p class="text-xs text-slate-400 mt-1">Extract audio, transcode video formats, or craft smooth animated GIFs
+            </p>
           </div>
-          <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">FFmpeg Engine</span>
+          <span
+            class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">FFmpeg
+            Engine</span>
         </div>
 
         <!-- Drag & Drop Zone -->
-        <div id="media-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40">
-          <input type="file" id="media-file-input" class="hidden" accept=".mp4,.mkv,.avi,.mov,.webm,.flv,.wmv,.mp3,.wav,.aac,.ogg,.m4a">
-          
+        <div id="media-dropzone"
+          class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40">
+          <input type="file" id="media-file-input" class="hidden"
+            accept=".mp4,.mkv,.avi,.mov,.webm,.flv,.wmv,.mp3,.wav,.aac,.ogg,.m4a">
+
           <div id="media-empty-state">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-cyan-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
+            <div
+              class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-cyan-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
               <i class="fa-solid fa-play"></i>
             </div>
             <p class="text-sm sm:text-base font-semibold text-slate-200">Select or Drop media file here</p>
-            <p class="text-xs text-slate-400 mt-1">MP4, MKV, AVI, MOV, WEBM, MP3, WAV, AAC, etc.</p>
+            <p class="text-xs text-slate-400 mt-1">MP4, MKV, AVI, MOV, WEBM, MP3, WAV, AAC, etc. • Max file size: 50 MB</p>
           </div>
 
-          <div id="media-file-preview" class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+          <div id="media-file-preview"
+            class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
             <div class="flex items-center space-x-3 overflow-hidden text-left">
               <div id="media-file-icon" class="text-2xl text-cyan-400 flex-shrink-0">
                 <i class="fa-solid fa-file-video"></i>
@@ -455,7 +833,8 @@
                 <p id="media-filesize" class="text-xs text-slate-400">0 MB</p>
               </div>
             </div>
-            <button type="button" onclick="clearMediaFile(event)" class="text-slate-400 hover:text-rose-400 p-2 transition">
+            <button type="button" onclick="clearMediaFile(event)"
+              class="text-slate-400 hover:text-rose-400 p-2 transition">
               <i class="fa-solid fa-xmark text-lg"></i>
             </button>
           </div>
@@ -464,9 +843,11 @@
         <!-- Options -->
         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target Format</label>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target
+              Format</label>
             <div class="relative">
-              <select id="media-target-format" onchange="onMediaFormatChange()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-cyan-500">
+              <select id="media-target-format" onchange="onMediaFormatChange()"
+                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-cyan-500">
                 <optgroup label="Audio Extraction">
                   <option value="mp3" selected>MP3 Audio (.mp3)</option>
                   <option value="wav">WAV Audio (.wav)</option>
@@ -484,20 +865,24 @@
                   <option value="gif">Animated GIF (.gif)</option>
                 </optgroup>
               </select>
-              <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+              <i
+                class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
             </div>
           </div>
 
           <div id="gif-fps-container" class="hidden">
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">GIF Frame Rate (FPS)</label>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">GIF Frame Rate
+              (FPS)</label>
             <div class="flex items-center space-x-3 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5">
-              <input type="range" id="gif-fps" min="6" max="24" value="12" class="w-full accent-cyan-400 cursor-pointer" oninput="document.getElementById('fps-val').innerText = this.value">
+              <input type="range" id="gif-fps" min="6" max="24" value="12" class="w-full accent-cyan-400 cursor-pointer"
+                oninput="document.getElementById('fps-val').innerText = this.value">
               <span id="fps-val" class="text-sm font-bold text-cyan-400 w-8 text-right">12</span>
             </div>
           </div>
 
           <div class="flex items-end">
-            <button id="media-convert-btn" onclick="convertMedia()" disabled class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
+            <button id="media-convert-btn" onclick="convertMedia()" disabled
+              class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
               <i class="fa-solid fa-film"></i>
               <span>Convert Media</span>
             </button>
@@ -505,19 +890,23 @@
         </div>
 
         <!-- Media Success Card -->
-        <div id="media-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
-          <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+        <div id="media-success-card"
+          class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+          <div
+            class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
             <i class="fa-solid fa-circle-check"></i>
           </div>
           <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
           <p id="media-success-meta" class="text-xs text-slate-300 font-mono mb-5">output.mp3 (0 MB)</p>
-          
+
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-            <button onclick="downloadConvertedFile('media')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+            <button onclick="downloadConvertedFile('media')"
+              class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
               <i class="fa-solid fa-cloud-arrow-down text-base"></i>
               <span>⬇️ Download File Now</span>
             </button>
-            <button onclick="resetToolView('media')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+            <button onclick="resetToolView('media')"
+              class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
               <span>Convert Another File</span>
             </button>
           </div>
@@ -526,96 +915,271 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 4: IMAGE STUDIO -->
+    <!-- TAB 4: IMAGE STUDIO (CONVERTER & AI OCR) -->
     <!-- ======================================================== -->
     <section id="image-tab" class="tab-content hidden">
-      <div class="glass-card rounded-2xl p-5 sm:p-8 max-w-3xl mx-auto shadow-2xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
-          <div>
-            <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-wand-magic-sparkles text-emerald-400"></i> Image Studio & Compressor
-            </h2>
-            <p class="text-xs text-slate-400 mt-1">Convert between PNG, JPG, WEBP, BMP & adjust file compression quality</p>
-          </div>
-          <span class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">Pillow Engine</span>
-        </div>
+      <div class="max-w-3xl mx-auto space-y-6">
 
-        <div id="img-dropzone" class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40">
-          <input type="file" id="img-file-input" class="hidden" accept=".png,.jpg,.jpeg,.webp,.bmp">
-          
-          <div id="img-empty-state">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-emerald-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
-              <i class="fa-regular fa-image"></i>
-            </div>
-            <p class="text-sm sm:text-base font-semibold text-slate-200">Select or Drop an image here</p>
-            <p class="text-xs text-slate-400 mt-1">PNG, JPG, WEBP, or BMP</p>
-          </div>
-
-          <div id="img-file-preview" class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
-            <div class="flex items-center space-x-4 overflow-hidden text-left">
-              <img id="img-thumbnail" class="w-12 h-12 rounded object-cover border border-slate-700 flex-shrink-0" src="" alt="Thumbnail">
-              <div class="truncate">
-                <p id="img-filename" class="text-sm font-semibold text-white truncate">image.png</p>
-                <p id="img-filesize" class="text-xs text-slate-400">0 KB</p>
-              </div>
-            </div>
-            <button type="button" onclick="clearImageFile(event)" class="text-slate-400 hover:text-rose-400 p-2 transition">
-              <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target Format</label>
-            <div class="relative">
-              <select id="img-target-format" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-emerald-500">
-                <option value="webp">WebP (.webp) - Modern & Small</option>
-                <option value="jpg">JPEG (.jpg) - Universal</option>
-                <option value="png">PNG (.png) - Lossless</option>
-                <option value="bmp">BMP (.bmp) - Uncompressed</option>
-              </select>
-              <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Quality / Compression</label>
-              <span id="img-quality-val" class="text-xs font-bold text-emerald-400">85%</span>
-            </div>
-            <div class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 flex items-center">
-              <input type="range" id="img-quality" min="10" max="100" value="85" class="w-full accent-emerald-400 cursor-pointer" oninput="document.getElementById('img-quality-val').innerText = this.value + '%'">
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <button id="img-convert-btn" onclick="convertImage()" disabled class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-500/20 transition duration-200 flex items-center justify-center space-x-2">
-            <i class="fa-solid fa-sliders"></i>
-            <span>Process & Prepare Image</span>
+        <!-- Image Studio Sub-tool Navigation Selector -->
+        <div class="flex justify-center gap-2 mb-2 max-w-md mx-auto">
+          <button type="button" onclick="switchImgSubtool('converter')" id="img-subtab-btn-converter"
+            class="img-subtab-btn flex-1 py-2.5 px-4 rounded-xl font-heading font-semibold text-xs sm:text-sm transition-all duration-200 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Convert & Compress</span>
+          </button>
+          <button type="button" onclick="switchImgSubtool('ocr')" id="img-subtab-btn-ocr"
+            class="img-subtab-btn flex-1 py-2.5 px-4 rounded-xl font-heading font-semibold text-xs sm:text-sm transition-all duration-200 bg-slate-900/80 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-file-lines text-cyan-400"></i>
+            <span>🔍 OCR Text Extractor</span>
           </button>
         </div>
 
-        <!-- Image Success Card -->
-        <div id="img-success-card" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
-          <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
-            <i class="fa-solid fa-circle-check"></i>
+        <!-- Subtool 1: Image Studio & Compressor -->
+        <div id="img-subtool-converter" class="img-subtool-pane glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+            <div>
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles text-emerald-400"></i> Image Studio & Compressor
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Convert between PNG, JPG, WEBP, BMP & adjust file compression
+                quality (Max 50 MB)</p>
+            </div>
+            <span
+              class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">Pillow
+              Engine</span>
           </div>
-          <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
-          <p id="img-success-meta" class="text-xs text-slate-300 font-mono mb-5">image.webp (0 KB)</p>
-          
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-            <button onclick="downloadConvertedFile('img')" class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
-              <i class="fa-solid fa-cloud-arrow-down text-base"></i>
-              <span>⬇️ Download File Now</span>
+
+          <div id="img-dropzone"
+            class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40">
+            <input type="file" id="img-file-input" class="hidden" accept=".png,.jpg,.jpeg,.webp,.bmp">
+
+            <div id="img-empty-state">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-emerald-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
+                <i class="fa-regular fa-image"></i>
+              </div>
+              <p class="text-sm sm:text-base font-semibold text-slate-200">Select or Drop an image here</p>
+              <p class="text-xs text-slate-400 mt-1">PNG, JPG, WEBP, or BMP • Max 50 MB</p>
+            </div>
+
+            <div id="img-file-preview"
+              class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+              <div class="flex items-center space-x-4 overflow-hidden text-left">
+                <img id="img-thumbnail" class="w-12 h-12 rounded object-cover border border-slate-700 flex-shrink-0"
+                  src="" alt="Thumbnail">
+                <div class="truncate">
+                  <p id="img-filename" class="text-sm font-semibold text-white truncate">image.png</p>
+                  <p id="img-filesize" class="text-xs text-slate-400">0 KB</p>
+                </div>
+              </div>
+              <button type="button" onclick="clearImageFile(event)"
+                class="text-slate-400 hover:text-rose-400 p-2 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target
+                Format</label>
+              <div class="relative">
+                <select id="img-target-format"
+                  class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-emerald-500">
+                  <option value="webp">WebP (.webp) - Modern & Small</option>
+                  <option value="jpg">JPEG (.jpg) - Universal</option>
+                  <option value="png">PNG (.png) - Lossless</option>
+                  <option value="bmp">BMP (.bmp) - Uncompressed</option>
+                </select>
+                <i
+                  class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Quality /
+                  Compression</label>
+                <span id="img-quality-val" class="text-xs font-bold text-emerald-400">85%</span>
+              </div>
+              <div class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 flex items-center">
+                <input type="range" id="img-quality" min="10" max="100" value="85"
+                  class="w-full accent-emerald-400 cursor-pointer"
+                  oninput="document.getElementById('img-quality-val').innerText = this.value + '%'">
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <button id="img-convert-btn" onclick="convertImage()" disabled
+              class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-500/20 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-sliders"></i>
+              <span>Process & Prepare Image</span>
             </button>
-            <button onclick="resetToolView('img')" class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
-              <span>Convert Another Image</span>
-            </button>
+          </div>
+
+          <!-- Image Success Card -->
+          <div id="img-success-card"
+            class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/40 text-center animate-fade-in shadow-2xl shadow-emerald-500/10">
+            <div
+              class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/30">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Your File Is Ready For Download</h3>
+            <p id="img-success-meta" class="text-xs text-slate-300 font-mono mb-5">image.webp (0 KB)</p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+              <button onclick="downloadConvertedFile('img')"
+                class="w-full sm:w-auto py-3 px-6 rounded-xl font-heading font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25 transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-cloud-arrow-down text-base"></i>
+                <span>⬇️ Download File Now</span>
+              </button>
+              <button onclick="resetToolView('img')"
+                class="w-full sm:w-auto py-3 px-5 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition">
+                <span>Convert Another Image</span>
+              </button>
+            </div>
           </div>
         </div>
+
+        <!-- Subtool 2: AI OCR Text Extractor (NEW) -->
+        <div id="img-subtool-ocr" class="img-subtool-pane hidden glass-card rounded-2xl p-5 sm:p-8 shadow-2xl">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-4 border-b border-slate-800 gap-2 sm:gap-0">
+            <div>
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-file-lines text-cyan-400"></i> 🔍 AI OCR Scanner (Image to Text)
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Extract text from documents, books, signs & receipts (English &
+                Sinhala Support • Max 50 MB)</p>
+            </div>
+            <span
+              class="self-start sm:self-auto text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">100%
+              Client-Side AI</span>
+          </div>
+
+          <!-- OCR Dropzone -->
+          <div id="ocr-dropzone"
+            class="border-2 border-dashed border-slate-700 hover:border-slate-600 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-slate-900/40 relative">
+            <input type="file" id="ocr-file-input" class="hidden" accept=".png,.jpg,.jpeg,.webp,.bmp">
+
+            <div id="ocr-empty-state">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 text-cyan-400 flex items-center justify-center mx-auto mb-3 sm:mb-4 text-2xl border border-slate-700/60">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+              <p class="text-sm sm:text-base font-semibold text-slate-200">Select or Drop an image to extract text</p>
+              <p class="text-xs text-slate-400 mt-1">PNG, JPG, WEBP, or BMP • Book pages, receipts, documents • Max 50
+                MB</p>
+            </div>
+
+            <div id="ocr-file-preview"
+              class="hidden flex items-center justify-between p-3.5 sm:p-4 rounded-lg bg-slate-850 border border-slate-700">
+              <div class="flex items-center space-x-4 overflow-hidden text-left">
+                <img id="ocr-thumbnail" class="w-12 h-12 rounded object-cover border border-slate-700 flex-shrink-0"
+                  src="" alt="OCR Preview">
+                <div class="truncate">
+                  <p id="ocr-filename" class="text-sm font-semibold text-white truncate">document.png</p>
+                  <p id="ocr-filesize" class="text-xs text-slate-400">0 KB</p>
+                </div>
+              </div>
+              <button type="button" onclick="clearOcrFile(event)"
+                class="text-slate-400 hover:text-rose-400 p-2 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Language Selection -->
+          <div class="mt-6">
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Recognition
+              Language</label>
+            <div class="relative">
+              <select id="ocr-language"
+                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-white appearance-none focus:outline-none focus:border-cyan-400">
+                <option value="eng" selected>English (eng) — Universal Standard</option>
+                <option value="sin">Sinhala (sin) — සිංහල අක්ෂර හඳුනාගැනීම</option>
+                <option value="eng+sin">English + Sinhala (eng+sin) — Combined Dual Mode</option>
+              </select>
+              <i
+                class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-1.5 flex items-center gap-1">
+              <i class="fa-solid fa-circle-info text-cyan-400"></i>
+              <span>Language models are processed entirely in your browser using WebAssembly. Your image data never
+                leaves your device!</span>
+            </p>
+          </div>
+
+          <!-- Action Button -->
+          <div class="mt-6">
+            <button id="ocr-extract-btn" onclick="runOcrExtraction()" disabled
+              class="w-full py-3 px-6 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-brain"></i>
+              <span>Extract Text (AI OCR)</span>
+            </button>
+          </div>
+
+          <!-- OCR Live Progress Bar Card -->
+          <div id="ocr-progress-container"
+            class="hidden mt-6 p-4 rounded-xl bg-slate-900 border border-slate-700 animate-fade-in">
+            <div class="flex items-center justify-between text-xs text-slate-300 mb-2">
+              <span id="ocr-status-text" class="font-medium flex items-center gap-2">
+                <i class="fa-solid fa-spinner animate-spin text-cyan-400"></i> Initializing OCR engine...
+              </span>
+              <span id="ocr-progress-percent" class="font-bold text-cyan-400">0%</span>
+            </div>
+            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+              <div id="ocr-progress-bar"
+                class="bg-gradient-to-r from-cyan-500 to-emerald-400 h-2.5 rounded-full transition-all duration-200"
+                style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- OCR Extracted Text Result Card -->
+          <div id="ocr-result-card"
+            class="hidden mt-6 p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-cyan-500/30 animate-fade-in shadow-2xl">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-3 border-b border-slate-800 gap-2">
+              <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                <h3 class="font-heading font-bold text-base text-white">Extracted Text Output</h3>
+              </div>
+              <div class="text-[11px] text-slate-400 flex items-center space-x-3">
+                <span id="ocr-char-count">0 characters</span>
+                <span>•</span>
+                <span id="ocr-word-count">0 words</span>
+              </div>
+            </div>
+
+            <textarea id="ocr-extracted-text" rows="8"
+              class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs sm:text-sm text-slate-100 font-mono leading-relaxed focus:outline-none focus:border-cyan-400 resize-y"
+              placeholder="Extracted text will appear here..."></textarea>
+
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-2">
+              <button onclick="clearOcrText()"
+                class="text-xs text-slate-400 hover:text-rose-400 transition flex items-center space-x-1 py-2 px-3 rounded-lg hover:bg-slate-900">
+                <i class="fa-solid fa-trash-can"></i>
+                <span>Clear</span>
+              </button>
+              <div class="flex items-center space-x-2">
+                <button onclick="copyOcrText()"
+                  class="py-2.5 px-4 rounded-xl font-heading font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 transition flex items-center space-x-1.5">
+                  <i class="fa-regular fa-copy"></i>
+                  <span>Copy Text</span>
+                </button>
+                <button onclick="downloadOcrText()"
+                  class="py-2.5 px-4 rounded-xl font-heading font-semibold text-xs bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-md shadow-emerald-500/20 transition flex items-center space-x-1.5">
+                  <i class="fa-solid fa-file-arrow-down"></i>
+                  <span>Download as .TXT</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -624,17 +1188,20 @@
     <!-- ======================================================== -->
     <section id="text-tab" class="tab-content hidden">
       <div class="glass-card rounded-2xl p-4 sm:p-7 max-w-4xl mx-auto shadow-2xl">
-        
+
         <!-- Header -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-3 border-b border-slate-800 gap-2 sm:gap-0">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-3 border-b border-slate-800 gap-2 sm:gap-0">
           <div>
             <h2 class="font-heading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
               <i class="fa-solid fa-font text-cyan-400"></i> Case Converter & Text Studio
             </h2>
-            <p class="text-xs text-slate-400 mt-0.5">Instant client-side case conversion, live word & character statistics</p>
+            <p class="text-xs text-slate-400 mt-0.5">Instant client-side case conversion, live word & character
+              statistics</p>
           </div>
           <div class="flex items-center gap-2 self-start sm:self-auto">
-            <span class="text-[10px] sm:text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium flex items-center gap-1.5 shadow-sm">
+            <span
+              class="text-[10px] sm:text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium flex items-center gap-1.5 shadow-sm">
               <i class="fa-solid fa-bolt-lightning text-emerald-400"></i> 100% Client-Side Instant
             </span>
           </div>
@@ -643,34 +1210,35 @@
         <!-- Textarea Toolbar & Input -->
         <div>
           <div class="flex items-center justify-between mb-1.5">
-            <label for="case-textarea" class="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+            <label for="case-textarea"
+              class="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
               <i class="fa-solid fa-pen-to-square text-cyan-400"></i> Enter or Paste English Text
             </label>
             <div class="flex items-center space-x-1.5 sm:space-x-2">
-              <button onclick="loadSampleText()" type="button" class="text-[11px] text-cyan-400 hover:text-cyan-300 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 hover:border-cyan-500/50 transition flex items-center gap-1">
+              <button onclick="loadSampleText()" type="button"
+                class="text-[11px] text-cyan-400 hover:text-cyan-300 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 hover:border-cyan-500/50 transition flex items-center gap-1">
                 <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i>
                 <span>Sample</span>
               </button>
-              <button onclick="pasteFromClipboard()" type="button" class="text-[11px] text-slate-300 hover:text-white font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 hover:border-slate-600 transition flex items-center gap-1">
+              <button onclick="pasteFromClipboard()" type="button"
+                class="text-[11px] text-slate-300 hover:text-white font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 hover:border-slate-600 transition flex items-center gap-1">
                 <i class="fa-regular fa-paste text-[10px]"></i>
                 <span>Paste</span>
               </button>
-              <button id="btn-case-undo" onclick="undoCaseText()" type="button" title="Undo Last Conversion" disabled class="text-[11px] text-slate-400 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 opacity-40 cursor-not-allowed transition flex items-center gap-1">
+              <button id="btn-case-undo" onclick="undoCaseText()" type="button" title="Undo Last Conversion" disabled
+                class="text-[11px] text-slate-400 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 border border-slate-750 opacity-40 cursor-not-allowed transition flex items-center gap-1">
                 <i class="fa-solid fa-rotate-left text-[10px]"></i>
                 <span>Undo</span>
               </button>
             </div>
           </div>
 
-          <div class="relative rounded-xl border border-slate-700/80 focus-within:border-cyan-500 focus-within:ring-2 focus-within:ring-cyan-500/20 transition-all overflow-hidden bg-slate-950/70 shadow-inner">
-            <textarea
-              id="case-textarea"
-              rows="6"
-              placeholder="Type or paste your English text here to convert case..."
+          <div
+            class="relative rounded-xl border border-slate-700/80 focus-within:border-cyan-500 focus-within:ring-2 focus-within:ring-cyan-500/20 transition-all overflow-hidden bg-slate-950/70 shadow-inner">
+            <textarea id="case-textarea" rows="6" placeholder="Type or paste your English text here to convert case..."
               oninput="updateTextStats()"
               class="w-full bg-transparent p-3 sm:p-4 text-sm sm:text-base text-slate-100 placeholder-slate-500 focus:outline-none resize-y font-mono leading-relaxed min-h-[160px] sm:min-h-[190px]"
-              autofocus
-            ></textarea>
+              autofocus></textarea>
           </div>
         </div>
 
@@ -678,7 +1246,8 @@
         <div class="mt-3">
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <!-- 1. UPPER CASE -->
-            <button onclick="applyCaseConversion('upper')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 text-left transition duration-150 shadow-sm">
+            <button onclick="applyCaseConversion('upper')" type="button"
+              class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 text-left transition duration-150 shadow-sm">
               <div class="flex items-center justify-between">
                 <span class="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300">UPPER CASE</span>
                 <i class="fa-solid fa-arrow-up-a-z text-slate-500 group-hover:text-cyan-400 text-xs"></i>
@@ -687,7 +1256,8 @@
             </button>
 
             <!-- 2. lower case -->
-            <button onclick="applyCaseConversion('lower')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 text-left transition duration-150 shadow-sm">
+            <button onclick="applyCaseConversion('lower')" type="button"
+              class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 text-left transition duration-150 shadow-sm">
               <div class="flex items-center justify-between">
                 <span class="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300">lower case</span>
                 <i class="fa-solid fa-arrow-down-z-a text-slate-500 group-hover:text-cyan-400 text-xs"></i>
@@ -696,7 +1266,8 @@
             </button>
 
             <!-- 3. Sentence case -->
-            <button onclick="applyCaseConversion('sentence')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-emerald-500/50 text-left transition duration-150 shadow-sm">
+            <button onclick="applyCaseConversion('sentence')" type="button"
+              class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-emerald-500/50 text-left transition duration-150 shadow-sm">
               <div class="flex items-center justify-between">
                 <span class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300">Sentence case</span>
                 <i class="fa-solid fa-paragraph text-slate-500 group-hover:text-emerald-400 text-xs"></i>
@@ -705,16 +1276,19 @@
             </button>
 
             <!-- 4. Capitalized Case (Title Case) -->
-            <button onclick="applyCaseConversion('title')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-emerald-500/50 text-left transition duration-150 shadow-sm">
+            <button onclick="applyCaseConversion('title')" type="button"
+              class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-emerald-500/50 text-left transition duration-150 shadow-sm">
               <div class="flex items-center justify-between">
-                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300">Capitalized Case</span>
+                <span class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300">Capitalized
+                  Case</span>
                 <i class="fa-solid fa-heading text-slate-500 group-hover:text-emerald-400 text-xs"></i>
               </div>
               <p class="text-[9px] sm:text-[10px] text-slate-400 truncate mt-0.5">Title Case Every Word</p>
             </button>
 
             <!-- 5. aLtErNaTiNg cAsE -->
-            <button onclick="applyCaseConversion('alternating')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-teal-500/50 text-left transition duration-150 shadow-sm">
+            <button onclick="applyCaseConversion('alternating')" type="button"
+              class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-teal-500/50 text-left transition duration-150 shadow-sm">
               <div class="flex items-center justify-between">
                 <span class="text-xs sm:text-sm font-bold text-white group-hover:text-teal-300">aLtErNaTiNg</span>
                 <i class="fa-solid fa-shuffle text-slate-500 group-hover:text-teal-400 text-xs"></i>
@@ -723,7 +1297,8 @@
             </button>
 
             <!-- 6. iNVERSE cASE -->
-            <button onclick="applyCaseConversion('inverse')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-teal-500/50 text-left transition duration-150 shadow-sm">
+            <button onclick="applyCaseConversion('inverse')" type="button"
+              class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-teal-500/50 text-left transition duration-150 shadow-sm">
               <div class="flex items-center justify-between">
                 <span class="text-xs sm:text-sm font-bold text-white group-hover:text-teal-300">iNVERSE cASE</span>
                 <i class="fa-solid fa-repeat text-slate-500 group-hover:text-teal-400 text-xs"></i>
@@ -732,7 +1307,8 @@
             </button>
 
             <!-- 7. Clean Extra Spaces -->
-            <button onclick="applyCaseConversion('clean-spaces')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-amber-500/50 text-left transition duration-150 shadow-sm">
+            <button onclick="applyCaseConversion('clean-spaces')" type="button"
+              class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-amber-500/50 text-left transition duration-150 shadow-sm">
               <div class="flex items-center justify-between">
                 <span class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300">Clean Spaces</span>
                 <i class="fa-solid fa-broom text-slate-500 group-hover:text-amber-400 text-xs"></i>
@@ -741,7 +1317,8 @@
             </button>
 
             <!-- Bonus 8: kebab-case (Slug) -->
-            <button onclick="applyCaseConversion('slug')" type="button" class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-indigo-500/50 text-left transition duration-150 shadow-sm">
+            <button onclick="applyCaseConversion('slug')" type="button"
+              class="group p-2.5 sm:p-3 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-indigo-500/50 text-left transition duration-150 shadow-sm">
               <div class="flex items-center justify-between">
                 <span class="text-xs sm:text-sm font-bold text-white group-hover:text-indigo-300">kebab-case</span>
                 <i class="fa-solid fa-link text-slate-500 group-hover:text-indigo-400 text-xs"></i>
@@ -754,30 +1331,35 @@
         <!-- Primary Action Buttons (Copy, Download .TXT, Clear) -->
         <div class="mt-3 flex flex-row items-center gap-2">
           <!-- 📋 Copy Text -->
-          <button onclick="copyCaseText()" type="button" class="flex-1 py-2.5 px-3 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20 transition flex items-center justify-center space-x-1.5 whitespace-nowrap">
+          <button onclick="copyCaseText()" type="button"
+            class="flex-1 py-2.5 px-3 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20 transition flex items-center justify-center space-x-1.5 whitespace-nowrap">
             <i class="fa-regular fa-clipboard text-sm"></i>
             <span>Copy Text</span>
           </button>
 
           <!-- 💾 Download as .TXT -->
-          <button onclick="downloadCaseText()" type="button" class="flex-1 py-2.5 px-3 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-slate-900 hover:bg-slate-850 text-slate-200 hover:text-white border border-slate-750 hover:border-cyan-500/50 transition flex items-center justify-center space-x-1.5 whitespace-nowrap">
+          <button onclick="downloadCaseText()" type="button"
+            class="flex-1 py-2.5 px-3 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-slate-900 hover:bg-slate-850 text-slate-200 hover:text-white border border-slate-750 hover:border-cyan-500/50 transition flex items-center justify-center space-x-1.5 whitespace-nowrap">
             <i class="fa-solid fa-file-arrow-down text-cyan-400 text-sm"></i>
             <span>Download .TXT</span>
           </button>
 
           <!-- 🗑️ Clear Text -->
-          <button onclick="clearCaseText()" type="button" class="py-2.5 px-3.5 sm:px-4 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-slate-900 hover:bg-rose-950/40 text-slate-400 hover:text-rose-300 border border-slate-800 hover:border-rose-700/60 transition flex items-center justify-center space-x-1.5">
+          <button onclick="clearCaseText()" type="button"
+            class="py-2.5 px-3.5 sm:px-4 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-slate-900 hover:bg-rose-950/40 text-slate-400 hover:text-rose-300 border border-slate-800 hover:border-rose-700/60 transition flex items-center justify-center space-x-1.5">
             <i class="fa-solid fa-trash-can text-rose-400 text-xs"></i>
             <span class="hidden sm:inline">Clear</span>
           </button>
         </div>
 
         <!-- Ultra-Compact Live Statistics Horizontal Bar -->
-        <div class="mt-3 pt-2.5 border-t border-slate-800/70 flex flex-wrap items-center justify-between text-[11px] sm:text-xs py-1.5 px-3 rounded-xl bg-slate-900/60 border border-slate-800/60 text-slate-400 gap-y-1 gap-x-3">
+        <div
+          class="mt-3 pt-2.5 border-t border-slate-800/70 flex flex-wrap items-center justify-between text-[11px] sm:text-xs py-1.5 px-3 rounded-xl bg-slate-900/60 border border-slate-800/60 text-slate-400 gap-y-1 gap-x-3">
           <div class="flex items-center space-x-1.5">
             <span>Chars:</span>
             <strong id="stat-chars" class="font-bold text-cyan-400">0</strong>
-            <span class="text-[10px] text-slate-500">(<span id="stat-chars-no-space" class="text-emerald-400">0</span> no space)</span>
+            <span class="text-[10px] text-slate-500">(<span id="stat-chars-no-space" class="text-emerald-400">0</span>
+              no space)</span>
           </div>
           <div class="flex items-center space-x-1">
             <span>Words:</span>
@@ -805,7 +1387,7 @@
     <!-- ======================================================== -->
     <section id="utils-tab" class="tab-content hidden">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
-        
+
         <!-- Utility 1: QR Code Generator -->
         <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl flex flex-col justify-between">
           <div>
@@ -816,15 +1398,20 @@
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Generate high-res downloadable QR codes in real-time</p>
               </div>
-              <span class="text-xs px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Client-Side</span>
+              <span
+                class="text-xs px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">Client-Side</span>
             </div>
 
             <div class="space-y-4">
               <div>
-                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Text or URL</label>
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Text or
+                  URL</label>
                 <div class="flex gap-2">
-                  <input type="text" id="qr-input" value="" placeholder="Enter URL or text here..." oninput="generateQRCode()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
-                  <button onclick="generateQRCode()" type="button" class="px-4 py-2.5 rounded-xl font-heading font-semibold text-xs bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition whitespace-nowrap flex items-center gap-1.5">
+                  <input type="text" id="qr-input" value="" placeholder="Enter URL or text here..."
+                    oninput="generateQRCode()"
+                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+                  <button onclick="generateQRCode()" type="button"
+                    class="px-4 py-2.5 rounded-xl font-heading font-semibold text-xs bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition whitespace-nowrap flex items-center gap-1.5">
                     <i class="fa-solid fa-bolt"></i>
                     <span>Generate</span>
                   </button>
@@ -833,38 +1420,47 @@
 
               <div class="grid grid-cols-2 gap-3">
                 <div>
-                  <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">QR Color</label>
+                  <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">QR
+                    Color</label>
                   <div class="flex items-center space-x-2 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5">
-                    <input type="color" id="qr-color-fg" value="#06b6d4" onchange="generateQRCode()" class="w-8 h-8 rounded border-0 bg-transparent cursor-pointer">
+                    <input type="color" id="qr-color-fg" value="#06b6d4" onchange="generateQRCode()"
+                      class="w-8 h-8 rounded border-0 bg-transparent cursor-pointer">
                     <span class="text-xs text-slate-300 font-mono">Foreground</span>
                   </div>
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Background</label>
+                  <label
+                    class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Background</label>
                   <div class="flex items-center space-x-2 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5">
-                    <input type="color" id="qr-color-bg" value="#0f172a" onchange="generateQRCode()" class="w-8 h-8 rounded border-0 bg-transparent cursor-pointer">
+                    <input type="color" id="qr-color-bg" value="#0f172a" onchange="generateQRCode()"
+                      class="w-8 h-8 rounded border-0 bg-transparent cursor-pointer">
                     <span class="text-xs text-slate-300 font-mono">Background</span>
                   </div>
                 </div>
               </div>
 
               <!-- QR Display Box with Empty Placeholder State -->
-              <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col items-center justify-center min-h-[220px]">
-                <div id="qr-empty-state" class="flex flex-col items-center justify-center text-slate-500 text-center py-4">
-                  <div class="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-400 mb-3 text-2xl">
+              <div
+                class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col items-center justify-center min-h-[220px]">
+                <div id="qr-empty-state"
+                  class="flex flex-col items-center justify-center text-slate-500 text-center py-4">
+                  <div
+                    class="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-400 mb-3 text-2xl">
                     <i class="fa-solid fa-qrcode"></i>
                   </div>
                   <p class="text-sm font-semibold text-slate-300">No QR Code Generated Yet</p>
                   <p class="text-xs text-slate-500 mt-1">Enter a URL or text above to preview and download</p>
                 </div>
-                <div id="qrcode-container" class="hidden p-3 bg-slate-900 rounded-xl border border-slate-700 shadow-xl"></div>
+                <div id="qrcode-container" class="hidden p-3 bg-slate-900 rounded-xl border border-slate-700 shadow-xl">
+                </div>
               </div>
             </div>
           </div>
 
           <div class="mt-6">
-            <button id="qr-download-btn" onclick="downloadQRCode()" disabled class="w-full py-2.5 px-4 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center justify-center space-x-2 opacity-40 cursor-not-allowed">
+            <button id="qr-download-btn" onclick="downloadQRCode()" disabled
+              class="w-full py-2.5 px-4 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center justify-center space-x-2 opacity-40 cursor-not-allowed">
               <i class="fa-solid fa-download"></i>
               <span>Download QR Code (PNG)</span>
             </button>
@@ -881,17 +1477,22 @@
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Cryptographically secure, random client-side passwords</p>
               </div>
-              <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">100% Private</span>
+              <span
+                class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">100%
+                Private</span>
             </div>
 
             <!-- Password Display Box -->
             <div class="relative mb-6">
-              <input type="text" id="pwd-display" readonly class="w-full bg-slate-900 border-2 border-emerald-500/40 rounded-xl px-4 py-3.5 pr-24 text-base font-mono font-bold text-emerald-300 tracking-wider focus:outline-none select-all shadow-inner">
+              <input type="text" id="pwd-display" readonly
+                class="w-full bg-slate-900 border-2 border-emerald-500/40 rounded-xl px-4 py-3.5 pr-24 text-base font-mono font-bold text-emerald-300 tracking-wider focus:outline-none select-all shadow-inner">
               <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-1">
-                <button onclick="generatePassword()" class="p-2 text-slate-400 hover:text-cyan-400 transition" title="Regenerate">
+                <button onclick="generatePassword()" class="p-2 text-slate-400 hover:text-cyan-400 transition"
+                  title="Regenerate">
                   <i class="fa-solid fa-arrows-rotate"></i>
                 </button>
-                <button onclick="copyPassword()" class="p-2 text-slate-400 hover:text-emerald-400 transition" title="Copy to clipboard">
+                <button onclick="copyPassword()" class="p-2 text-slate-400 hover:text-emerald-400 transition"
+                  title="Copy to clipboard">
                   <i class="fa-regular fa-copy"></i>
                 </button>
               </div>
@@ -918,24 +1519,33 @@
                   <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Password Length</label>
                   <span id="pwd-length-val" class="text-xs font-bold text-cyan-400">20 characters</span>
                 </div>
-                <input type="range" id="pwd-length" min="8" max="64" value="20" class="w-full accent-cyan-400 cursor-pointer" oninput="onPwdLengthChange(this.value)">
+                <input type="range" id="pwd-length" min="8" max="64" value="20"
+                  class="w-full accent-cyan-400 cursor-pointer" oninput="onPwdLengthChange(this.value)">
               </div>
 
               <div class="grid grid-cols-2 gap-2 text-xs text-slate-300">
-                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
-                  <input type="checkbox" id="pwd-opt-upper" checked onchange="generatePassword()" class="accent-emerald-400 w-4 h-4 rounded">
+                <label
+                  class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                  <input type="checkbox" id="pwd-opt-upper" checked onchange="generatePassword()"
+                    class="accent-emerald-400 w-4 h-4 rounded">
                   <span>Uppercase (A-Z)</span>
                 </label>
-                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
-                  <input type="checkbox" id="pwd-opt-lower" checked onchange="generatePassword()" class="accent-emerald-400 w-4 h-4 rounded">
+                <label
+                  class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                  <input type="checkbox" id="pwd-opt-lower" checked onchange="generatePassword()"
+                    class="accent-emerald-400 w-4 h-4 rounded">
                   <span>Lowercase (a-z)</span>
                 </label>
-                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
-                  <input type="checkbox" id="pwd-opt-nums" checked onchange="generatePassword()" class="accent-emerald-400 w-4 h-4 rounded">
+                <label
+                  class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                  <input type="checkbox" id="pwd-opt-nums" checked onchange="generatePassword()"
+                    class="accent-emerald-400 w-4 h-4 rounded">
                   <span>Numbers (0-9)</span>
                 </label>
-                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
-                  <input type="checkbox" id="pwd-opt-syms" checked onchange="generatePassword()" class="accent-emerald-400 w-4 h-4 rounded">
+                <label
+                  class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                  <input type="checkbox" id="pwd-opt-syms" checked onchange="generatePassword()"
+                    class="accent-emerald-400 w-4 h-4 rounded">
                   <span>Symbols (!@#$%)</span>
                 </label>
               </div>
@@ -943,7 +1553,8 @@
           </div>
 
           <div class="mt-6">
-            <button onclick="copyPassword()" class="w-full py-2.5 px-4 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/20 transition flex items-center justify-center space-x-2">
+            <button onclick="copyPassword()"
+              class="w-full py-2.5 px-4 rounded-xl font-heading font-semibold text-sm bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/20 transition flex items-center justify-center space-x-2">
               <i class="fa-regular fa-clipboard"></i>
               <span>Copy Password</span>
             </button>
@@ -951,10 +1562,12 @@
         </div>
 
         <!-- Utility 3: Case Converter & Text Studio Quick Launcher -->
-        <div class="glass-card rounded-2xl p-5 sm:p-7 shadow-2xl flex flex-col justify-between lg:col-span-2 border border-slate-800 hover:border-cyan-500/40 transition">
+        <div
+          class="glass-card rounded-2xl p-5 sm:p-7 shadow-2xl flex flex-col justify-between lg:col-span-2 border border-slate-800 hover:border-cyan-500/40 transition">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div class="flex items-start gap-3.5">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-500/20 to-cyan-500/20 border border-cyan-500/40 flex items-center justify-center flex-shrink-0 text-cyan-400 text-xl shadow-md shadow-cyan-500/10">
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-500/20 to-cyan-500/20 border border-cyan-500/40 flex items-center justify-center flex-shrink-0 text-cyan-400 text-xl shadow-md shadow-cyan-500/10">
                 <i class="fa-solid fa-font"></i>
               </div>
               <div>
@@ -962,14 +1575,19 @@
                   <h3 class="font-heading text-lg font-bold text-white">
                     🔤 Case Converter & Text Studio
                   </h3>
-                  <span class="text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">100% Client-Side</span>
+                  <span
+                    class="text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium">100%
+                    Client-Side</span>
                 </div>
                 <p class="text-xs text-slate-400 mt-1 max-w-2xl">
-                  Transform uppercase, lowercase, sentence case, title case, and alternating case instantly. Includes real-time character, word, sentence, and line statistics with 1-click clipboard copy and .TXT download.
+                  Transform uppercase, lowercase, sentence case, title case, and alternating case instantly. Includes
+                  real-time character, word, sentence, and line statistics with 1-click clipboard copy and .TXT
+                  download.
                 </p>
               </div>
             </div>
-            <button onclick="switchTab('text-tab')" type="button" class="py-2.5 px-5 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center justify-center space-x-2 whitespace-nowrap self-start md:self-auto">
+            <button onclick="switchTab('text-tab')" type="button"
+              class="py-2.5 px-5 rounded-xl font-heading font-semibold text-xs sm:text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition flex items-center justify-center space-x-2 whitespace-nowrap self-start md:self-auto">
               <span>Open Case Converter</span>
               <i class="fa-solid fa-arrow-right text-xs"></i>
             </button>
@@ -979,26 +1597,221 @@
       </div>
     </section>
 
+    <!-- ======================================================== -->
+    <!-- TAB: SINHALA STUDIO (SINGLISH TYPER & FM ABHAYA CONVERTER) -->
+    <!-- ======================================================== -->
+    <section id="sinhala-tab" class="tab-content hidden">
+      <div class="max-w-4xl mx-auto space-y-6">
+
+        <!-- Top Header Card -->
+        <div class="glass-card rounded-2xl p-5 sm:p-7 shadow-2xl border border-slate-800">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
+            <div>
+              <h2 class="font-heading text-lg sm:text-2xl font-bold text-white flex items-center gap-2">
+                <span>🇱🇰</span>
+                <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Sinhala Studio</span>
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                තත්කාලීන සිංග්ලිෂ් යතුරුපුවරුව සහ FM Abhaya / Unicode ද්වි-දිශා ෆොන්ට් පරිවර්තකය
+              </p>
+            </div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-medium flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>100% Client-Side Engine</span>
+              </span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-800/60 text-cyan-300 font-medium">
+                Zero Server Delay
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 1: Singlish to Sinhala Unicode Typer -->
+        <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl border border-slate-800">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-5 pb-3 border-b border-slate-800/80 gap-2">
+            <div>
+              <h3 class="font-heading text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-keyboard text-cyan-400"></i>
+                <span>තත්කාලීන සිංග්ලිෂ් යතුරුපුවරුව (Singlish to Unicode Typer)</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">Type English letters phonetically and get Sinhala Unicode instantly</p>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span id="sinhala-word-count" class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300 font-mono">0 words</span>
+              <span id="sinhala-char-count" class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-cyan-300 font-mono">0 chars</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Left: Singlish Input -->
+            <div class="flex flex-col">
+              <div class="flex items-center justify-between mb-2">
+                <label for="singlish-input" class="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                  <span>Singlish Input (ඉංග්‍රීසි අකුරින්)</span>
+                </label>
+                <button type="button" onclick="clearSinglishText()" class="text-[11px] text-slate-400 hover:text-rose-400 transition flex items-center gap-1">
+                  <i class="fa-solid fa-trash-can text-xs"></i>
+                  <span>Clear</span>
+                </button>
+              </div>
+              <textarea id="singlish-input" rows="8" oninput="onSinglishInput()"
+                placeholder="Type here in Singlish (e.g. mama lankaawata aadareyi, supiri convert pro, sri lanka, nidahas, thuthi)..."
+                class="w-full bg-slate-900/90 border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 rounded-xl p-3.5 text-sm font-sans text-slate-100 placeholder-slate-500 resize-y transition shadow-inner leading-relaxed"></textarea>
+            </div>
+
+            <!-- Right: Sinhala Unicode Output -->
+            <div class="flex flex-col">
+              <div class="flex items-center justify-between mb-2">
+                <label for="sinhala-output" class="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>Sinhala Unicode Output (සිංහල යුනිකෝඩ්)</span>
+                </label>
+                <span class="text-[10px] text-emerald-400 font-mono">Live Sync</span>
+              </div>
+              <textarea id="sinhala-output" rows="8" readonly
+                placeholder="සිංහල යුනිකෝඩ් අකුරු මෙහි ස්වයංක්‍රීයව දිස්වේ..."
+                class="w-full bg-slate-950/90 border border-slate-700/80 rounded-xl p-3.5 text-base font-sans text-emerald-200 placeholder-slate-600 resize-y shadow-inner leading-relaxed"></textarea>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="mt-4 flex flex-wrap items-center justify-between gap-2.5 pt-3 border-t border-slate-800/80">
+            <div class="flex flex-wrap items-center gap-2">
+              <button type="button" onclick="copySinhalaOutput()"
+                class="py-2 px-4 rounded-xl text-xs font-semibold bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-md shadow-cyan-500/10 transition flex items-center space-x-1.5">
+                <i class="fa-regular fa-copy"></i>
+                <span>Copy Sinhala Unicode</span>
+              </button>
+              <button type="button" onclick="downloadSinhalaOutput()"
+                class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 transition flex items-center space-x-1.5">
+                <i class="fa-solid fa-download"></i>
+                <span>Download .txt</span>
+              </button>
+            </div>
+            <div>
+              <button type="button" onclick="transferToAbhaya()"
+                class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-cyan-950 hover:bg-cyan-900/80 text-cyan-300 border border-cyan-800/60 transition flex items-center space-x-1.5">
+                <i class="fa-solid fa-arrow-turn-down"></i>
+                <span>Convert to FM Abhaya ➔</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Accordion Guide Container (5-Row Table) -->
+          <div id="sinhala-guide-container" class="mt-4"></div>
+        </div>
+
+        <!-- Section 2: Sinhala Unicode <-> FM Abhaya Converter -->
+        <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl border border-slate-800">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-5 pb-3 border-b border-slate-800/80 gap-3">
+            <div>
+              <h3 class="font-heading text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-arrows-rotate text-emerald-400"></i>
+                <span>යුනිකෝඩ් සහ FM Abhaya අකුරු පරිවර්තකය (Unicode <-> FM Converter)</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">
+                Photoshop, Illustrator, InDesign, Word සහ පැරණි සිංහල ෆොන්ට් (FM Abhaya, FM Derana, FM Malithi) සඳහා පරිවර්තනය කරන්න
+              </p>
+            </div>
+
+            <!-- Direction Switch Buttons -->
+            <div class="flex items-center gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800 flex-shrink-0">
+              <button type="button" id="btn-dir-u2f" onclick="setAbhayaDirection('u2f')"
+                class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-md">
+                Unicode ➔ FM Abhaya
+              </button>
+              <button type="button" id="btn-dir-f2u" onclick="setAbhayaDirection('f2u')"
+                class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white bg-slate-900 border border-slate-800 transition">
+                FM Abhaya ➔ Unicode
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Left: Source Input -->
+            <div class="flex flex-col">
+              <div class="flex items-center justify-between mb-2">
+                <label id="font-in-label" for="font-input-text" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  Sinhala Unicode Text (යුනිකෝඩ් පෙළ)
+                </label>
+                <button type="button" onclick="clearAbhayaText()" class="text-[11px] text-slate-400 hover:text-rose-400 transition flex items-center gap-1">
+                  <i class="fa-solid fa-trash-can text-xs"></i>
+                  <span>Clear</span>
+                </button>
+              </div>
+              <textarea id="font-input-text" rows="7" oninput="onFontConvertInput()"
+                placeholder="සිංහල යුනිකෝඩ් පෙළ මෙහි ඇතුළත් කරන්න..."
+                class="w-full bg-slate-900/90 border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 rounded-xl p-3.5 text-sm font-sans text-slate-100 placeholder-slate-500 resize-y transition shadow-inner leading-relaxed"></textarea>
+            </div>
+
+            <!-- Right: Converted Output -->
+            <div class="flex flex-col">
+              <div class="flex items-center justify-between mb-2">
+                <label id="font-out-label" for="font-output-text" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  FM Abhaya Font Text (FM ෆොන්ට් පෙළ)
+                </label>
+                <button type="button" onclick="swapAbhayaDirection()" class="text-[11px] text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1" title="Swap direction">
+                  <i class="fa-solid fa-right-left text-xs"></i>
+                  <span>Swap</span>
+                </button>
+              </div>
+              <textarea id="font-output-text" rows="7" readonly
+                placeholder="FM Abhaya ෆොන්ට් සඳහා පරිවර්තනය වූ පෙළ මෙහි දිස්වේ..."
+                class="w-full bg-slate-950/90 border border-slate-700/80 rounded-xl p-3.5 text-sm font-sans text-cyan-200 placeholder-slate-600 resize-y shadow-inner leading-relaxed"></textarea>
+            </div>
+          </div>
+
+          <!-- Font Conversion Action Buttons -->
+          <div class="mt-4 flex flex-wrap items-center justify-between gap-2.5 pt-3 border-t border-slate-800/80">
+            <div class="flex flex-wrap items-center gap-2">
+              <button type="button" onclick="copyAbhayaOutput()"
+                class="py-2 px-4 rounded-xl text-xs font-semibold bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 shadow-md shadow-cyan-500/10 transition flex items-center space-x-1.5">
+                <i class="fa-regular fa-copy"></i>
+                <span>Copy Converted Text</span>
+              </button>
+              <button type="button" onclick="downloadAbhayaOutput()"
+                class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 transition flex items-center space-x-1.5">
+                <i class="fa-solid fa-download"></i>
+                <span>Download .txt</span>
+              </button>
+              <button type="button" onclick="swapAbhayaDirection()"
+                class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-850 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition flex items-center space-x-1.5">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span>Swap Direction</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- Processing Modal Overlay with Real-Time Percentage Progress Bar -->
-  <div id="processing-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="glass-card max-w-md w-full p-6 sm:p-8 rounded-2xl text-center shadow-2xl border border-cyan-500/30 relative overflow-hidden animate-fade-in">
+  <div id="processing-modal"
+    class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div
+      class="glass-card max-w-md w-full p-6 sm:p-8 rounded-2xl text-center shadow-2xl border border-cyan-500/30 relative overflow-hidden animate-fade-in">
       <!-- Glow ambient background effects -->
       <div class="absolute -top-12 -left-12 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
-      <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none">
+      </div>
 
       <!-- Animated Stage Icon -->
       <div class="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 flex items-center justify-center">
         <div class="absolute inset-0 rounded-full border-2 border-cyan-500/20 animate-ping opacity-30"></div>
         <div class="absolute inset-0 rounded-2xl border border-cyan-500/30 rotate-6 transition-transform"></div>
-        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-800 border border-cyan-500/50 flex items-center justify-center shadow-lg shadow-cyan-500/10 relative z-10">
+        <div
+          class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-800 border border-cyan-500/50 flex items-center justify-center shadow-lg shadow-cyan-500/10 relative z-10">
           <i id="modal-icon" class="fa-solid fa-bolt-lightning text-xl sm:text-2xl text-cyan-400 animate-pulse"></i>
         </div>
       </div>
 
       <h3 id="modal-title" class="font-heading font-bold text-lg sm:text-xl text-white mb-1">Converting File...</h3>
-      
+
       <!-- Dynamic Stage Text: 0-40% Uploading, 40-85% Converting, 85-100% Finalizing -->
       <p id="modal-status" class="text-xs sm:text-sm text-cyan-300 font-semibold mb-3 min-h-[22px] transition-all">
         Uploading file... (0%)
@@ -1011,16 +1824,21 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          <span id="modal-substage" class="text-[11px] sm:text-xs text-slate-300 truncate max-w-[220px]">High-Speed Engine Active</span>
+          <span id="modal-substage" class="text-[11px] sm:text-xs text-slate-300 truncate max-w-[220px]">High-Speed
+            Engine Active</span>
         </span>
-        <span id="modal-percent" class="font-heading font-extrabold text-base sm:text-xl bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+        <span id="modal-percent"
+          class="font-heading font-extrabold text-base sm:text-xl bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
           0%
         </span>
       </div>
-      
+
       <!-- Real-Time Animated Progress Bar -->
-      <div class="w-full bg-slate-900/90 h-3.5 rounded-full overflow-hidden p-0.5 border border-slate-700/80 shadow-inner relative">
-        <div id="modal-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full transition-all duration-200 relative overflow-hidden" style="width: 0%;">
+      <div
+        class="w-full bg-slate-900/90 h-3.5 rounded-full overflow-hidden p-0.5 border border-slate-700/80 shadow-inner relative">
+        <div id="modal-progress-bar"
+          class="h-full bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full transition-all duration-200 relative overflow-hidden"
+          style="width: 0%;">
           <div class="absolute inset-0 bg-white/25 transform -skew-x-12 animate-pulse" style="width: 100%;"></div>
         </div>
       </div>
@@ -1039,7 +1857,7 @@
   <footer class="border-t border-slate-800/80 bg-slate-950/90 py-6 mt-12">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <p class="text-xs sm:text-sm text-slate-300 font-medium">
-        © PrasaTek System Solutions — SupiriConvertPRO. 100% Free to Use. All Rights Reserved.
+        © PrasaTek System Solutions — SupiriConvert PRO. 100% Free to Use. All Rights Reserved.
       </p>
       <p class="text-[11px] text-slate-500 mt-1">
         Fast, secure, and unlimited processing • Zero tracking • Automatic self-cleaning container storage
@@ -1066,27 +1884,81 @@
       }
     });
 
-    // --- Smart API Base URL Detection ---
+    // --- Smart API Base URL Detection (Custom Domain & Production Friendly) ---
     const getApiBaseUrl = () => {
+      const hostname = window.location.hostname;
       const port = window.location.port;
       const protocol = window.location.protocol;
-      if (port === "7860") {
-        return "";
-      }
-      if (protocol === "https:" && !window.location.hostname.includes("localhost") && !window.location.hostname.includes("127.0.0.1")) {
+      if (hostname === "supiriconvert.prasatek.lk" || port === "7860" || (protocol === "https:" && !hostname.includes("localhost") && !hostname.includes("127.0.0.1"))) {
         return "";
       }
       return "http://127.0.0.1:7860";
     };
     const API_BASE_URL = getApiBaseUrl();
 
+    // --- RAM Protection & Smart File Size Limit (Render 512MB Guard) ---
+    const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB Free Limit
+
+    function validateFileSize(file, maxBytes = MAX_FILE_SIZE) {
+      if (!file) return true;
+      if (file.size > maxBytes) {
+        showToast("File size exceeds the 50 MB free limit. Please choose a smaller file to ensure fast processing.", "error");
+        return false;
+      }
+      return true;
+    }
+
     // --- State Variables ---
     let docFile = null;
     let pdfMergeFiles = [];
     let img2pdfFiles = [];
+    let splitPdfFile = null;
+    let securityPdfFile = null;
+    let ocrImageFile = null;
     let mediaFile = null;
     let imageFile = null;
     let qrCodeInstance = null;
+
+    // --- Sub-Tool Switchers (PDF Studio & Image Studio) ---
+    function switchPdfSubtool(subtoolId) {
+      ['merge', 'split', 'security', 'img2pdf'].forEach(id => {
+        const el = document.getElementById(`pdf-subtool-${id}`);
+        const btn = document.getElementById(`pdf-subtab-btn-${id}`);
+        if (el) el.classList.add('hidden');
+        if (btn) {
+          btn.classList.remove('bg-gradient-to-r', 'from-emerald-500', 'to-teal-500', 'text-slate-950', 'shadow-lg', 'shadow-emerald-500/20');
+          btn.classList.add('bg-slate-900/80', 'text-slate-400', 'border', 'border-slate-800');
+        }
+      });
+
+      const activeEl = document.getElementById(`pdf-subtool-${subtoolId}`);
+      const activeBtn = document.getElementById(`pdf-subtab-btn-${subtoolId}`);
+      if (activeEl) activeEl.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-900/80', 'text-slate-400', 'border', 'border-slate-800');
+        activeBtn.classList.add('bg-gradient-to-r', 'from-emerald-500', 'to-teal-500', 'text-slate-950', 'shadow-lg', 'shadow-emerald-500/20');
+      }
+    }
+
+    function switchImgSubtool(subtoolId) {
+      ['converter', 'ocr'].forEach(id => {
+        const el = document.getElementById(`img-subtool-${id}`);
+        const btn = document.getElementById(`img-subtab-btn-${id}`);
+        if (el) el.classList.add('hidden');
+        if (btn) {
+          btn.classList.remove('bg-gradient-to-r', 'from-emerald-500', 'to-cyan-500', 'text-slate-950', 'shadow-lg', 'shadow-emerald-500/20');
+          btn.classList.add('bg-slate-900/80', 'text-slate-400', 'border', 'border-slate-800');
+        }
+      });
+
+      const activeEl = document.getElementById(`img-subtool-${subtoolId}`);
+      const activeBtn = document.getElementById(`img-subtab-btn-${subtoolId}`);
+      if (activeEl) activeEl.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-900/80', 'text-slate-400', 'border', 'border-slate-800');
+        activeBtn.classList.add('bg-gradient-to-r', 'from-emerald-500', 'to-cyan-500', 'text-slate-950', 'shadow-lg', 'shadow-emerald-500/20');
+      }
+    }
 
     // --- Download State Cache for Manual Download Flow ---
     const downloadState = {};
@@ -1111,6 +1983,16 @@
         generatePassword();
       }
 
+      if (tabId === 'sinhala-tab') {
+        if (window.renderSinhalaGuide) {
+          window.renderSinhalaGuide();
+        }
+        setTimeout(() => {
+          const ta = document.getElementById('singlish-input');
+          if (ta) ta.focus();
+        }, 80);
+      }
+
       if (tabId === 'text-tab') {
         setTimeout(() => {
           const ta = document.getElementById('case-textarea');
@@ -1123,7 +2005,7 @@
     function showToast(message, type = 'info') {
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
-      
+
       let borderCol = 'border-cyan-500/50';
       let textCol = 'text-cyan-400';
       let icon = 'fa-circle-info';
@@ -1213,7 +2095,7 @@
         // Transition: Upload completed -> Stage 2: Processing (40% - 85%)
         xhr.upload.onload = () => {
           setModalProgress(40, 'Converting file on high-speed engine... (40%)', 'Multi-thread engine executing');
-          
+
           let current = 40;
           progressInterval = setInterval(() => {
             if (current < 84) {
@@ -1368,6 +2250,8 @@
       if (card) card.classList.add('hidden');
       if (toolKey === 'doc') clearDocFile();
       else if (toolKey === 'pdf-merge') clearMergeList();
+      else if (toolKey === 'pdf-split') clearSplitFile();
+      else if (toolKey === 'pdf-security') clearSecurityFile();
       else if (toolKey === 'img2pdf') clearImg2PdfList();
       else if (toolKey === 'media') clearMediaFile();
       else if (toolKey === 'img') clearImageFile();
@@ -1394,6 +2278,16 @@
     });
 
     function handleDocFileSelected(file) {
+      if (!file) return;
+      if (file.size > 50 * 1024 * 1024) {
+        showToast("File size exceeds the 50 MB limit. Please choose a smaller file.", "error");
+        docInput.value = '';
+        return;
+      }
+      if (!validateFileSize(file)) {
+        docInput.value = '';
+        return;
+      }
       docFile = file;
       document.getElementById('doc-empty-state').classList.add('hidden');
       document.getElementById('doc-file-preview').classList.remove('hidden');
@@ -1457,6 +2351,10 @@
 
     async function convertDocument() {
       if (!docFile) return;
+      if (docFile.size > 50 * 1024 * 1024) {
+        showToast("File size exceeds the 50 MB limit. Please select a file under 50 MB.", "error");
+        return;
+      }
 
       const targetFmt = docTargetFormat.value;
       const formData = new FormData();
@@ -1498,8 +2396,15 @@
 
     function handleMergeFiles(files) {
       document.getElementById('pdf-merge-success-card').classList.add('hidden');
+      let currentTotal = pdfMergeFiles.reduce((acc, f) => acc + f.size, 0);
       for (const f of files) {
         if (f.name.toLowerCase().endsWith('.pdf')) {
+          if (!validateFileSize(f)) continue;
+          if (currentTotal + f.size > MAX_FILE_SIZE) {
+            showToast("Total combined PDF files size exceeds the 50 MB limit. Please select fewer or smaller files.", "error");
+            break;
+          }
+          currentTotal += f.size;
           pdfMergeFiles.push(f);
         }
       }
@@ -1570,6 +2475,194 @@
       }
     }
 
+    // ========================================================
+    // SUB-TOOL 2: SPLIT / EXTRACT PDF PAGES
+    // ========================================================
+    const splitDropzone = document.getElementById('split-dropzone');
+    const splitInput = document.getElementById('split-file-input');
+    const splitBtn = document.getElementById('split-btn');
+
+    if (splitDropzone && splitInput) {
+      splitDropzone.addEventListener('click', () => splitInput.click());
+      splitDropzone.addEventListener('dragover', (e) => { e.preventDefault(); splitDropzone.classList.add('drag-active'); });
+      splitDropzone.addEventListener('dragleave', () => splitDropzone.classList.remove('drag-active'));
+      splitDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        splitDropzone.classList.remove('drag-active');
+        if (e.dataTransfer.files.length) handleSplitFileSelected(e.dataTransfer.files[0]);
+      });
+      splitInput.addEventListener('change', (e) => {
+        if (e.target.files.length) handleSplitFileSelected(e.target.files[0]);
+      });
+    }
+
+    function handleSplitFileSelected(file) {
+      if (!validateFileSize(file)) {
+        splitInput.value = '';
+        return;
+      }
+      if (!file.name.toLowerCase().endsWith('.pdf')) {
+        showToast('Please select a valid PDF file.', 'error');
+        splitInput.value = '';
+        return;
+      }
+      splitPdfFile = file;
+      document.getElementById('split-empty-state').classList.add('hidden');
+      document.getElementById('split-file-preview').classList.remove('hidden');
+      document.getElementById('split-filename').innerText = file.name;
+      document.getElementById('split-filesize').innerText = formatBytes(file.size);
+      document.getElementById('pdf-split-success-card').classList.add('hidden');
+      splitBtn.disabled = false;
+    }
+
+    function clearSplitFile(e) {
+      if (e) e.stopPropagation();
+      splitPdfFile = null;
+      if (splitInput) splitInput.value = '';
+      document.getElementById('split-empty-state').classList.remove('hidden');
+      document.getElementById('split-file-preview').classList.add('hidden');
+      document.getElementById('pdf-split-success-card').classList.add('hidden');
+      splitBtn.disabled = true;
+    }
+
+    async function splitPdf() {
+      if (!splitPdfFile) return;
+      if (!validateFileSize(splitPdfFile)) return;
+
+      const pageRange = (document.getElementById('split-page-range').value || '').trim();
+      if (!pageRange) {
+        showToast('Please enter a page range (e.g. 1-3, 5, 7-9 or all)', 'error');
+        document.getElementById('split-page-range').focus();
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', splitPdfFile);
+      formData.append('page_range', pageRange);
+
+      showModal('Extracting PDF Pages', `Uploading ${splitPdfFile.name}... (0%)`);
+
+      try {
+        const result = await requestWithProgress(`${API_BASE_URL}/api/pdf/split`, formData);
+        const origBase = splitPdfFile.name.replace(/\.[^/.]+$/, "");
+        await handleConversionSuccess('pdf-split', result, `${origBase}_extracted.pdf`);
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        hideModal();
+      }
+    }
+
+    // ========================================================
+    // SUB-TOOL 3: PROTECT / UNLOCK PDF PASSWORD
+    // ========================================================
+    const securityDropzone = document.getElementById('security-dropzone');
+    const securityInput = document.getElementById('security-file-input');
+    const securityBtn = document.getElementById('security-btn');
+
+    if (securityDropzone && securityInput) {
+      securityDropzone.addEventListener('click', () => securityInput.click());
+      securityDropzone.addEventListener('dragover', (e) => { e.preventDefault(); securityDropzone.classList.add('drag-active'); });
+      securityDropzone.addEventListener('dragleave', () => securityDropzone.classList.remove('drag-active'));
+      securityDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        securityDropzone.classList.remove('drag-active');
+        if (e.dataTransfer.files.length) handleSecurityFileSelected(e.dataTransfer.files[0]);
+      });
+      securityInput.addEventListener('change', (e) => {
+        if (e.target.files.length) handleSecurityFileSelected(e.target.files[0]);
+      });
+    }
+
+    function handleSecurityFileSelected(file) {
+      if (!validateFileSize(file)) {
+        securityInput.value = '';
+        return;
+      }
+      if (!file.name.toLowerCase().endsWith('.pdf')) {
+        showToast('Please select a valid PDF file.', 'error');
+        securityInput.value = '';
+        return;
+      }
+      securityPdfFile = file;
+      document.getElementById('security-empty-state').classList.add('hidden');
+      document.getElementById('security-file-preview').classList.remove('hidden');
+      document.getElementById('security-filename').innerText = file.name;
+      document.getElementById('security-filesize').innerText = formatBytes(file.size);
+      document.getElementById('pdf-security-success-card').classList.add('hidden');
+      securityBtn.disabled = false;
+    }
+
+    function clearSecurityFile(e) {
+      if (e) e.stopPropagation();
+      securityPdfFile = null;
+      if (securityInput) securityInput.value = '';
+      document.getElementById('security-empty-state').classList.remove('hidden');
+      document.getElementById('security-file-preview').classList.add('hidden');
+      document.getElementById('pdf-security-success-card').classList.add('hidden');
+      securityBtn.disabled = true;
+    }
+
+    function updateSecurityActionLabel() {
+      const mode = document.querySelector('input[name="pdf-sec-action"]:checked')?.value || 'encrypt';
+      const label = document.getElementById('security-password-label');
+      const btnText = document.getElementById('security-btn-text');
+      const pwdInput = document.getElementById('security-password');
+      if (mode === 'encrypt') {
+        label.innerText = 'Password to Encrypt With';
+        btnText.innerText = 'Encrypt PDF with Password';
+        pwdInput.placeholder = 'Enter password to protect PDF';
+      } else {
+        label.innerText = 'Existing Password to Unlock';
+        btnText.innerText = 'Unlock / Decrypt PDF';
+        pwdInput.placeholder = 'Enter password to decrypt PDF';
+      }
+    }
+
+    function toggleSecurityPasswordVisibility() {
+      const input = document.getElementById('security-password');
+      const icon = document.getElementById('sec-eye-icon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-solid fa-eye-slash text-xs';
+      } else {
+        input.type = 'password';
+        icon.className = 'fa-solid fa-eye text-xs';
+      }
+    }
+
+    async function processPdfSecurity() {
+      if (!securityPdfFile) return;
+      if (!validateFileSize(securityPdfFile)) return;
+
+      const action = document.querySelector('input[name="pdf-sec-action"]:checked')?.value || 'encrypt';
+      const pwd = (document.getElementById('security-password').value || '').trim();
+      if (!pwd) {
+        showToast('Please enter the password!', 'error');
+        document.getElementById('security-password').focus();
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', securityPdfFile);
+      formData.append('action', action);
+      formData.append('password', pwd);
+
+      const actionLabel = action === 'encrypt' ? 'Encrypting PDF' : 'Decrypting PDF';
+      showModal(actionLabel, `Uploading ${securityPdfFile.name}... (0%)`);
+
+      try {
+        const result = await requestWithProgress(`${API_BASE_URL}/api/pdf/security`, formData);
+        const origBase = securityPdfFile.name.replace(/\.[^/.]+$/, "");
+        const outName = action === 'encrypt' ? `${origBase}_protected.pdf` : `${origBase}_unlocked.pdf`;
+        await handleConversionSuccess('pdf-security', result, outName);
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        hideModal();
+      }
+    }
+
     // --- Sub-tool B: Images to PDF ---
     const img2pdfDropzone = document.getElementById('img2pdf-dropzone');
     const img2pdfInput = document.getElementById('img2pdf-input');
@@ -1591,9 +2684,16 @@
     function handleImg2PdfFiles(files) {
       document.getElementById('img2pdf-success-card').classList.add('hidden');
       const validExts = ['png', 'jpg', 'jpeg', 'webp', 'bmp'];
+      let currentTotal = img2pdfFiles.reduce((acc, f) => acc + f.size, 0);
       for (const f of files) {
         const ext = f.name.split('.').pop().toLowerCase();
         if (validExts.includes(ext)) {
+          if (!validateFileSize(f)) continue;
+          if (currentTotal + f.size > MAX_FILE_SIZE) {
+            showToast("Total combined images size exceeds the 50 MB limit. Please select fewer or smaller images.", "error");
+            break;
+          }
+          currentTotal += f.size;
           img2pdfFiles.push(f);
         }
       }
@@ -1605,7 +2705,7 @@
       img2pdfFiles.forEach((f, idx) => {
         const card = document.createElement('div');
         card.className = 'relative group rounded-lg overflow-hidden border border-slate-700 bg-slate-900 aspect-square';
-        
+
         const img = document.createElement('img');
         img.className = 'w-full h-full object-cover';
         img.src = URL.createObjectURL(f);
@@ -1742,6 +2842,16 @@
     });
 
     function handleMediaFileSelected(file) {
+      if (!file) return;
+      if (file.size > 50 * 1024 * 1024) {
+        showToast("File size exceeds the 50 MB limit. Please choose a smaller file.", "error");
+        mediaInput.value = '';
+        return;
+      }
+      if (!validateFileSize(file)) {
+        mediaInput.value = '';
+        return;
+      }
       mediaFile = file;
       document.getElementById('media-empty-state').classList.add('hidden');
       document.getElementById('media-file-preview').classList.remove('hidden');
@@ -1751,9 +2861,9 @@
 
       const ext = file.name.split('.').pop().toLowerCase();
       const isAudio = ['mp3', 'wav', 'aac', 'ogg', 'm4a'].includes(ext);
-      
-      document.getElementById('media-file-icon').innerHTML = isAudio 
-        ? '<i class="fa-solid fa-file-audio text-emerald-400"></i>' 
+
+      document.getElementById('media-file-icon').innerHTML = isAudio
+        ? '<i class="fa-solid fa-file-audio text-emerald-400"></i>'
         : '<i class="fa-solid fa-file-video text-cyan-400"></i>';
 
       mediaConvertBtn.disabled = false;
@@ -1776,6 +2886,10 @@
 
     async function convertMedia() {
       if (!mediaFile) return;
+      if (mediaFile.size > 50 * 1024 * 1024) {
+        showToast("File size exceeds the 50 MB limit. Please select a file under 50 MB.", "error");
+        return;
+      }
 
       const targetFmt = mediaTargetFormat.value;
       const formData = new FormData();
@@ -1821,6 +2935,10 @@
     });
 
     function handleImageFileSelected(file) {
+      if (!validateFileSize(file)) {
+        imgInput.value = '';
+        return;
+      }
       imageFile = file;
       document.getElementById('img-empty-state').classList.add('hidden');
       document.getElementById('img-file-preview').classList.remove('hidden');
@@ -1937,6 +3055,181 @@
       } finally {
         hideModal();
       }
+    }
+
+    // ========================================================
+    // SUB-TOOL: AI OCR SCANNER (IMAGE TO TEXT - ENGLISH & SINHALA)
+    // ========================================================
+    const ocrDropzone = document.getElementById('ocr-dropzone');
+    const ocrInput = document.getElementById('ocr-file-input');
+    const ocrExtractBtn = document.getElementById('ocr-extract-btn');
+
+    if (ocrDropzone && ocrInput) {
+      ocrDropzone.addEventListener('click', () => ocrInput.click());
+      ocrDropzone.addEventListener('dragover', (e) => { e.preventDefault(); ocrDropzone.classList.add('drag-active'); });
+      ocrDropzone.addEventListener('dragleave', () => ocrDropzone.classList.remove('drag-active'));
+      ocrDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        ocrDropzone.classList.remove('drag-active');
+        if (e.dataTransfer.files.length) handleOcrFileSelected(e.dataTransfer.files[0]);
+      });
+      ocrInput.addEventListener('change', (e) => {
+        if (e.target.files.length) handleOcrFileSelected(e.target.files[0]);
+      });
+    }
+
+    function handleOcrFileSelected(file) {
+      if (!validateFileSize(file)) {
+        ocrInput.value = '';
+        return;
+      }
+      const validExts = ['png', 'jpg', 'jpeg', 'webp', 'bmp'];
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (!validExts.includes(ext)) {
+        showToast("Please select a valid image file (.png, .jpg, .webp, .bmp).", "error");
+        ocrInput.value = '';
+        return;
+      }
+      ocrImageFile = file;
+      document.getElementById('ocr-empty-state').classList.add('hidden');
+      document.getElementById('ocr-file-preview').classList.remove('hidden');
+      document.getElementById('ocr-filename').innerText = file.name;
+      document.getElementById('ocr-filesize').innerText = formatBytes(file.size);
+      document.getElementById('ocr-thumbnail').src = URL.createObjectURL(file);
+      document.getElementById('ocr-result-card').classList.add('hidden');
+      if (ocrExtractBtn) ocrExtractBtn.disabled = false;
+    }
+
+    function clearOcrFile(e) {
+      if (e) e.stopPropagation();
+      ocrImageFile = null;
+      if (ocrInput) ocrInput.value = '';
+      document.getElementById('ocr-empty-state').classList.remove('hidden');
+      document.getElementById('ocr-file-preview').classList.add('hidden');
+      document.getElementById('ocr-result-card').classList.add('hidden');
+      if (ocrExtractBtn) ocrExtractBtn.disabled = true;
+    }
+
+    function updateOcrStats() {
+      const text = (document.getElementById('ocr-extracted-text').value || '').trim();
+      const chars = text.length;
+      const words = text ? text.split(/\s+/).length : 0;
+      const charEl = document.getElementById('ocr-char-count');
+      const wordEl = document.getElementById('ocr-word-count');
+      if (charEl) charEl.innerText = `${chars.toLocaleString()} characters`;
+      if (wordEl) wordEl.innerText = `${words.toLocaleString()} words`;
+    }
+
+    async function runOcrExtraction() {
+      if (!ocrImageFile) return;
+      if (!validateFileSize(ocrImageFile)) return;
+
+      const lang = document.getElementById('ocr-language').value || 'eng';
+      const progressContainer = document.getElementById('ocr-progress-container');
+      const statusText = document.getElementById('ocr-status-text');
+      const percentText = document.getElementById('ocr-progress-percent');
+      const progressBar = document.getElementById('ocr-progress-bar');
+      const resultCard = document.getElementById('ocr-result-card');
+      const textArea = document.getElementById('ocr-extracted-text');
+
+      if (ocrExtractBtn) ocrExtractBtn.disabled = true;
+      if (progressContainer) progressContainer.classList.remove('hidden');
+      if (resultCard) resultCard.classList.add('hidden');
+      if (progressBar) progressBar.style.width = '0%';
+      if (percentText) percentText.innerText = '0%';
+      if (statusText) statusText.innerHTML = '<i class="fa-solid fa-spinner animate-spin text-cyan-400"></i> Initializing OCR engine...';
+
+      try {
+        if (typeof Tesseract === 'undefined') {
+          throw new Error("Tesseract OCR library is still loading or unavailable. Please check your internet connection.");
+        }
+
+        const { data: { text } } = await Tesseract.recognize(
+          ocrImageFile,
+          lang,
+          {
+            logger: m => {
+              if (m.status) {
+                let label = m.status;
+                if (label === 'loading tesseract core') label = 'Loading AI Core...';
+                else if (label === 'initializing tesseract') label = 'Initializing Core...';
+                else if (label === 'loading language traineddata') label = `Downloading trained language data (${lang})...`;
+                else if (label === 'initializing api') label = 'Preparing OCR API...';
+                else if (label === 'recognizing text') label = 'Recognizing & reading text...';
+
+                const pct = Math.round((m.progress || 0) * 100);
+                if (statusText) statusText.innerHTML = `<i class="fa-solid fa-spinner animate-spin text-cyan-400"></i> ${label}`;
+                if (percentText) percentText.innerText = `${pct}%`;
+                if (progressBar) progressBar.style.width = `${pct}%`;
+              }
+            }
+          }
+        );
+
+        if (progressBar) progressBar.style.width = '100%';
+        if (percentText) percentText.innerText = '100%';
+        if (statusText) statusText.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400"></i> Recognition complete!';
+
+        if (textArea) {
+          textArea.value = text.trim();
+          textArea.oninput = updateOcrStats;
+        }
+        updateOcrStats();
+
+        if (resultCard) {
+          resultCard.classList.remove('hidden');
+          resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        showToast("Text extracted successfully with AI OCR!", "success");
+      } catch (err) {
+        console.error("OCR Error:", err);
+        showToast("OCR Error: " + (err.message || "Failed to extract text"), "error");
+      } finally {
+        if (ocrExtractBtn) ocrExtractBtn.disabled = false;
+        setTimeout(() => {
+          if (progressContainer) progressContainer.classList.add('hidden');
+        }, 1200);
+      }
+    }
+
+    function copyOcrText() {
+      const text = document.getElementById('ocr-extracted-text').value;
+      if (!text) {
+        showToast("Nothing to copy!", "error");
+        return;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Extracted text copied to clipboard!", "success");
+      }).catch(() => {
+        showToast("Failed to copy text", "error");
+      });
+    }
+
+    function downloadOcrText() {
+      const text = document.getElementById('ocr-extracted-text').value;
+      if (!text) {
+        showToast("Nothing to download!", "error");
+        return;
+      }
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'extracted_text_ocr.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Downloaded extracted_text_ocr.txt", "success");
+    }
+
+    function clearOcrText() {
+      const textArea = document.getElementById('ocr-extracted-text');
+      if (textArea) textArea.value = '';
+      updateOcrStats();
+      const resultCard = document.getElementById('ocr-result-card');
+      if (resultCard) resultCard.classList.add('hidden');
+      showToast("OCR text cleared", "info");
     }
 
     // ========================================================
@@ -2362,7 +3655,7 @@
     }
 
     function loadSampleText() {
-      const sample = "SupiriConvertPRO is an all-in-one file converter and text studio engineered by PrasaTek System Solutions.\n\nIt features lightning-fast document conversion, advanced PDF tools, media transcoders, and full client-side text manipulation! Did you know? This case converter processes all transformations instantly in your browser without uploading your sensitive text to any server.\n\nTry testing UPPER CASE, lower case, Sentence case, and Capitalized Case right now!";
+      const sample = "SupiriConvert PRO is an all-in-one file converter and text studio engineered by PrasaTek System Solutions.\n\nIt features lightning-fast document conversion, advanced PDF tools, media transcoders, and full client-side text manipulation! Did you know? This case converter processes all transformations instantly in your browser without uploading your sensitive text to any server.\n\nTry testing UPPER CASE, lower case, Sentence case, and Capitalized Case right now!";
       const textarea = document.getElementById('case-textarea');
       if (textarea) {
         pushCaseHistory(textarea.value);
@@ -2386,41 +3679,265 @@
             return;
           }
         }
-      } catch (_) {}
+      } catch (_) { }
       textarea.focus();
       showToast('Please press Ctrl+V to paste', 'info');
     }
 
-    // --- On Window Load: Status Check & Init ---
-    window.addEventListener('DOMContentLoaded', async () => {
-      try {
-        let isOnline = false;
-        try {
-          const res = await fetch(`${API_BASE_URL}/api/status`);
-          if (res.ok) isOnline = true;
-        } catch (_) {
-          try {
-            const healthRes = await fetch(`${API_BASE_URL}/api/health`);
-            if (healthRes.ok) isOnline = true;
-          } catch (__) {}
-        }
+    // ========================================================
+    // TAB: SINHALA STUDIO LOGIC
+    // ========================================================
+    function onSinglishInput() {
+      const inputEl = document.getElementById('singlish-input');
+      const outputEl = document.getElementById('sinhala-output');
+      if (!inputEl || !outputEl) return;
+      const text = inputEl.value;
+      const sinhala = window.singlishToSinhala ? window.singlishToSinhala(text) : (window.SinhalaEngine ? window.SinhalaEngine.singlishToSinhala(text) : text);
+      outputEl.value = sinhala;
+      updateSinhalaStats();
+    }
 
-        if (isOnline) {
-          document.getElementById('status-ping').className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75';
-          document.getElementById('status-dot').className = 'relative inline-flex rounded-full h-2 w-2 bg-emerald-500';
-          document.getElementById('status-text').innerText = 'Engine Online';
-        } else {
-          throw new Error('Offline');
-        }
-      } catch (e) {
-        document.getElementById('status-ping').className = 'hidden';
-        document.getElementById('status-dot').className = 'relative inline-flex rounded-full h-2 w-2 bg-amber-500';
-        document.getElementById('status-text').innerText = 'Offline Mode';
+    function updateSinhalaStats() {
+      const out = document.getElementById('sinhala-output')?.value || '';
+      const charEl = document.getElementById('sinhala-char-count');
+      const wordEl = document.getElementById('sinhala-word-count');
+      if (charEl) charEl.innerText = `${out.length} chars`;
+      if (wordEl) {
+        const words = out.trim() ? out.trim().split(/\s+/).length : 0;
+        wordEl.innerText = `${words} words`;
       }
+    }
+
+    function clearSinglishText() {
+      const inputEl = document.getElementById('singlish-input');
+      const outputEl = document.getElementById('sinhala-output');
+      if (inputEl) inputEl.value = '';
+      if (outputEl) outputEl.value = '';
+      updateSinhalaStats();
+      if (inputEl) inputEl.focus();
+    }
+
+    async function copySinhalaOutput() {
+      const outputEl = document.getElementById('sinhala-output');
+      if (!outputEl || !outputEl.value) {
+        showToast('No Sinhala text to copy!', 'info');
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(outputEl.value);
+        showToast('Sinhala text copied to clipboard!', 'success');
+      } catch (_) {
+        outputEl.select();
+        document.execCommand('copy');
+        showToast('Sinhala text copied!', 'success');
+      }
+    }
+
+    function downloadSinhalaOutput() {
+      const outputEl = document.getElementById('sinhala-output');
+      if (!outputEl || !outputEl.value) {
+        showToast('No Sinhala text to download!', 'info');
+        return;
+      }
+      const blob = new Blob([outputEl.value], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'sinhala_unicode.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Downloaded sinhala_unicode.txt', 'success');
+    }
+
+    function transferToAbhaya() {
+      const outputEl = document.getElementById('sinhala-output');
+      const abhayaIn = document.getElementById('font-input-text');
+      if (!outputEl || !outputEl.value) {
+        showToast('Please type some Sinhala text first!', 'info');
+        return;
+      }
+      setAbhayaDirection('u2f');
+      if (abhayaIn) {
+        abhayaIn.value = outputEl.value;
+        onFontConvertInput();
+        abhayaIn.scrollIntoView({ behavior: 'smooth' });
+        showToast('Transferred to FM Abhaya converter!', 'success');
+      }
+    }
+
+    // FM Abhaya Font Conversion State
+    let fontConvertDirection = 'u2f'; // 'u2f' = Unicode -> FM, 'f2u' = FM -> Unicode
+
+    function setAbhayaDirection(dir) {
+      fontConvertDirection = dir;
+      const btnU2F = document.getElementById('btn-dir-u2f');
+      const btnF2U = document.getElementById('btn-dir-f2u');
+      const inLabel = document.getElementById('font-in-label');
+      const outLabel = document.getElementById('font-out-label');
+      const inArea = document.getElementById('font-input-text');
+      const outArea = document.getElementById('font-output-text');
+
+      if (dir === 'u2f') {
+        if (btnU2F) {
+          btnU2F.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-md';
+        }
+        if (btnF2U) {
+          btnF2U.className = 'px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white bg-slate-900 border border-slate-800 transition';
+        }
+        if (inLabel) inLabel.innerText = 'Sinhala Unicode Text (යුනිකෝඩ් පෙළ)';
+        if (outLabel) outLabel.innerText = 'FM Abhaya Font Text (FM ෆොන්ට් පෙළ)';
+        if (inArea) inArea.placeholder = 'සිංහල යුනිකෝඩ් පෙළ මෙහි ඇතුළත් කරන්න...';
+        if (outArea) outArea.placeholder = 'FM Abhaya ෆොන්ට් සඳහා පරිවර්තනය වූ පෙළ මෙහි දිස්වේ...';
+      } else {
+        if (btnF2U) {
+          btnF2U.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-md';
+        }
+        if (btnU2F) {
+          btnU2F.className = 'px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white bg-slate-900 border border-slate-800 transition';
+        }
+        if (inLabel) inLabel.innerText = 'FM Abhaya Font Text (FM ෆොන්ට් පෙළ)';
+        if (outLabel) outLabel.innerText = 'Sinhala Unicode Text (යුනිකෝඩ් පෙළ)';
+        if (inArea) inArea.placeholder = 'Paste FM Abhaya / Derana font text here...';
+        if (outArea) outArea.placeholder = 'Unicode Sinhala text will appear here...';
+      }
+      onFontConvertInput();
+    }
+
+    function swapAbhayaDirection() {
+      const inArea = document.getElementById('font-input-text');
+      const outArea = document.getElementById('font-output-text');
+      const currentOut = outArea ? outArea.value : '';
+      setAbhayaDirection(fontConvertDirection === 'u2f' ? 'f2u' : 'u2f');
+      if (inArea && currentOut) {
+        inArea.value = currentOut;
+        onFontConvertInput();
+      }
+    }
+
+    function onFontConvertInput() {
+      const inArea = document.getElementById('font-input-text');
+      const outArea = document.getElementById('font-output-text');
+      if (!inArea || !outArea) return;
+      const val = inArea.value;
+      if (!val) {
+        outArea.value = '';
+        return;
+      }
+      if (fontConvertDirection === 'u2f') {
+        outArea.value = window.unicodeToAbhaya ? window.unicodeToAbhaya(val) : (window.SinhalaEngine ? window.SinhalaEngine.unicodeToAbhaya(val) : val);
+      } else {
+        outArea.value = window.abhayaToUnicode ? window.abhayaToUnicode(val) : (window.SinhalaEngine ? window.SinhalaEngine.abhayaToUnicode(val) : val);
+      }
+    }
+
+    async function copyAbhayaOutput() {
+      const outArea = document.getElementById('font-output-text');
+      if (!outArea || !outArea.value) {
+        showToast('No converted text to copy!', 'info');
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(outArea.value);
+        showToast('Converted text copied to clipboard!', 'success');
+      } catch (_) {
+        outArea.select();
+        document.execCommand('copy');
+        showToast('Converted text copied!', 'success');
+      }
+    }
+
+    function downloadAbhayaOutput() {
+      const outArea = document.getElementById('font-output-text');
+      if (!outArea || !outArea.value) {
+        showToast('No converted text to download!', 'info');
+        return;
+      }
+      const fname = fontConvertDirection === 'u2f' ? 'fm_abhaya_text.txt' : 'sinhala_unicode_text.txt';
+      const blob = new Blob([outArea.value], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fname;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast(`Downloaded ${fname}`, 'success');
+    }
+
+    function clearAbhayaText() {
+      const inArea = document.getElementById('font-input-text');
+      const outArea = document.getElementById('font-output-text');
+      if (inArea) inArea.value = '';
+      if (outArea) outArea.value = '';
+      if (inArea) inArea.focus();
+    }
+
+    // --- On Window Load: Status Check, Cold-Start Banner & Keep-Alive Init ---
+    window.addEventListener('DOMContentLoaded', async () => {
+      const coldStartBanner = document.getElementById('cold-start-banner');
+      let engineAwake = false;
+
+      // Initialize Sinhala Reference Guide
+      if (window.renderSinhalaGuide) {
+        window.renderSinhalaGuide();
+      }
+
+      // Show friendly cold-start banner if engine takes > 2 seconds to respond (Render free-tier wake up)
+      const coldStartTimer = setTimeout(() => {
+        if (!engineAwake && coldStartBanner) {
+          coldStartBanner.classList.remove('hidden');
+        }
+      }, 2000);
+
+      const checkHealth = async () => {
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/health?t=${Date.now()}`, { cache: 'no-store' });
+          if (res.ok) {
+            engineAwake = true;
+            clearTimeout(coldStartTimer);
+            if (coldStartBanner) coldStartBanner.classList.add('hidden');
+            const ping = document.getElementById('status-ping');
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('status-text');
+            if (ping) ping.className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75';
+            if (dot) dot.className = 'relative inline-flex rounded-full h-2 w-2 bg-emerald-500';
+            if (text) text.innerText = 'Engine Online';
+            return true;
+          }
+        } catch (_) { }
+        return false;
+      };
+
+      const isOnline = await checkHealth();
+      if (!isOnline) {
+        // Retry shortly after to catch wake-up
+        setTimeout(async () => {
+          const retryOnline = await checkHealth();
+          if (!retryOnline && !engineAwake) {
+            const ping = document.getElementById('status-ping');
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('status-text');
+            if (ping) ping.className = 'hidden';
+            if (dot) dot.className = 'relative inline-flex rounded-full h-2 w-2 bg-amber-500';
+            if (text) text.innerText = 'Offline Mode';
+          }
+        }, 2500);
+      }
+
+      // Anti-sleep keep-alive heartbeat: ping /api/health every 4 minutes (240,000 ms) while tab is open
+      setInterval(async () => {
+        try {
+          await fetch(`${API_BASE_URL}/api/health?t=${Date.now()}`, { cache: 'no-store' });
+        } catch (_) { }
+      }, 240000);
 
       generatePassword();
       updateTextStats();
     });
   </script>
 </body>
+
 </html>

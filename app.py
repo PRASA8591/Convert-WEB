@@ -5,6 +5,7 @@ import uuid
 import re
 import logging
 import subprocess
+import gc
 from urllib.parse import quote
 from typing import List, Optional
 
@@ -36,7 +37,7 @@ logger.info(f"Initialized temporary upload directory at: {UPLOAD_DIR}")
 app = FastAPI(
     title="SupiriConvertPRO",
     description="100% Free & Unlimited All-in-One File Converter and Utility Web Application powered by PrasaTek System Solutions",
-    version="2.0.0",
+    version="2.1.0",
 )
 
 # Security Headers Middleware
@@ -49,10 +50,17 @@ async def add_security_headers(request: Request, call_next):
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     return response
 
-# CORS Middleware (Enable all origins for local previews and API access)
+# CORS Middleware (Explicit custom domain & universal access)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://supiriconvert.prasatek.lk",
+        "http://supiriconvert.prasatek.lk",
+        "https://www.supiriconvert.prasatek.lk",
+        "http://localhost:7860",
+        "http://127.0.0.1:7860",
+        "*",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -110,10 +118,14 @@ def check_poppler_installed() -> bool:
     return find_binary(["pdftoppm"]) is not None
 
 
-# --- Cleanup Helper ---
+# Maximum File Size Allowed: 50 MB (To protect Render 512MB RAM and guarantee fast conversions)
+MAX_FILE_SIZE_BYTES = 50 * 1024 * 1024
+
+
+# --- Cleanup Helper & RAM Protection ---
 
 def remove_temp_paths(*paths: Optional[str]):
-    """Background task to remove temporary files and directories safely."""
+    """Background task to remove temporary files and directories safely, followed by memory cleanup."""
     for path in paths:
         if path and os.path.exists(path):
             try:
@@ -125,6 +137,8 @@ def remove_temp_paths(*paths: Optional[str]):
                     logger.debug(f"Removed temp dir: {path}")
             except Exception as e:
                 logger.warning(f"Error removing temporary path '{path}': {e}")
+    # Explicit garbage collection to keep Render 512MB RAM clean
+    gc.collect()
 
 
 def sanitize_filename(filename: str) -> str:
@@ -135,15 +149,40 @@ def sanitize_filename(filename: str) -> str:
 
 
 async def save_upload_file(upload_file: UploadFile, custom_prefix: str = "") -> str:
-    """Save an incoming UploadFile to the temporary uploads directory."""
+    """
+    Save an incoming UploadFile to the temporary uploads directory with 50 MB RAM protection.
+    Raises HTTPException 413 if upload exceeds 50 MB.
+    """
+    if upload_file.size and upload_file.size > MAX_FILE_SIZE_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail="File size exceeds the 50 MB free limit. Please choose a smaller file to ensure fast processing."
+        )
+
     uid = uuid.uuid4().hex
     safe_name = sanitize_filename(upload_file.filename)
     prefix = f"{custom_prefix}_" if custom_prefix else ""
     target_path = os.path.join(UPLOAD_DIR, f"{prefix}{uid}_{safe_name}")
     
-    with open(target_path, "wb") as buffer:
-        while chunk := await upload_file.read(1024 * 1024):  # 1MB chunks
-            buffer.write(chunk)
+    total_bytes = 0
+    try:
+        with open(target_path, "wb") as buffer:
+            while chunk := await upload_file.read(1024 * 1024):  # 1MB chunks
+                total_bytes += len(chunk)
+                if total_bytes > MAX_FILE_SIZE_BYTES:
+                    raise HTTPException(
+                        status_code=413,
+                        detail="File size exceeds the 50 MB free limit. Please choose a smaller file to ensure fast processing."
+                    )
+                buffer.write(chunk)
+    except Exception:
+        if os.path.exists(target_path):
+            try:
+                os.remove(target_path)
+            except Exception:
+                pass
+        gc.collect()
+        raise
             
     return target_path
 
@@ -648,13 +687,24 @@ def get_logo_png():
     raise HTTPException(status_code=404, detail="Logo not found")
 
 
+# --- Keep-Alive & Anti-Sleep Endpoints (Optimized for Render Free Tier & Uptime Monitors) ---
+
+@app.get("/ping")
+@app.head("/ping")
+def get_ping():
+    """Ultra-lightweight ping endpoint for uptime monitors and keep-alive cron jobs."""
+    return {"status": "awake", "service": "SupiriConvertPRO"}
+
+
 @app.get("/api/health")
+@app.head("/api/health")
 @app.get("/health")
+@app.head("/health")
 def get_health():
-    """Health check endpoint for frontend status indicator."""
+    """Health check endpoint for frontend status indicator and anti-sleep keep-alive heartbeat."""
     return {
-        "status": "online",
-        "app": "SupiriConvertPRO",
+        "status": "awake",
+        "service": "SupiriConvertPRO",
         "provider": "PrasaTek System Solutions",
         "healthy": True,
     }
@@ -779,6 +829,7 @@ def sync_convert_document(input_path: str, output_path: str, orig_ext: str, targ
 
 
 @app.post("/api/convert/document")
+@app.post("/api/document/convert")
 async def convert_document(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
@@ -799,6 +850,12 @@ async def convert_document(
 
     if not orig_ext:
         raise HTTPException(status_code=400, detail="Uploaded file lacks a valid extension.")
+
+    if file.size and file.size > MAX_FILE_SIZE_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail="File size exceeds the 50 MB free limit. Please choose a smaller file to ensure fast processing."
+        )
 
     input_path = await save_upload_file(file, "doc_in")
     out_uid = uuid.uuid4().hex
@@ -833,11 +890,62 @@ async def convert_document(
         logger.exception("Unexpected error during document conversion:")
         remove_temp_paths(input_path, output_path)
         raise HTTPException(status_code=500, detail=f"Document conversion failed: {str(e)}")
+    finally:
+        gc.collect()
 
 
 # =====================================================================
-# TAB 2: PDF STUDIO (Merge & Images to PDF)
+# TAB 2: PDF STUDIO (Merge, Split, Security & Images to PDF)
 # =====================================================================
+
+def parse_page_range(range_str: str, max_pages: int) -> List[int]:
+    """
+    Parse page range string (1-indexed) into 0-indexed page indices.
+    Supports formats like: '1-3, 5, 7-9', '2', '1,3,5', 'all'.
+    """
+    cleaned = (range_str or "").strip().lower()
+    if not cleaned or cleaned == "all":
+        return list(range(max_pages))
+
+    selected_pages = set()
+    parts = [p.strip() for p in cleaned.split(",") if p.strip()]
+    if not parts:
+        raise ValueError("Please provide a valid page range (e.g. 1-3, 5, 7-9).")
+
+    for part in parts:
+        if "-" in part:
+            sub = part.split("-")
+            if len(sub) != 2:
+                raise ValueError(f"Invalid range segment: '{part}'")
+            start_str, end_str = sub[0].strip(), sub[1].strip()
+            if not start_str.isdigit() or not end_str.isdigit():
+                raise ValueError(f"Invalid page numbers in range: '{part}'")
+            start = int(start_str)
+            end = int(end_str)
+            if start < 1 or end < 1:
+                raise ValueError("Page numbers must be 1 or greater.")
+            if start > end:
+                raise ValueError(f"Invalid range '{part}': start page ({start}) cannot be greater than end page ({end}).")
+            if start > max_pages:
+                raise ValueError(f"Page {start} exceeds total pages ({max_pages}).")
+            end = min(end, max_pages)
+            for p in range(start, end + 1):
+                selected_pages.add(p - 1)
+        else:
+            if not part.isdigit():
+                raise ValueError(f"Invalid page number: '{part}'")
+            page_num = int(part)
+            if page_num < 1:
+                raise ValueError("Page numbers must be 1 or greater.")
+            if page_num > max_pages:
+                raise ValueError(f"Page {page_num} exceeds total pages ({max_pages}).")
+            selected_pages.add(page_num - 1)
+
+    sorted_pages = sorted(list(selected_pages))
+    if not sorted_pages:
+        raise ValueError("No valid pages selected.")
+    return sorted_pages
+
 
 @app.post("/api/pdf/merge")
 async def merge_pdfs(
@@ -858,6 +966,7 @@ async def merge_pdfs(
     output_path = os.path.join(UPLOAD_DIR, f"merged_{out_uid}.pdf")
 
     try:
+        total_batch_size = 0
         for idx, file in enumerate(files):
             ext = os.path.splitext(file.filename or "")[1].lower()
             if ext != ".pdf":
@@ -865,6 +974,12 @@ async def merge_pdfs(
             
             fpath = await save_upload_file(file, f"merge_{idx}")
             saved_inputs.append(fpath)
+            total_batch_size += os.path.getsize(fpath)
+            if total_batch_size > MAX_FILE_SIZE_BYTES:
+                raise HTTPException(
+                    status_code=413,
+                    detail="Total combined file size exceeds the 50 MB limit. Please select fewer or smaller files."
+                )
 
         def sync_merge(paths: List[str], target: str):
             writer = PdfWriter()
@@ -892,6 +1007,173 @@ async def merge_pdfs(
         logger.exception("Error merging PDFs:")
         remove_temp_paths(*saved_inputs, output_path)
         raise HTTPException(status_code=500, detail=f"Failed to merge PDFs: {str(e)}")
+    finally:
+        gc.collect()
+
+
+@app.post("/api/pdf/split")
+async def split_pdf(
+    background_tasks: BackgroundTasks,
+    file: UploadFile = File(...),
+    page_range: str = Form(...),
+):
+    """
+    Split and extract specific pages from a PDF document using pypdf.
+    page_range supports comma-separated pages and ranges (e.g. '1-3, 5, 7-9').
+    """
+    ext = os.path.splitext(file.filename or "")[1].lower()
+    if ext != ".pdf":
+        raise HTTPException(status_code=400, detail="Uploaded file is not a valid PDF.")
+
+    try:
+        from pypdf import PdfReader, PdfWriter
+    except ImportError:
+        raise HTTPException(status_code=500, detail="pypdf library is required for PDF operations.")
+
+    input_path = await save_upload_file(file, "split_in")
+    out_uid = uuid.uuid4().hex
+    orig_name = file.filename or "document.pdf"
+    orig_root, _ = os.path.splitext(orig_name)
+    output_filename = f"{orig_root}_extracted.pdf"
+    output_path = os.path.join(UPLOAD_DIR, f"split_out_{out_uid}_{output_filename}")
+
+    try:
+        def sync_split(in_p: str, out_p: str, p_range: str):
+            reader = PdfReader(in_p)
+            total_pages = len(reader.pages)
+            if total_pages == 0:
+                raise ValueError("The uploaded PDF contains no pages.")
+
+            page_indices = parse_page_range(p_range, total_pages)
+            writer = PdfWriter()
+            for idx in page_indices:
+                writer.add_page(reader.pages[idx])
+
+            with open(out_p, "wb") as f_out:
+                writer.write(f_out)
+
+        await run_in_threadpool(sync_split, input_path, output_path, page_range)
+
+        if not os.path.exists(output_path) or os.path.getsize(output_path) == 0:
+            raise HTTPException(status_code=500, detail="Extracted PDF file could not be generated.")
+
+        background_tasks.add_task(remove_temp_paths, input_path, output_path)
+
+        safe_dl_name = quote(output_filename)
+        return FileResponse(
+            output_path,
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename=\"{output_filename}\"; filename*=UTF-8''{safe_dl_name}"
+            },
+        )
+    except ValueError as ve:
+        remove_temp_paths(input_path, output_path)
+        raise HTTPException(status_code=400, detail=str(ve))
+    except HTTPException:
+        remove_temp_paths(input_path, output_path)
+        raise
+    except Exception as e:
+        logger.exception("Error splitting PDF:")
+        remove_temp_paths(input_path, output_path)
+        raise HTTPException(status_code=500, detail=f"Failed to split PDF: {str(e)}")
+    finally:
+        gc.collect()
+
+
+@app.post("/api/pdf/security")
+async def pdf_security(
+    background_tasks: BackgroundTasks,
+    file: UploadFile = File(...),
+    action: str = Form(...),
+    password: str = Form(...),
+):
+    """
+    Protect (Encrypt) or Unlock (Decrypt) PDF Password using pypdf.
+    action: 'encrypt' or 'decrypt'.
+    """
+    ext = os.path.splitext(file.filename or "")[1].lower()
+    if ext != ".pdf":
+        raise HTTPException(status_code=400, detail="Uploaded file is not a valid PDF.")
+
+    action = action.lower().strip()
+    if action not in ("encrypt", "decrypt"):
+        raise HTTPException(status_code=400, detail="Invalid action. Choose 'encrypt' or 'decrypt'.")
+
+    if not password or not password.strip():
+        raise HTTPException(status_code=400, detail="Password cannot be empty.")
+
+    try:
+        from pypdf import PdfReader, PdfWriter
+    except ImportError:
+        raise HTTPException(status_code=500, detail="pypdf library is required for PDF security.")
+
+    input_path = await save_upload_file(file, "sec_in")
+    out_uid = uuid.uuid4().hex
+    orig_name = file.filename or "document.pdf"
+    orig_root, _ = os.path.splitext(orig_name)
+
+    if action == "encrypt":
+        output_filename = f"{orig_root}_protected.pdf"
+    else:
+        output_filename = f"{orig_root}_unlocked.pdf"
+
+    output_path = os.path.join(UPLOAD_DIR, f"sec_out_{out_uid}_{output_filename}")
+
+    try:
+        def sync_security(in_p: str, out_p: str, act: str, pwd: str):
+            reader = PdfReader(in_p)
+            writer = PdfWriter()
+
+            if act == "encrypt":
+                if reader.is_encrypted:
+                    dec = reader.decrypt(pwd)
+                    if dec == 0:
+                        raise ValueError("PDF is already encrypted with another password. Please decrypt it first.")
+                for page in reader.pages:
+                    writer.add_page(page)
+                writer.encrypt(pwd)
+                with open(out_p, "wb") as f_out:
+                    writer.write(f_out)
+
+            elif act == "decrypt":
+                if not reader.is_encrypted:
+                    raise ValueError("This PDF is not password protected. No decryption needed.")
+                dec = reader.decrypt(pwd)
+                if dec == 0:
+                    raise ValueError("Incorrect password! Could not decrypt the PDF.")
+                for page in reader.pages:
+                    writer.add_page(page)
+                with open(out_p, "wb") as f_out:
+                    writer.write(f_out)
+
+        await run_in_threadpool(sync_security, input_path, output_path, action, password.strip())
+
+        if not os.path.exists(output_path) or os.path.getsize(output_path) == 0:
+            raise HTTPException(status_code=500, detail="Processed security PDF could not be generated.")
+
+        background_tasks.add_task(remove_temp_paths, input_path, output_path)
+
+        safe_dl_name = quote(output_filename)
+        return FileResponse(
+            output_path,
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename=\"{output_filename}\"; filename*=UTF-8''{safe_dl_name}"
+            },
+        )
+    except ValueError as ve:
+        remove_temp_paths(input_path, output_path)
+        raise HTTPException(status_code=400, detail=str(ve))
+    except HTTPException:
+        remove_temp_paths(input_path, output_path)
+        raise
+    except Exception as e:
+        logger.exception("Error in PDF security:")
+        remove_temp_paths(input_path, output_path)
+        raise HTTPException(status_code=500, detail=f"Failed to process PDF security: {str(e)}")
+    finally:
+        gc.collect()
 
 
 @app.post("/api/pdf/images-to-pdf")
@@ -913,9 +1195,16 @@ async def images_to_pdf(
     output_path = os.path.join(UPLOAD_DIR, f"images_combined_{out_uid}.pdf")
 
     try:
+        total_batch_size = 0
         for idx, file in enumerate(files):
             fpath = await save_upload_file(file, f"img2pdf_{idx}")
             saved_inputs.append(fpath)
+            total_batch_size += os.path.getsize(fpath)
+            if total_batch_size > MAX_FILE_SIZE_BYTES:
+                raise HTTPException(
+                    status_code=413,
+                    detail="Total combined images size exceeds the 50 MB limit. Please select fewer or smaller images."
+                )
 
         def sync_images_to_pdf(paths: List[str], target: str):
             rgb_images = []
@@ -959,6 +1248,8 @@ async def images_to_pdf(
         logger.exception("Error converting images to PDF:")
         remove_temp_paths(*saved_inputs, output_path)
         raise HTTPException(status_code=500, detail=f"Failed to convert images to PDF: {str(e)}")
+    finally:
+        gc.collect()
 
 
 # =====================================================================
@@ -966,6 +1257,7 @@ async def images_to_pdf(
 # =====================================================================
 
 @app.post("/api/convert/media")
+@app.post("/api/media/convert")
 async def convert_media(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
@@ -988,6 +1280,12 @@ async def convert_media(
     orig_name = file.filename or "media"
     orig_root, orig_ext = os.path.splitext(orig_name)
     target_format = target_format.lower().replace(".", "").strip()
+
+    if file.size and file.size > MAX_FILE_SIZE_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail="File size exceeds the 50 MB free limit. Please choose a smaller file to ensure fast processing."
+        )
 
     input_path = await save_upload_file(file, "media_in")
     out_uid = uuid.uuid4().hex
@@ -1065,6 +1363,8 @@ async def convert_media(
         logger.exception("Error converting media:")
         remove_temp_paths(input_path, output_path)
         raise HTTPException(status_code=500, detail=f"Failed to convert media: {str(e)}")
+    finally:
+        gc.collect()
 
 
 # =====================================================================
@@ -1148,6 +1448,8 @@ async def convert_image(
         logger.exception("Error converting image:")
         remove_temp_paths(input_path, output_path)
         raise HTTPException(status_code=500, detail=f"Failed to convert image: {str(e)}")
+    finally:
+        gc.collect()
 
 
 if __name__ == "__main__":

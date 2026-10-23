@@ -1,0 +1,11 @@
+{
+  "python.defaultInterpreterPath": "C:\\Users\\PRASA\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+  "python.analysis.extraPaths": [
+    "C:\\Users\\PRASA\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages",
+    "C:\\Users\\PRASA\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages"
+  ],
+  "python.autoComplete.extraPaths": [
+    "C:\\Users\\PRASA\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages",
+    "C:\\Users\\PRASA\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages"
+  ]
+}
