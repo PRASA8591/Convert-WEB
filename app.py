@@ -10,7 +10,7 @@ from urllib.parse import quote
 from typing import List, Optional
 
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, BackgroundTasks, Request
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.concurrency import run_in_threadpool
@@ -685,6 +685,31 @@ def get_logo_png():
         if os.path.exists(path):
             return FileResponse(path, media_type="image/png")
     raise HTTPException(status_code=404, detail="Logo not found")
+
+
+@app.get("/robots.txt", response_class=PlainTextResponse)
+def get_robots_txt():
+    """Serve robots.txt for search engine crawlers."""
+    robots_path = os.path.join(BASE_DIR, "robots.txt")
+    if os.path.exists(robots_path):
+        return FileResponse(robots_path, media_type="text/plain")
+    robots_content = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        "Disallow: /api/\n\n"
+        "Sitemap: https://supiriconvert.prasatek.lk/sitemap.xml\n"
+    )
+    return PlainTextResponse(content=robots_content, media_type="text/plain")
+
+
+@app.get("/sitemap.xml")
+def get_sitemap_xml():
+    """Serve XML sitemap for Google Search Console and web indexers."""
+    sitemap_path = os.path.join(BASE_DIR, "sitemap.xml")
+    if os.path.exists(sitemap_path):
+        return FileResponse(sitemap_path, media_type="application/xml")
+    raise HTTPException(status_code=404, detail="sitemap.xml not found")
+
 
 
 # --- Keep-Alive & Anti-Sleep Endpoints (Optimized for Render Free Tier & Uptime Monitors) ---

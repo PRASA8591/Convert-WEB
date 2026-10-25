@@ -1,0 +1,114 @@
+<!doctype html>
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en-LK">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="google-site-verification" content="mnLSF6TsmMDM5uYTmaB3Bz86gTqohznJuvmBVef6IDA" /> 
+  <meta name="HandheldFriendly" content="True">
+   <link href="favicon.ico" rel="shortcut icon">
+    <title>Unicode to FM Converter | Convert Sinhala Fonts Online</title>
+      <meta name="description" content="Fast, free Unicode to FM Abhaya converter. Convert Sinhala Unicode to FM (FM Abhaya / FM Malithi) or FM Abhaya to Unicode instantly." />
+     <link rel="canonical" href="https://xzunk.github.io/unicodetofm/">
+    
+    <meta name="msvalidate.01" content="7089942D01173D3EC6A2672FFC59A749" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  </head>
+  <body>
+    <section class="section">
+      <div class="container converter-area">
+        <div class="card">
+          <header class="card-header">
+            <h1 class="card-header-title">Unicode to FM Converter — The Smartest Sinhala Font Converter Online</h1>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <div class="columns is-variable is-4">
+                <div class="column is-half">
+                  <label class="label">Unicode input (යුනිකේත)</label>
+                  <textarea id="input" class="textarea mono" placeholder="Type or paste Unicode text here"></textarea>
+                  <div class="field is-grouped is-justify-content-flex-start" style="margin-top: .75rem;">
+                    <p class="control">
+                      <button id="resetBtn" class="button is-light">Reset</button>
+                     <p>Try Advanced </p>  <a href="https://unicodesinhala.com"> Singlish and Font Converter </a> Tool </p>
+                      
+                    </p>
+                   
+                  </div>
+                </div>
+
+                <div class="column is-half">
+                  <label class="label">Converted output (DL / FM / etc.)</label>
+                  <textarea id="output" class="textarea output" readonly></textarea>
+                  <div class="field is-grouped" style="margin-top: .75rem;">
+                    <p class="control">
+                      <button id="copyBtn" class="button is-primary">Copy Output</button>
+                    </p>
+                    <p class="control">
+                      <button id="downloadBtn" class="button is-light">Download as .txt</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+               <section class="content-section">
+  <p>😩 <strong>Tired of weird boxes and gibberish text when copying Sinhala?</strong><br>
+  Relax — this <strong>Unicode to FM Converter</strong> does the heavy lifting! Convert Sinhala Unicode text into <strong>FM Abhaya</strong> or <strong>FM Malithi</strong> fonts in one click.</p>
+
+  <p>No downloads. No confusion. Just clean, ready-to-use Sinhala fonts that actually look right. 😎</p>
+
+  <h2>⚙️ What This Unicode to FM Converter Does</h2>
+  <ul>
+    <li>✅ <strong>Instant Conversion:</strong> Type in Unicode → Get FM Abhaya text instantly.</li>
+    <li>✅ <strong>Bidirectional:</strong> Works both ways — FM Abhaya to Unicode too!</li>
+    <li>✅ <strong>Supports FM Fonts:</strong> FM Abhaya, FM Malithi, and more Sinhala classics.</li>
+    <li>✅ <strong>Zero Cost:</strong> 100% free, forever.</li>
+    <li>✅ <strong>Mobile-Friendly:</strong> Converts beautifully on phones, tablets, and PCs.</li>
+  </ul>
+
+  <h2>🧠 Why You’ll Love It</h2>
+  <p>Our tool isn’t just another “old-school” Unicode to FM Abhaya converter buried in pop-ups and ads.<br>
+  It’s <strong>modern, fast, and accurate</strong> — built for creators, students, and professionals who need clean Sinhala text that just works.</p>
+
+  <p>Whether you’re converting an essay, a blog post, or subtitles for your next viral video 🎥,<br>
+  this converter turns <strong>Unicode text into FM fonts</strong> with no loss of meaning — or your patience!</p>
+
+  <h2>🔁 FM Abhaya to Unicode Converter (Yes, the Reverse Works Too!)</h2>
+  <p>Need to switch back to Unicode? Click once and poof 💨 — your FM text becomes Unicode instantly.<br>
+  Because why should conversion be a one-way street?</p>
+
+
+  <p>If you searched for:</p>
+  <ul>
+    <li><strong>Unicode to FM</strong></li>
+    <li><strong>Unicode to FM Abhaya</strong></li>
+    <li><strong>FM Abhaya to Unicode</strong></li>
+    <li><strong>Unicode to FM Abhaya converter</strong></li>
+  </ul>
+  <p>🎉 Congratulations — you’ve found Sri Lanka’s favorite Sinhala font converter.<br>
+  No “undefined characters,” no font errors — just the perfect <strong>Unicode ↔ FM</strong> transformation every time.</p>
+</section>
+
+              <hr />
+              <p class="note">© Script Credit : Language Technology Research Laboratory - University of Colombo School of Computing — Edited and modernized. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <script>
+    // Modernized conversion wiring. The replacement mapping is preserved from original implementation.
+    // For maintainability we use a sequence of replacements. Keep this mapping in sync with the old app.
+
+    function startText() {
+      var inputEl = document.getElementById('input');
+      var outputEl = document.getElementById('output');
+      var text = inputEl.value;
+
+      // --- BEGIN replacement mapping (preserved) ---
+      text = text.replace(/,/g, "￦");
+text = text.replace(/\./g, "�");
+text = text.re

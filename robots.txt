@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://supiriconvert.prasatek.lk/sitemap.xml

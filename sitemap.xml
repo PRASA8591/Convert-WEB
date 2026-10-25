@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- SupiriConvertPRO Root Application -->
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 1. Full Matrix Document Converter -->
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#doc-tab</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 2. PDF Studio (Merge, Split, Protect, Image to PDF) -->
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#pdf-tab</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#pdf-merge</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#pdf-split</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#pdf-security</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#pdf-img2pdf</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 3. High-Speed Media Converter (Audio/Video/GIF) -->
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#media-tab</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 4. Image Studio & AI OCR Text Extractor -->
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#image-tab</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#ocr</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 5. Sinhala Studio (Singlish-to-Sinhala Unicode & FM Abhaya Converter) -->
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#sinhala-tab</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 6. Case Converter & Text Studio -->
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#text-tab</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 7. Free Offline Utilities (QR Code, Password Generator) -->
+  <url>
+    <loc>https://supiriconvert.prasatek.lk/#utils-tab</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
